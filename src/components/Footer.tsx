@@ -1,0 +1,121 @@
+import { Link } from 'react-router-dom';
+import { GOLD, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL } from '../theme';
+
+const footerLinks = {
+  Services: [
+    { label: 'Investment Consultancy', path: '/services' },
+    { label: 'Home Improvement', path: '/services' },
+    { label: 'Design & Development', path: '/design' },
+  ],
+  Company: [
+    { label: 'About Us', path: '/about' },
+    { label: 'Projects', path: '/projects' },
+    { label: 'Partners', path: '/partners' },
+    { label: 'Contact', path: '/contact' },
+  ],
+  Markets: [
+    { label: 'Residential', path: '/services' },
+    { label: 'Commercial', path: '/design' },
+    { label: 'Hotels & Hospitality', path: '/design' },
+    { label: 'Restaurants', path: '/design' },
+    { label: 'International', path: '/contact' },
+  ],
+};
+
+export default function Footer() {
+  return (
+    <footer style={{
+      background: CHARCOAL,
+      borderTop: `1px solid ${DARK_BORDER}`,
+      padding: '60px 32px 32px',
+    }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+
+        {/* Top grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '2fr 1fr 1fr 1fr',
+          gap: 48,
+          marginBottom: 48,
+        }}>
+          {/* Brand */}
+          <div>
+            <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', marginBottom: 20 }}>
+              <div style={{
+                width: 36,
+                height: 36,
+                border: `2px solid ${GOLD}`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                <span style={{ color: GOLD, fontWeight: 700, fontSize: 12, letterSpacing: 1 }}>MEO</span>
+              </div>
+              <span style={{ color: OFF_WHITE, fontWeight: 600, fontSize: 12, letterSpacing: 2, textTransform: 'uppercase' }}>
+                Development LLC
+              </span>
+            </Link>
+            <p style={{ color: GREY, fontSize: 13, lineHeight: 1.8, maxWidth: 280 }}>
+              A leading provider of bespoke property development and home improvement solutions,
+              recognized for excellence, innovation, and sustainability.
+            </p>
+            <div style={{ color: GOLD, fontSize: 14, marginTop: 20, fontWeight: 600 }}>
+              +1 754 284 91 10
+            </div>
+          </div>
+
+          {/* Link columns */}
+          {Object.entries(footerLinks).map(([category, links]) => (
+            <div key={category}>
+              <div style={{
+                color: GOLD,
+                fontSize: 10,
+                letterSpacing: 3,
+                textTransform: 'uppercase',
+                marginBottom: 20,
+                fontWeight: 600,
+              }}>
+                {category}
+              </div>
+              {links.map(link => (
+                <Link
+                  key={link.label}
+                  to={link.path}
+                  style={{
+                    display: 'block',
+                    color: GREY,
+                    fontSize: 12,
+                    marginBottom: 10,
+                    letterSpacing: 0.5,
+                    textDecoration: 'none',
+                    transition: 'color 0.2s',
+                  }}
+                  onMouseEnter={e => (e.currentTarget.style.color = OFF_WHITE)}
+                  onMouseLeave={e => (e.currentTarget.style.color = GREY)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom bar */}
+        <div style={{
+          borderTop: `1px solid ${DARK_BORDER}`,
+          paddingTop: 24,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+          <div style={{ color: GREY, fontSize: 11 }}>
+            © 2025 MEO Development LLC. All rights reserved.
+          </div>
+          <div style={{ color: GREY, fontSize: 11 }}>
+            Design by <span style={{ color: GOLD }}>CERS Agency</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

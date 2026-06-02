@@ -1,0 +1,9 @@
+export const GOLD = '#C9A84C';
+export const GOLD_LIGHT = '#E8C97A';
+export const GOLD_MUTED = '#8B6914';
+export const BLACK = '#0A0A0A';
+export const CHARCOAL = '#141414';
+export const DARK_CARD = '#1A1A1A';
+export const DARK_BORDER = '#2A2A2A';
+export const OFF_WHITE = '#F5F0E8';
+export const GREY = '#888888';
