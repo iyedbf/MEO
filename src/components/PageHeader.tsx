@@ -18,24 +18,6 @@ export default function PageHeader({ eyebrow, titleLight, titleBold, watermark, 
       overflow: 'hidden',
     }}>
 
-      {/* Watermark ghost text */}
-      <div style={{
-        position: 'absolute',
-        top: '50%', right: -20,
-        transform: 'translateY(-50%)',
-        fontSize: 'clamp(80px, 12vw, 160px)',
-        fontWeight: 800,
-        color: '#ffffff',
-        opacity: 0.025,
-        letterSpacing: -4,
-        whiteSpace: 'nowrap',
-        userSelect: 'none',
-        lineHeight: 1,
-        pointerEvents: 'none',
-      }}>
-        {watermark}
-      </div>
-
       {/* Top decorative line full width */}
       <div style={{ position: 'absolute', top: 28, left: 32, right: 32, height: 1, background: `${DARK_BORDER}` }} />
 
