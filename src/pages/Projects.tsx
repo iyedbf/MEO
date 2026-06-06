@@ -7,10 +7,11 @@ function VideoCard({ video, height }: { video: { src: string; label: string; sub
     <div style={{ position: 'relative', background: '#000', overflow: 'hidden', height }}>
       <video
         src={video.src}
-        controls
+        autoPlay
+        loop
         muted
         playsInline
-        preload="metadata"
+        preload="auto"
         style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
       />
       {/* Gradient overlay at bottom */}
