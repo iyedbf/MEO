@@ -1,20 +1,22 @@
 import { useState } from 'react';
 import { GOLD, BLACK, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD, GOLD_MUTED } from '../theme';
-import { siteImages } from '../images';
+import { siteImages, siteVideos } from '../images';
 
 type Category = 'All' | 'House' | 'Villa' | 'Residence' | 'Mansion' | 'Penthouse' | 'Hotel' | 'Restaurant';
 
 const allProjects: { type: string; year: string; category: Exclude<Category, 'All'>; size: string; image: string }[] = [
-  { type: 'Modern House', year: '2023', category: 'House', size: 'Large', image: siteImages.modernHouse },
-  { type: 'Coastal Villa', year: '2023', category: 'Villa', size: 'Extra Large', image: siteImages.villa },
-  { type: 'Urban Residence', year: '2024', category: 'Residence', size: 'Medium', image: siteImages.residence },
-  { type: 'Country Residence', year: '2024', category: 'Residence', size: 'Large', image: siteImages.luxuryInterior },
-  { type: 'Estate Mansion', year: '2025', category: 'Mansion', size: 'Estate', image: siteImages.mansion },
-  { type: 'Private Mansion', year: '2025', category: 'Mansion', size: 'Estate', image: siteImages.heroVilla },
-  { type: 'Contemporary Mansion', year: '2025', category: 'Mansion', size: 'Estate', image: siteImages.bespokeDesign },
-  { type: 'Sky Penthouse', year: '2025', category: 'Penthouse', size: 'Large', image: siteImages.penthouse },
-  { type: 'Boutique Hotel', year: '2025', category: 'Hotel', size: 'Commercial', image: siteImages.hotel },
-  { type: 'Fine Dining', year: '2025', category: 'Restaurant', size: 'Commercial', image: siteImages.restaurant },
+  { type: 'Greenwich Connecticut', year: '2025', category: 'House', size: 'Large', image: siteImages.heroVilla },
+  { type: 'Sinpaş Gökorman', year: '2023', category: 'Villa', size: 'Extra Large', image: siteImages.villa },
+  { type: 'Tuzla — Binali Bey', year: '2024', category: 'Residence', size: 'Medium', image: siteImages.residence },
+  { type: 'Sinpaş Palas', year: '2024', category: 'Residence', size: 'Large', image: siteImages.luxuryInterior },
+  { type: 'Greenwich Estate', year: '2025', category: 'Mansion', size: 'Estate', image: siteImages.mansion },
+  { type: 'Merit Kensington', year: '2025', category: 'Mansion', size: 'Estate', image: siteImages.bespokeDesign },
+  { type: 'Merit Kensington Suite', year: '2025', category: 'Mansion', size: 'Estate', image: siteImages.modernHouse },
+  { type: 'Sinpaş Palas Penthouse', year: '2025', category: 'Penthouse', size: 'Large', image: siteImages.penthouse },
+  { type: 'Merit Hotel Lobby', year: '2025', category: 'Hotel', size: 'Commercial', image: siteImages.hotel },
+  { type: 'Merit Hotel Restaurant', year: '2025', category: 'Restaurant', size: 'Commercial', image: siteImages.restaurant },
+  { type: 'Radisson Blue', year: '2024', category: 'Hotel', size: 'Commercial', image: siteImages.radisson },
+  { type: 'WOW Hotel Istanbul', year: '2024', category: 'Hotel', size: 'Commercial', image: siteImages.commercial },
 ];
 
 const filters: Category[] = ['All', 'House', 'Villa', 'Residence', 'Mansion', 'Penthouse', 'Hotel', 'Restaurant'];
@@ -24,7 +26,7 @@ const statItems = [
   { count: '2', label: 'Residences' },
   { count: '3', label: 'Mansions' },
   { count: '1', label: 'Penthouse' },
-  { count: '2', label: 'Commercial' },
+  { count: '4', label: 'Hotels / Restaurants' },
 ];
 
 export default function Projects() {
@@ -109,6 +111,47 @@ export default function Projects() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Surfside Arte Project - Featured with Videos */}
+        <div style={{ marginTop: 80, marginBottom: 0 }}>
+          <div style={{ marginBottom: 40 }}>
+            <div style={{ color: GOLD, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 14, fontWeight: 600 }}>Featured Project</div>
+            <h2 style={{ color: OFF_WHITE, fontSize: 38, fontWeight: 300, marginBottom: 12 }}>Surfside Arte Project</h2>
+            <div style={{ width: 60, height: 2, background: GOLD, marginBottom: 16 }} />
+            <p style={{ color: GREY, fontSize: 14, lineHeight: 1.8, maxWidth: 640 }}>
+              A landmark artistic development featuring bespoke interiors and refined craftsmanship — a seamless fusion of art, architecture, and luxury living.
+            </p>
+          </div>
+
+          {/* Photos row */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 8 }}>
+            {[siteImages.surfsideImg1, siteImages.surfsideImg2, siteImages.surfsideImg3].map((src, i) => (
+              <div key={i} style={{ height: 220, overflow: 'hidden', position: 'relative', background: CHARCOAL }}>
+                <img src={src} alt={`Surfside Arte Project ${i + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.82) saturate(0.9)' }} />
+              </div>
+            ))}
+          </div>
+
+          {/* Videos grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8 }}>
+            {siteVideos.map((src, i) => (
+              <div key={i} style={{ background: DARK_CARD, border: `1px solid ${DARK_BORDER}`, overflow: 'hidden', position: 'relative' }}>
+                <video
+                  src={src}
+                  controls
+                  muted
+                  playsInline
+                  style={{ width: '100%', height: 260, objectFit: 'cover', display: 'block' }}
+                />
+                <div style={{ padding: '10px 16px', borderTop: `1px solid ${DARK_BORDER}` }}>
+                  <div style={{ color: GOLD_MUTED, fontSize: 10, letterSpacing: 2, textTransform: 'uppercase' }}>
+                    Surfside Arte — Site View {i + 1}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Stats row */}

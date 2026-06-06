@@ -34,10 +34,10 @@ const services = [
 ];
 
 const recentProjects = [
-  { type: 'Private Mansion', year: '2025', category: 'Mansion', image: siteImages.mansion },
-  { type: 'Penthouse Suite', year: '2025', category: 'Penthouse', image: siteImages.penthouse },
-  { type: 'Boutique Hotel', year: '2025', category: 'Hotel', image: siteImages.hotel },
-  { type: 'Fine Dining', year: '2025', category: 'Restaurant', image: siteImages.restaurant },
+  { type: 'Merit Kensington', year: '2025', category: 'Mansion', image: siteImages.mansion },
+  { type: 'Sinpaş Palas', year: '2025', category: 'Penthouse', image: siteImages.penthouse },
+  { type: 'Merit Hotel', year: '2025', category: 'Hotel', image: siteImages.hotel },
+  { type: 'Merit Restaurant', year: '2025', category: 'Restaurant', image: siteImages.restaurant },
 ];
 
 export default function Home() {
