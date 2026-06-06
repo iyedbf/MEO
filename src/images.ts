@@ -18,9 +18,11 @@ export const siteImages = {
   surfsideImg3: '/images/surfside-3.jpg',
 };
 
+// surfside-1.mp4 excluded (bad quality)
 export const siteVideos = [
-  '/videos/surfside-1.mp4',
-  '/videos/surfside-2.mp4',
-  '/videos/surfside-3.mp4',
-  '/videos/surfside-4.mp4',
+  { src: '/videos/surfside-2.mp4', label: 'Surfside Arte', sub: 'Interior Finishes' },
+  { src: '/videos/surfside-3.mp4', label: 'Surfside Arte', sub: 'Staircase Detail' },
+  { src: '/videos/surfside-4.mp4', label: 'Surfside Arte', sub: 'Gold Accents' },
+  { src: '/videos/restaurant-1.mp4', label: 'Merit Restaurant', sub: 'Dining Ambiance' },
+  { src: '/videos/restaurant-2.mp4', label: 'Merit Restaurant', sub: 'Evening Service' },
 ];

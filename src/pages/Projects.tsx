@@ -2,6 +2,43 @@ import { useState } from 'react';
 import { GOLD, BLACK, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD, GOLD_MUTED } from '../theme';
 import { siteImages, siteVideos } from '../images';
 
+function VideoCard({ video, height }: { video: { src: string; label: string; sub: string }; height: number }) {
+  return (
+    <div style={{ position: 'relative', background: '#000', overflow: 'hidden', height }}>
+      <video
+        src={video.src}
+        controls
+        muted
+        playsInline
+        preload="metadata"
+        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+      />
+      {/* Gradient overlay at bottom */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: 0, right: 0,
+        background: 'linear-gradient(transparent 40%, rgba(0,0,0,0.78) 100%)',
+        padding: '28px 20px 16px',
+        pointerEvents: 'none',
+      }}>
+        <div style={{
+          display: 'flex', alignItems: 'center', gap: 10,
+        }}>
+          <div style={{ width: 24, height: 1, background: GOLD }} />
+          <div style={{ color: GOLD, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', fontWeight: 600 }}>
+            {video.label}
+          </div>
+        </div>
+        <div style={{ color: OFF_WHITE, fontSize: 12, letterSpacing: 0.5, marginTop: 4, opacity: 0.85 }}>
+          {video.sub}
+        </div>
+      </div>
+      {/* Gold top-left corner accent */}
+      <div style={{ position: 'absolute', top: 0, left: 0, width: 32, height: 2, background: GOLD, pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, width: 2, height: 32, background: GOLD, pointerEvents: 'none' }} />
+    </div>
+  );
+}
+
 type Category = 'All' | 'House' | 'Villa' | 'Residence' | 'Mansion' | 'Penthouse' | 'Hotel' | 'Restaurant';
 
 const allProjects: { type: string; year: string; category: Exclude<Category, 'All'>; size: string; image: string }[] = [
@@ -113,88 +150,38 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Surfside Arte Project - Featured with Videos */}
+        {/* Video Showcase */}
         <div style={{ marginTop: 80 }}>
 
-          {/* Header */}
+          {/* Section header */}
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 40, flexWrap: 'wrap', gap: 16 }}>
             <div>
-              <div style={{ color: GOLD, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 14, fontWeight: 600 }}>Featured Project</div>
-              <h2 style={{ color: OFF_WHITE, fontSize: 38, fontWeight: 300, marginBottom: 12 }}>Surfside Arte Project</h2>
+              <div style={{ color: GOLD, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 14, fontWeight: 600 }}>Project Reels</div>
+              <h2 style={{ color: OFF_WHITE, fontSize: 38, fontWeight: 300, marginBottom: 12 }}>Behind the Work</h2>
               <div style={{ width: 60, height: 2, background: GOLD }} />
             </div>
-            <p style={{ color: GREY, fontSize: 14, lineHeight: 1.8, maxWidth: 480 }}>
-              A landmark artistic development featuring bespoke interiors and refined craftsmanship — a seamless fusion of art, architecture, and luxury living.
+            <p style={{ color: GREY, fontSize: 14, lineHeight: 1.8, maxWidth: 440 }}>
+              Exclusive footage from our active project sites — capturing craftsmanship, detail, and the transformation of space in real time.
             </p>
           </div>
 
-          {/* Main layout: large video left + photos column right */}
-          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 6, marginBottom: 6 }}>
+          {/* Top row: large featured + 2 stacked */}
+          <div style={{ display: 'grid', gridTemplateColumns: '3fr 2fr', gap: 4, marginBottom: 4 }}>
 
-            {/* Featured video */}
-            <div style={{ background: BLACK, border: `1px solid ${DARK_BORDER}`, overflow: 'hidden', position: 'relative' }}>
-              <video
-                src={siteVideos[0]}
-                controls
-                muted
-                playsInline
-                style={{ width: '100%', height: '100%', minHeight: 420, objectFit: 'cover', display: 'block' }}
-              />
-              <div style={{
-                position: 'absolute', bottom: 0, left: 0, right: 0,
-                background: 'linear-gradient(transparent, rgba(0,0,0,0.85))',
-                padding: '32px 24px 20px',
-                pointerEvents: 'none',
-              }}>
-                <div style={{ color: GOLD, fontSize: 10, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 4 }}>Surfside Arte Project</div>
-                <div style={{ color: OFF_WHITE, fontSize: 14, fontWeight: 600 }}>Site Walkthrough — Main View</div>
-              </div>
-            </div>
+            {/* Large featured video */}
+            <VideoCard video={siteVideos[0]} height={480} />
 
-            {/* Photos column */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-              {[siteImages.surfsideImg1, siteImages.surfsideImg2, siteImages.surfsideImg3].map((src, i) => (
-                <div key={i} style={{ flex: 1, overflow: 'hidden', position: 'relative', background: CHARCOAL, minHeight: 130 }}>
-                  <img
-                    src={src}
-                    alt={`Surfside Arte Project — view ${i + 1}`}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.78) saturate(0.85)', display: 'block' }}
-                  />
-                  <div style={{
-                    position: 'absolute', inset: 0,
-                    background: 'linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.55) 100%)',
-                  }} />
-                  <div style={{ position: 'absolute', bottom: 10, left: 14, color: GOLD_MUTED, fontSize: 9, letterSpacing: 2, textTransform: 'uppercase' }}>
-                    View {i + 1}
-                  </div>
-                </div>
-              ))}
+            {/* 2 stacked on right */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+              <VideoCard video={siteVideos[1]} height={238} />
+              <VideoCard video={siteVideos[2]} height={238} />
             </div>
           </div>
 
-          {/* 3 smaller videos in a row */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6 }}>
-            {siteVideos.slice(1).map((src, i) => (
-              <div key={i} style={{ background: BLACK, border: `1px solid ${DARK_BORDER}`, overflow: 'hidden' }}>
-                <video
-                  src={src}
-                  controls
-                  muted
-                  playsInline
-                  style={{ width: '100%', height: 200, objectFit: 'cover', display: 'block' }}
-                />
-                <div style={{
-                  padding: '10px 16px',
-                  borderTop: `1px solid ${DARK_BORDER}`,
-                  display: 'flex', alignItems: 'center', gap: 10,
-                }}>
-                  <div style={{ width: 6, height: 6, background: GOLD, flexShrink: 0 }} />
-                  <div style={{ color: GREY, fontSize: 10, letterSpacing: 2, textTransform: 'uppercase' }}>
-                    Clip {i + 2}
-                  </div>
-                </div>
-              </div>
-            ))}
+          {/* Bottom row: 2 equal restaurant videos */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4 }}>
+            <VideoCard video={siteVideos[3]} height={300} />
+            <VideoCard video={siteVideos[4]} height={300} />
           </div>
         </div>
 
