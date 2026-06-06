@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { GOLD, BLACK, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD } from '../theme';
 import { siteImages } from '../images';
+import PageHeader from '../components/PageHeader';
 
 const services = [
   {
@@ -54,15 +55,7 @@ export default function Services() {
   return (
     <div style={{ background: '#0A0A0A' }}>
 
-      {/* Page header */}
-      <section style={{ background: CHARCOAL, borderBottom: `1px solid ${DARK_BORDER}`, padding: '80px 32px' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div style={{ color: GOLD, fontSize: 11, letterSpacing: 5, textTransform: 'uppercase', marginBottom: 16, fontWeight: 600 }}>What We Offer</div>
-          <h1 style={{ color: OFF_WHITE, fontSize: 52, fontWeight: 200, margin: 0 }}>
-            Our <span style={{ color: GOLD, fontWeight: 700 }}>Services</span>
-          </h1>
-        </div>
-      </section>
+      <PageHeader eyebrow="What We Offer" titleLight="Our" titleBold="Services" watermark="SERVICES" />
 
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '80px 32px' }}>
 

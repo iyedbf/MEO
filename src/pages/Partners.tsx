@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { GOLD, BLACK, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD } from '../theme';
+import PageHeader from '../components/PageHeader';
 
 const partnerTypes = [
   { title: 'Real Estate Developers', desc: 'Strategic partnerships with leading real estate development firms for joint ventures and co-development opportunities.' },
@@ -21,15 +22,7 @@ export default function Partners() {
   return (
     <div style={{ background: '#0A0A0A' }}>
 
-      {/* Page header */}
-      <section style={{ background: CHARCOAL, borderBottom: `1px solid ${DARK_BORDER}`, padding: '80px 32px' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div style={{ color: GOLD, fontSize: 11, letterSpacing: 5, textTransform: 'uppercase', marginBottom: 16, fontWeight: 600 }}>Our Network</div>
-          <h1 style={{ color: OFF_WHITE, fontSize: 52, fontWeight: 200, margin: 0 }}>
-            Strategic <span style={{ color: GOLD, fontWeight: 700 }}>Partners</span>
-          </h1>
-        </div>
-      </section>
+      <PageHeader eyebrow="Our Network" titleLight="Strategic" titleBold="Partners" watermark="PARTNERS" />
 
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '80px 32px' }}>
 

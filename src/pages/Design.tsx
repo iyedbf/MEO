@@ -1,5 +1,6 @@
 import { GOLD, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD } from '../theme';
 import { siteImages } from '../images';
+import PageHeader from '../components/PageHeader';
 
 const segments = [
   {
@@ -36,17 +37,7 @@ export default function Design() {
   return (
     <div style={{ background: '#0A0A0A' }}>
 
-      {/* Page header */}
-      <section style={{ background: CHARCOAL, borderBottom: `1px solid ${DARK_BORDER}`, padding: '80px 32px' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div style={{ color: GOLD, fontSize: 11, letterSpacing: 5, textTransform: 'uppercase', marginBottom: 16, fontWeight: 600 }}>
-            Craftsmanship & Vision
-          </div>
-          <h1 style={{ color: OFF_WHITE, fontSize: 52, fontWeight: 200, margin: 0 }}>
-            Design & <span style={{ color: GOLD, fontWeight: 700 }}>Development</span>
-          </h1>
-        </div>
-      </section>
+      <PageHeader eyebrow="Craftsmanship & Vision" titleLight="Design &" titleBold="Development" watermark="DESIGN" />
 
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '80px 32px' }}>
 

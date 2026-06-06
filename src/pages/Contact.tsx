@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { GOLD, BLACK, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD } from '../theme';
+import PageHeader from '../components/PageHeader';
 
 type FormData = {
   firstName: string;
@@ -39,15 +40,7 @@ export default function Contact() {
   return (
     <div style={{ background: '#0A0A0A' }}>
 
-      {/* Page header */}
-      <section style={{ background: CHARCOAL, borderBottom: `1px solid ${DARK_BORDER}`, padding: '80px 32px' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto' }}>
-          <div style={{ color: GOLD, fontSize: 11, letterSpacing: 5, textTransform: 'uppercase', marginBottom: 16, fontWeight: 600 }}>Get in Touch</div>
-          <h1 style={{ color: OFF_WHITE, fontSize: 52, fontWeight: 200, margin: 0 }}>
-            Contact <span style={{ color: GOLD, fontWeight: 700 }}>Us</span>
-          </h1>
-        </div>
-      </section>
+      <PageHeader eyebrow="Get in Touch" titleLight="Contact" titleBold="Us" watermark="CONTACT" />
 
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '80px 32px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', border: `1px solid ${DARK_BORDER}` }}>
