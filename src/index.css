@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  cursor: none !important;
 }
 
 html {
@@ -28,6 +29,21 @@ button {
 img {
   max-width: 100%;
   display: block;
+}
+
+/* Custom cursor hover state */
+.cursor-ring.cursor-hover {
+  width: 56px !important;
+  height: 56px !important;
+  margin-left: -28px !important;
+  margin-top: -28px !important;
+  border-color: #E8C97A !important;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
 }
 
 /* Scrollbar */
