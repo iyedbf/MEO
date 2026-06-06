@@ -1,20 +1,22 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { GOLD, BLACK, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL } from '../theme';
+import { useLang } from '../context/LanguageContext';
 
 const navLinks = [
-  { path: '/', label: 'Home' },
-  { path: '/about', label: 'About' },
-  { path: '/services', label: 'Services' },
-  { path: '/design', label: 'Design & Dev' },
-  { path: '/projects', label: 'Projects' },
-  { path: '/partners', label: 'Partners' },
-  { path: '/contact', label: 'Contact' },
+  { path: '/',          en: 'Home',        tr: 'Ana Sayfa' },
+  { path: '/about',     en: 'About',       tr: 'Hakkımızda' },
+  { path: '/services',  en: 'Services',    tr: 'Hizmetler' },
+  { path: '/design',    en: 'Design & Dev',tr: 'Tasarım' },
+  { path: '/projects',  en: 'Projects',    tr: 'Projeler' },
+  { path: '/partners',  en: 'Partners',    tr: 'Ortaklar' },
+  { path: '/contact',   en: 'Contact',     tr: 'İletişim' },
 ];
 
 export default function Navbar() {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const { lang, setLang, t } = useLang();
 
   return (
     <nav style={{
@@ -77,28 +79,64 @@ export default function Navbar() {
                   textDecoration: 'none',
                 }}
               >
-                {link.label}
+                {lang === 'tr' ? link.tr : link.en}
               </Link>
             );
           })}
         </div>
 
-        {/* CTA */}
-        <Link
-          to="/contact"
-          style={{
-            background: GOLD,
-            color: BLACK,
-            padding: '10px 22px',
-            fontSize: 11,
-            fontWeight: 700,
-            letterSpacing: 2,
-            textTransform: 'uppercase',
-            textDecoration: 'none',
-          }}
-        >
-          Get in Touch
-        </Link>
+        {/* Right: language flags + CTA */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+
+          {/* Flag switcher */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginRight: 8 }}>
+            {([
+              { code: 'en', flag: '🇺🇸', label: 'EN' },
+              { code: 'tr', flag: '🇹🇷', label: 'TR' },
+            ] as const).map(({ code, flag, label }) => (
+              <button
+                key={code}
+                onClick={() => setLang(code)}
+                title={code === 'en' ? 'English' : 'Türkçe'}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 5,
+                  background: lang === code ? `${GOLD}18` : 'transparent',
+                  border: `1px solid ${lang === code ? GOLD : DARK_BORDER}`,
+                  padding: '4px 8px',
+                  borderRadius: 2,
+                  cursor: 'pointer',
+                  transition: 'all 0.18s',
+                  outline: 'none',
+                }}
+              >
+                <span style={{ fontSize: 16, lineHeight: 1 }}>{flag}</span>
+                <span style={{
+                  color: lang === code ? GOLD : GREY,
+                  fontSize: 9, fontWeight: 700, letterSpacing: 1.5,
+                }}>
+                  {label}
+                </span>
+              </button>
+            ))}
+          </div>
+
+          {/* CTA */}
+          <Link
+            to="/contact"
+            style={{
+              background: GOLD,
+              color: BLACK,
+              padding: '10px 22px',
+              fontSize: 11,
+              fontWeight: 700,
+              letterSpacing: 2,
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+            }}
+          >
+            {t('Get in Touch', 'İletişime Geç')}
+          </Link>
+        </div>
       </div>
 
       {/* Mobile menu overlay */}
@@ -124,7 +162,7 @@ export default function Navbar() {
                 textDecoration: 'none',
               }}
             >
-              {link.label}
+              {lang === 'tr' ? link.tr : link.en}
             </Link>
           ))}
         </div>

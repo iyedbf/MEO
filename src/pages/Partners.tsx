@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { GOLD, BLACK, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD } from '../theme';
 import PageHeader from '../components/PageHeader';
+import { useLang } from '../context/LanguageContext';
 
 const partnerTypes = [
   { title: 'Real Estate Developers', desc: 'Strategic partnerships with leading real estate development firms for joint ventures and co-development opportunities.' },
@@ -19,10 +20,11 @@ const benefits = [
 ];
 
 export default function Partners() {
+  const { t } = useLang();
   return (
     <div style={{ background: '#0A0A0A' }}>
 
-      <PageHeader eyebrow="Our Network" titleLight="Strategic" titleBold="Partners" watermark="PARTNERS" />
+      <PageHeader eyebrow={t('Our Network','Ağımız')} titleLight={t('Strategic','Stratejik')} titleBold={t('Partners','Ortaklar')} watermark="PARTNERS" />
 
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '80px 32px' }}>
 

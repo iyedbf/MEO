@@ -1,6 +1,7 @@
 import { GOLD, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD } from '../theme';
 import { siteImages } from '../images';
 import PageHeader from '../components/PageHeader';
+import { useLang } from '../context/LanguageContext';
 
 const values = [
   { title: 'Excellence', desc: 'We hold ourselves to the highest standards in every project, from concept through delivery.' },
@@ -10,10 +11,11 @@ const values = [
 ];
 
 export default function About() {
+  const { t } = useLang();
   return (
     <div style={{ background: '#0A0A0A' }}>
 
-      <PageHeader eyebrow="Our Story" titleLight="About" titleBold="MEO Development" watermark="ABOUT" />
+      <PageHeader eyebrow={t('Our Story','Hikayemiz')} titleLight={t('About','Hakkında')} titleBold="MEO Development" watermark="ABOUT" />
 
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '80px 32px' }}>
 

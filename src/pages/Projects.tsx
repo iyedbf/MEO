@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { GOLD, BLACK, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD, GOLD_MUTED } from '../theme';
 import { siteImages, siteVideos } from '../images';
 import PageHeader from '../components/PageHeader';
+import { useLang } from '../context/LanguageContext';
 
 function VideoCard({ video, height }: { video: { src: string; label: string; sub: string }; height: number }) {
   return (
@@ -69,13 +70,14 @@ const statItems = [
 ];
 
 export default function Projects() {
+  const { t } = useLang();
   const [active, setActive] = useState<Category>('All');
   const filtered = active === 'All' ? allProjects : allProjects.filter(p => p.category === active);
 
   return (
     <div style={{ background: '#0A0A0A' }}>
 
-      <PageHeader eyebrow="Portfolio" titleLight="Our" titleBold="Projects" watermark="PROJECTS" />
+      <PageHeader eyebrow={t('Portfolio','Portföy')} titleLight={t('Our','Projelerimiz')} titleBold={t('Projects','')} watermark="PROJECTS" />
 
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '60px 32px' }}>
 

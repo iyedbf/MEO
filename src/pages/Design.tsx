@@ -1,6 +1,7 @@
 import { GOLD, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD } from '../theme';
 import { siteImages } from '../images';
 import PageHeader from '../components/PageHeader';
+import { useLang } from '../context/LanguageContext';
 
 const segments = [
   {
@@ -34,10 +35,11 @@ const process = [
 ];
 
 export default function Design() {
+  const { t } = useLang();
   return (
     <div style={{ background: '#0A0A0A' }}>
 
-      <PageHeader eyebrow="Craftsmanship & Vision" titleLight="Design &" titleBold="Development" watermark="DESIGN" />
+      <PageHeader eyebrow={t('Craftsmanship & Vision','Ustalık & Vizyon')} titleLight={t('Design &','Tasarım &')} titleBold={t('Development','Geliştirme')} watermark="DESIGN" />
 
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '80px 32px' }}>
 

@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { LanguageProvider } from './context/LanguageContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
@@ -13,6 +14,7 @@ import Contact from './pages/Contact';
 
 export default function App() {
   return (
+    <LanguageProvider>
     <BrowserRouter>
       <CustomCursor />
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -32,5 +34,6 @@ export default function App() {
         <Footer />
       </div>
     </BrowserRouter>
+    </LanguageProvider>
   );
 }

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { GOLD, BLACK, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD } from '../theme';
 import { siteImages } from '../images';
 import PageHeader from '../components/PageHeader';
+import { useLang } from '../context/LanguageContext';
 
 const services = [
   {
@@ -52,10 +53,11 @@ const services = [
 ];
 
 export default function Services() {
+  const { t } = useLang();
   return (
     <div style={{ background: '#0A0A0A' }}>
 
-      <PageHeader eyebrow="What We Offer" titleLight="Our" titleBold="Services" watermark="SERVICES" />
+      <PageHeader eyebrow={t('What We Offer','Hizmetlerimiz')} titleLight={t('Our','Sunduğumuz')} titleBold={t('Services','Hizmetler')} watermark="SERVICES" />
 
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '80px 32px' }}>
 
