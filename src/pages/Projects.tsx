@@ -114,39 +114,83 @@ export default function Projects() {
         </div>
 
         {/* Surfside Arte Project - Featured with Videos */}
-        <div style={{ marginTop: 80, marginBottom: 0 }}>
-          <div style={{ marginBottom: 40 }}>
-            <div style={{ color: GOLD, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 14, fontWeight: 600 }}>Featured Project</div>
-            <h2 style={{ color: OFF_WHITE, fontSize: 38, fontWeight: 300, marginBottom: 12 }}>Surfside Arte Project</h2>
-            <div style={{ width: 60, height: 2, background: GOLD, marginBottom: 16 }} />
-            <p style={{ color: GREY, fontSize: 14, lineHeight: 1.8, maxWidth: 640 }}>
+        <div style={{ marginTop: 80 }}>
+
+          {/* Header */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 40, flexWrap: 'wrap', gap: 16 }}>
+            <div>
+              <div style={{ color: GOLD, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 14, fontWeight: 600 }}>Featured Project</div>
+              <h2 style={{ color: OFF_WHITE, fontSize: 38, fontWeight: 300, marginBottom: 12 }}>Surfside Arte Project</h2>
+              <div style={{ width: 60, height: 2, background: GOLD }} />
+            </div>
+            <p style={{ color: GREY, fontSize: 14, lineHeight: 1.8, maxWidth: 480 }}>
               A landmark artistic development featuring bespoke interiors and refined craftsmanship — a seamless fusion of art, architecture, and luxury living.
             </p>
           </div>
 
-          {/* Photos row */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8, marginBottom: 8 }}>
-            {[siteImages.surfsideImg1, siteImages.surfsideImg2, siteImages.surfsideImg3].map((src, i) => (
-              <div key={i} style={{ height: 220, overflow: 'hidden', position: 'relative', background: CHARCOAL }}>
-                <img src={src} alt={`Surfside Arte Project ${i + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.82) saturate(0.9)' }} />
+          {/* Main layout: large video left + photos column right */}
+          <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 6, marginBottom: 6 }}>
+
+            {/* Featured video */}
+            <div style={{ background: BLACK, border: `1px solid ${DARK_BORDER}`, overflow: 'hidden', position: 'relative' }}>
+              <video
+                src={siteVideos[0]}
+                controls
+                muted
+                playsInline
+                style={{ width: '100%', height: '100%', minHeight: 420, objectFit: 'cover', display: 'block' }}
+              />
+              <div style={{
+                position: 'absolute', bottom: 0, left: 0, right: 0,
+                background: 'linear-gradient(transparent, rgba(0,0,0,0.85))',
+                padding: '32px 24px 20px',
+                pointerEvents: 'none',
+              }}>
+                <div style={{ color: GOLD, fontSize: 10, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 4 }}>Surfside Arte Project</div>
+                <div style={{ color: OFF_WHITE, fontSize: 14, fontWeight: 600 }}>Site Walkthrough — Main View</div>
               </div>
-            ))}
+            </div>
+
+            {/* Photos column */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+              {[siteImages.surfsideImg1, siteImages.surfsideImg2, siteImages.surfsideImg3].map((src, i) => (
+                <div key={i} style={{ flex: 1, overflow: 'hidden', position: 'relative', background: CHARCOAL, minHeight: 130 }}>
+                  <img
+                    src={src}
+                    alt={`Surfside Arte Project — view ${i + 1}`}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.78) saturate(0.85)', display: 'block' }}
+                  />
+                  <div style={{
+                    position: 'absolute', inset: 0,
+                    background: 'linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.55) 100%)',
+                  }} />
+                  <div style={{ position: 'absolute', bottom: 10, left: 14, color: GOLD_MUTED, fontSize: 9, letterSpacing: 2, textTransform: 'uppercase' }}>
+                    View {i + 1}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Videos grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 8 }}>
-            {siteVideos.map((src, i) => (
-              <div key={i} style={{ background: DARK_CARD, border: `1px solid ${DARK_BORDER}`, overflow: 'hidden', position: 'relative' }}>
+          {/* 3 smaller videos in a row */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 6 }}>
+            {siteVideos.slice(1).map((src, i) => (
+              <div key={i} style={{ background: BLACK, border: `1px solid ${DARK_BORDER}`, overflow: 'hidden' }}>
                 <video
                   src={src}
                   controls
                   muted
                   playsInline
-                  style={{ width: '100%', height: 260, objectFit: 'cover', display: 'block' }}
+                  style={{ width: '100%', height: 200, objectFit: 'cover', display: 'block' }}
                 />
-                <div style={{ padding: '10px 16px', borderTop: `1px solid ${DARK_BORDER}` }}>
-                  <div style={{ color: GOLD_MUTED, fontSize: 10, letterSpacing: 2, textTransform: 'uppercase' }}>
-                    Surfside Arte — Site View {i + 1}
+                <div style={{
+                  padding: '10px 16px',
+                  borderTop: `1px solid ${DARK_BORDER}`,
+                  display: 'flex', alignItems: 'center', gap: 10,
+                }}>
+                  <div style={{ width: 6, height: 6, background: GOLD, flexShrink: 0 }} />
+                  <div style={{ color: GREY, fontSize: 10, letterSpacing: 2, textTransform: 'uppercase' }}>
+                    Clip {i + 2}
                   </div>
                 </div>
               </div>

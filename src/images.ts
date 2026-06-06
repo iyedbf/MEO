@@ -8,7 +8,7 @@ export const siteImages = {
   restaurant: '/images/restaurant.jpg',
   penthouse: '/images/penthouse.jpg',
   mansion: '/images/mansion.jpg',
-  villa: '/images/villa.jpg',
+  villa: '/images/villa-sinpas.jpg',
   modernHouse: '/images/modern-house.jpg',
   residence: '/images/residence.jpg',
   commercial: '/images/commercial.jpg',
