@@ -9,7 +9,7 @@ interface PageHeaderProps {
   boldFirst?: boolean;
 }
 
-export default function PageHeader({ eyebrow, titleLight, titleBold, watermark, boldFirst = false }: PageHeaderProps) {
+export default function PageHeader({ eyebrow, titleLight, titleBold, boldFirst = false }: PageHeaderProps) {
   const { isMobile } = useResponsive();
   return (
     <section style={{

@@ -1,5 +1,5 @@
-import { GOLD, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD } from '../theme';
-import { siteImages, siteVideos } from '../images';
+import { GOLD, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL } from '../theme';
+import { siteVideos } from '../images';
 import PageHeader from '../components/PageHeader';
 import { useLang } from '../context/LanguageContext';
 import { useResponsive } from '../hooks/useResponsive';

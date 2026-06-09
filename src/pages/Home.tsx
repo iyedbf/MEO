@@ -43,7 +43,6 @@ const recentProjects = [
 
 export default function Home() {
   const { isMobile, isTablet } = useResponsive();
-  const px = isMobile ? '16px' : '32px';
   const sectionPad = isMobile ? '48px 16px' : '80px 32px';
 
   return (
