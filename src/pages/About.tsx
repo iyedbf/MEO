@@ -2,6 +2,7 @@ import { GOLD, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD } from '../them
 import { siteImages } from '../images';
 import PageHeader from '../components/PageHeader';
 import { useLang } from '../context/LanguageContext';
+import { useResponsive } from '../hooks/useResponsive';
 
 const values = [
   { title: 'Excellence', desc: 'We hold ourselves to the highest standards in every project, from concept through delivery.' },
@@ -12,15 +13,17 @@ const values = [
 
 export default function About() {
   const { t } = useLang();
+  const { isMobile } = useResponsive();
+  const sectionPad = isMobile ? '48px 16px' : '80px 32px';
   return (
     <div style={{ background: '#0A0A0A' }}>
 
       <PageHeader eyebrow={t('Our Story','Hikayemiz')} titleLight={t('About','Hakkında')} titleBold="MEO Development" watermark="ABOUT" />
 
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '80px 32px' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: sectionPad }}>
 
         {/* Main content */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, marginBottom: 80 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? 40 : 80, marginBottom: isMobile ? 48 : 80 }}>
           <div>
             <div style={{ width: 60, height: 2, background: GOLD, marginBottom: 24 }} />
             <p style={{ color: OFF_WHITE, fontSize: 20, lineHeight: 1.6, fontWeight: 300, marginBottom: 24 }}>
@@ -80,16 +83,16 @@ export default function About() {
 
         {/* Values */}
         <div>
-          <div style={{ marginBottom: 48 }}>
+          <div style={{ marginBottom: 36 }}>
             <div style={{ color: GOLD, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 14, fontWeight: 600 }}>Our Foundation</div>
-            <h2 style={{ color: OFF_WHITE, fontSize: 38, fontWeight: 300, marginBottom: 12 }}>Core Values</h2>
+            <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 28 : 38, fontWeight: 300, marginBottom: 12 }}>Core Values</h2>
             <div style={{ width: 60, height: 2, background: GOLD, marginBottom: 16 }} />
             <p style={{ color: GREY, fontSize: 15, lineHeight: 1.7 }}>
               The principles that guide every decision we make and every project we undertake.
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 1, background: DARK_BORDER }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2,1fr)' : 'repeat(4, 1fr)', gap: 1, background: DARK_BORDER }}>
             {values.map((v, i) => (
               <div key={i} style={{ background: DARK_CARD, padding: '36px 28px' }}>
                 <div style={{ width: 32, height: 2, background: GOLD, marginBottom: 20 }} />

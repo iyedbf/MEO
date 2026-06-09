@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { GOLD, BLACK, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD } from '../theme';
 import PageHeader from '../components/PageHeader';
 import { useLang } from '../context/LanguageContext';
+import { useResponsive } from '../hooks/useResponsive';
 
 const partnerTypes = [
   { title: 'Real Estate Developers', desc: 'Strategic partnerships with leading real estate development firms for joint ventures and co-development opportunities.' },
@@ -21,64 +22,56 @@ const benefits = [
 
 export default function Partners() {
   const { t } = useLang();
+  const { isMobile } = useResponsive();
+  const sectionPad = isMobile ? '48px 16px' : '80px 32px';
   return (
     <div style={{ background: '#0A0A0A' }}>
 
       <PageHeader eyebrow={t('Our Network','Ağımız')} titleLight={t('Strategic','Stratejik')} titleBold={t('Partners','Ortaklar')} watermark="PARTNERS" />
 
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '80px 32px' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: sectionPad }}>
 
         {/* Intro */}
-        <div style={{ marginBottom: 48 }}>
+        <div style={{ marginBottom: 36 }}>
           <div style={{ color: GOLD, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 14, fontWeight: 600 }}>Collaboration</div>
-          <h2 style={{ color: OFF_WHITE, fontSize: 38, fontWeight: 300, marginBottom: 12 }}>Built on Trust</h2>
+          <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 28 : 38, fontWeight: 300, marginBottom: 12 }}>Built on Trust</h2>
           <div style={{ width: 60, height: 2, background: GOLD, marginBottom: 16 }} />
-          <p style={{ color: GREY, fontSize: 15, lineHeight: 1.7, maxWidth: 620 }}>
-            Our network of strategic partners enables us to deliver comprehensive, world-class solutions
-            across every dimension of property development and design.
+          <p style={{ color: GREY, fontSize: 14, lineHeight: 1.7, maxWidth: 620 }}>
+            Our network of strategic partners enables us to deliver comprehensive, world-class solutions across every dimension of property development and design.
           </p>
         </div>
 
         {/* Partner types grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: DARK_BORDER, marginBottom: 60 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 1, background: DARK_BORDER, marginBottom: 48 }}>
           {partnerTypes.map((pt, i) => (
-            <div key={i} style={{ background: DARK_CARD, padding: '36px 32px' }}>
-              <div style={{
-                width: 40, height: 40, border: `1px solid ${GOLD}`,
-                display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20,
-              }}>
+            <div key={i} style={{ background: DARK_CARD, padding: isMobile ? '24px 20px' : '36px 32px' }}>
+              <div style={{ width: 40, height: 40, border: `1px solid ${GOLD}`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
                 <div style={{ width: 12, height: 12, background: GOLD }} />
               </div>
-              <h3 style={{ color: OFF_WHITE, fontSize: 15, fontWeight: 600, marginBottom: 12, letterSpacing: 0.3 }}>{pt.title}</h3>
+              <h3 style={{ color: OFF_WHITE, fontSize: 15, fontWeight: 600, marginBottom: 10, letterSpacing: 0.3 }}>{pt.title}</h3>
               <p style={{ color: GREY, fontSize: 13, lineHeight: 1.7, margin: 0 }}>{pt.desc}</p>
             </div>
           ))}
         </div>
 
         {/* Partnership CTA */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', border: `1px solid ${DARK_BORDER}` }}>
-          <div style={{ background: GOLD, padding: '52px 48px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <div style={{ color: BLACK, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', fontWeight: 600, marginBottom: 16 }}>
-              Become a Partner
-            </div>
-            <h2 style={{ color: BLACK, fontSize: 32, fontWeight: 700, margin: '0 0 16px', lineHeight: 1.2 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', border: `1px solid ${DARK_BORDER}` }}>
+          <div style={{ background: GOLD, padding: isMobile ? '36px 24px' : '52px 48px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <div style={{ color: BLACK, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', fontWeight: 600, marginBottom: 14 }}>Become a Partner</div>
+            <h2 style={{ color: BLACK, fontSize: isMobile ? 24 : 32, fontWeight: 700, margin: '0 0 14px', lineHeight: 1.2 }}>
               Let's Build Something Extraordinary Together
             </h2>
-            <p style={{ color: `${BLACK}99`, fontSize: 14, lineHeight: 1.7, marginBottom: 28 }}>
+            <p style={{ color: `${BLACK}99`, fontSize: 14, lineHeight: 1.7, marginBottom: 24 }}>
               We are always open to new partnerships that align with our values of excellence, innovation, and integrity.
             </p>
-            <Link to="/contact" style={{
-              background: BLACK, color: GOLD, padding: '14px 32px',
-              fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase',
-              textDecoration: 'none', display: 'inline-block', alignSelf: 'flex-start',
-            }}>
+            <Link to="/contact" style={{ background: BLACK, color: GOLD, padding: '14px 32px', fontSize: 11, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', textDecoration: 'none', display: 'inline-block', alignSelf: 'flex-start' }}>
               Get in Touch
             </Link>
           </div>
 
-          <div style={{ background: CHARCOAL, padding: '52px 48px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 18 }}>
+          <div style={{ background: CHARCOAL, padding: isMobile ? '32px 24px' : '52px 48px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 16 }}>
             {benefits.map((b, i) => (
-              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 16, color: OFF_WHITE, fontSize: 14 }}>
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, color: OFF_WHITE, fontSize: 14 }}>
                 <div style={{ width: 6, height: 6, background: GOLD, flexShrink: 0 }} />
                 {b}
               </div>

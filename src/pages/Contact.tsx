@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { GOLD, BLACK, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD } from '../theme';
 import PageHeader from '../components/PageHeader';
 import { useLang } from '../context/LanguageContext';
+import { useResponsive } from '../hooks/useResponsive';
 
 type FormData = {
   firstName: string;
@@ -14,6 +15,7 @@ type FormData = {
 
 export default function Contact() {
   const { lang, t } = useLang();
+  const { isMobile } = useResponsive();
   const [form, setForm] = useState<FormData>({
     firstName: '', lastName: '', email: '', phone: '', subject: '', message: '',
   });
@@ -49,11 +51,11 @@ export default function Contact() {
         watermark="CONTACT"
       />
 
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '80px 32px' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '320px 1fr', border: `1px solid ${DARK_BORDER}` }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '40px 16px' : '80px 32px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '320px 1fr', border: `1px solid ${DARK_BORDER}` }}>
 
           {/* Info panel */}
-          <div style={{ background: CHARCOAL, padding: 48, borderRight: `1px solid ${DARK_BORDER}` }}>
+          <div style={{ background: CHARCOAL, padding: isMobile ? '28px 20px' : 48, borderRight: isMobile ? 'none' : `1px solid ${DARK_BORDER}`, borderBottom: isMobile ? `1px solid ${DARK_BORDER}` : 'none' }}>
 
             {/* Flag indicator */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 28 }}>
@@ -127,7 +129,7 @@ export default function Contact() {
           </div>
 
           {/* Form panel */}
-          <div style={{ background: DARK_CARD, padding: 48 }}>
+          <div style={{ background: DARK_CARD, padding: isMobile ? '28px 20px' : 48 }}>
             {sent ? (
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', gap: 20, textAlign: 'center' }}>
                 <div style={{ width: 60, height: 60, border: `2px solid ${GOLD}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -164,7 +166,7 @@ export default function Contact() {
                 </p>
 
                 <form onSubmit={handleSubmit}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 16 }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 14, marginBottom: 14 }}>
                     <div>
                       <label style={labelStyle}>{t('First Name', 'Ad')}</label>
                       <input name="firstName" value={form.firstName} onChange={handleChange}

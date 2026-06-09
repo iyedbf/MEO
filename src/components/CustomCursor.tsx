@@ -52,38 +52,31 @@ export default function CustomCursor() {
     };
   }, []);
 
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  if (isTouchDevice) return null;
+
   return (
     <>
       {/* Outer ring - follows with lag */}
       <div
         ref={ringRef}
         style={{
-          position: 'fixed',
-          top: 0, left: 0,
-          width: 36, height: 36,
-          marginLeft: -18, marginTop: -18,
-          borderRadius: '50%',
-          border: '1.5px solid #C9A84C',
-          pointerEvents: 'none',
-          zIndex: 99999,
-          transition: 'width 0.2s, height 0.2s, margin 0.2s, border-color 0.2s',
-          mixBlendMode: 'normal',
+          position: 'fixed', top: 0, left: 0, width: 36, height: 36,
+          marginLeft: -18, marginTop: -18, borderRadius: '50%',
+          border: '1.5px solid #C9A84C', pointerEvents: 'none', zIndex: 99999,
+          transition: 'width 0.2s, height 0.2s, margin 0.2s, border-color 0.2s', mixBlendMode: 'normal',
         }}
-        className="cursor-ring"
+        className="cursor-ring custom-cursor"
       />
       {/* Inner dot - follows instantly */}
       <div
         ref={dotRef}
         style={{
-          position: 'fixed',
-          top: 0, left: 0,
-          width: 5, height: 5,
-          marginLeft: -2.5, marginTop: -2.5,
-          borderRadius: '50%',
-          background: '#C9A84C',
-          pointerEvents: 'none',
-          zIndex: 100000,
+          position: 'fixed', top: 0, left: 0, width: 5, height: 5,
+          marginLeft: -2.5, marginTop: -2.5, borderRadius: '50%',
+          background: '#C9A84C', pointerEvents: 'none', zIndex: 100000,
         }}
+        className="custom-cursor"
       />
     </>
   );

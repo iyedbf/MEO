@@ -46,6 +46,17 @@ img {
   100% { transform: translateX(-33.333%); }
 }
 
+/* Prevent horizontal overflow */
+html, body {
+  overflow-x: hidden;
+}
+
+/* On touch devices restore native cursor */
+@media (hover: none) and (pointer: coarse) {
+  * { cursor: auto !important; }
+  .custom-cursor { display: none !important; }
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

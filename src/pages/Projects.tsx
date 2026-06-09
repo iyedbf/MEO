@@ -3,6 +3,7 @@ import { GOLD, BLACK, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD, GOLD_MU
 import { siteImages, siteVideos } from '../images';
 import PageHeader from '../components/PageHeader';
 import { useLang } from '../context/LanguageContext';
+import { useResponsive } from '../hooks/useResponsive';
 
 function VideoCard({ video, height }: { video: { src: string; label: string; sub: string }; height: number }) {
   return (
@@ -71,129 +72,99 @@ const statItems = [
 
 export default function Projects() {
   const { t } = useLang();
+  const { isMobile } = useResponsive();
   const [active, setActive] = useState<Category>('All');
   const filtered = active === 'All' ? allProjects : allProjects.filter(p => p.category === active);
+  const sectionPad = isMobile ? '36px 16px' : '60px 32px';
 
   return (
     <div style={{ background: '#0A0A0A' }}>
 
       <PageHeader eyebrow={t('Portfolio','Portföy')} titleLight={t('Our','Projelerimiz')} titleBold={t('Projects','')} watermark="PROJECTS" />
 
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '60px 32px' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: sectionPad }}>
 
         {/* Filters */}
-        <div style={{ display: 'flex', gap: 6, marginBottom: 48, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', gap: 6, marginBottom: 32, flexWrap: 'wrap' }}>
           {filters.map(f => (
-            <button
-              key={f}
-              onClick={() => setActive(f)}
-              style={{
-                background: active === f ? GOLD : 'none',
-                color: active === f ? BLACK : GREY,
-                border: `1px solid ${active === f ? GOLD : DARK_BORDER}`,
-                padding: '10px 22px', cursor: 'pointer',
-                fontSize: 11, fontWeight: active === f ? 700 : 400,
-                letterSpacing: 2, textTransform: 'uppercase',
-                transition: 'all 0.2s',
-              }}
-            >
+            <button key={f} onClick={() => setActive(f)} style={{
+              background: active === f ? GOLD : 'none', color: active === f ? BLACK : GREY,
+              border: `1px solid ${active === f ? GOLD : DARK_BORDER}`,
+              padding: isMobile ? '8px 14px' : '10px 22px', cursor: 'pointer',
+              fontSize: 10, fontWeight: active === f ? 700 : 400, letterSpacing: 1.5, textTransform: 'uppercase', transition: 'all 0.2s',
+            }}>
               {f}
             </button>
           ))}
         </div>
 
         {/* Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: isMobile ? 10 : 16 }}>
           {filtered.map((p, i) => (
             <div key={i} style={{ background: DARK_CARD, border: `1px solid ${DARK_BORDER}`, overflow: 'hidden' }}>
-              <div style={{
-                height: 240, background: CHARCOAL,
-                display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative',
-              }}>
-                <img
-                  src={p.image}
-                  alt={`${p.type} project`}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.72) saturate(0.9)' }}
-                />
+              <div style={{ height: isMobile ? 160 : 240, background: CHARCOAL, position: 'relative' }}>
+                <img src={p.image} alt={`${p.type} project`} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.72) saturate(0.9)' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,10,10,0.08) 0%, rgba(10,10,10,0.74) 100%)' }} />
-                <div style={{
-                  position: 'absolute', top: 12, right: 12,
-                  background: GOLD, color: BLACK,
-                  fontSize: 9, fontWeight: 700, padding: '4px 8px', letterSpacing: 1.5,
-                }}>
-                  {p.year}
-                </div>
-                <div style={{
-                  position: 'absolute', bottom: 12, left: 12,
-                  color: GREY, fontSize: 9, letterSpacing: 2, textTransform: 'uppercase',
-                }}>
-                  {p.size}
-                </div>
-                <div style={{
-                  position: 'absolute', bottom: 12, right: 12,
-                  color: GOLD_MUTED, fontSize: 10, letterSpacing: 2, textTransform: 'uppercase',
-                }}>
-                  {p.category.slice(0, 4)}
-                </div>
+                <div style={{ position: 'absolute', top: 10, right: 10, background: GOLD, color: BLACK, fontSize: 9, fontWeight: 700, padding: '3px 7px', letterSpacing: 1.5 }}>{p.year}</div>
+                {!isMobile && <>
+                  <div style={{ position: 'absolute', bottom: 12, left: 12, color: GREY, fontSize: 9, letterSpacing: 2, textTransform: 'uppercase' }}>{p.size}</div>
+                  <div style={{ position: 'absolute', bottom: 12, right: 12, color: GOLD_MUTED, fontSize: 10, letterSpacing: 2, textTransform: 'uppercase' }}>{p.category.slice(0, 4)}</div>
+                </>}
               </div>
-              <div style={{ padding: '18px 20px' }}>
-                <div style={{ color: GOLD, fontSize: 10, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 6 }}>
-                  {p.category}
-                </div>
-                <div style={{ color: OFF_WHITE, fontSize: 15, fontWeight: 600 }}>{p.type}</div>
+              <div style={{ padding: isMobile ? '12px 12px' : '18px 20px' }}>
+                <div style={{ color: GOLD, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 4 }}>{p.category}</div>
+                <div style={{ color: OFF_WHITE, fontSize: isMobile ? 12 : 15, fontWeight: 600 }}>{p.type}</div>
               </div>
             </div>
           ))}
         </div>
 
         {/* Video Showcase */}
-        <div style={{ marginTop: 80 }}>
-
-          {/* Section header */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 40, flexWrap: 'wrap', gap: 16 }}>
-            <div>
-              <div style={{ color: GOLD, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 14, fontWeight: 600 }}>Project Reels</div>
-              <h2 style={{ color: OFF_WHITE, fontSize: 38, fontWeight: 300, marginBottom: 12 }}>Behind the Work</h2>
-              <div style={{ width: 60, height: 2, background: GOLD }} />
-            </div>
-            <p style={{ color: GREY, fontSize: 14, lineHeight: 1.8, maxWidth: 440 }}>
-              Exclusive footage from our active project sites — capturing craftsmanship, detail, and the transformation of space in real time.
-            </p>
+        <div style={{ marginTop: isMobile ? 48 : 80 }}>
+          <div style={{ marginBottom: 28 }}>
+            <div style={{ color: GOLD, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 12, fontWeight: 600 }}>Project Reels</div>
+            <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 26 : 38, fontWeight: 300, marginBottom: 10 }}>Behind the Work</h2>
+            <div style={{ width: 60, height: 2, background: GOLD }} />
           </div>
 
-          {/* Top row: large featured + 2 stacked */}
-          <div style={{ display: 'grid', gridTemplateColumns: '3fr 2fr', gap: 4, marginBottom: 4 }}>
-
-            {/* Large featured video */}
-            <VideoCard video={siteVideos[0]} height={480} />
-
-            {/* 2 stacked on right */}
+          {isMobile ? (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-              <VideoCard video={siteVideos[1]} height={238} />
-              <VideoCard video={siteVideos[2]} height={238} />
+              <VideoCard video={siteVideos[0]} height={260} />
+              <VideoCard video={siteVideos[1]} height={200} />
+              <VideoCard video={siteVideos[2]} height={200} />
+              <VideoCard video={siteVideos[3]} height={200} />
+              <VideoCard video={siteVideos[4]} height={200} />
             </div>
-          </div>
-
-          {/* Bottom row: 2 equal restaurant videos */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4 }}>
-            <VideoCard video={siteVideos[3]} height={300} />
-            <VideoCard video={siteVideos[4]} height={300} />
-          </div>
+          ) : (
+            <>
+              <div style={{ display: 'grid', gridTemplateColumns: '3fr 2fr', gap: 4, marginBottom: 4 }}>
+                <VideoCard video={siteVideos[0]} height={480} />
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                  <VideoCard video={siteVideos[1]} height={238} />
+                  <VideoCard video={siteVideos[2]} height={238} />
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4 }}>
+                <VideoCard video={siteVideos[3]} height={300} />
+                <VideoCard video={siteVideos[4]} height={300} />
+              </div>
+            </>
+          )}
         </div>
 
         {/* Stats row */}
         <div style={{
-          marginTop: 80, background: CHARCOAL,
-          border: `1px solid ${DARK_BORDER}`,
-          display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)',
+          marginTop: isMobile ? 40 : 80, background: CHARCOAL, border: `1px solid ${DARK_BORDER}`,
+          display: 'grid', gridTemplateColumns: isMobile ? 'repeat(3, 1fr)' : 'repeat(5, 1fr)',
         }}>
           {statItems.map((s, i) => (
             <div key={i} style={{
-              padding: '28px 20px', textAlign: 'center',
-              borderRight: i < 4 ? `1px solid ${DARK_BORDER}` : 'none',
+              padding: isMobile ? '20px 12px' : '28px 20px', textAlign: 'center',
+              borderRight: `1px solid ${DARK_BORDER}`,
+              borderBottom: isMobile && i < 3 ? `1px solid ${DARK_BORDER}` : 'none',
             }}>
-              <div style={{ color: GOLD, fontSize: 38, fontWeight: 300, lineHeight: 1 }}>{s.count}</div>
-              <div style={{ color: GREY, fontSize: 10, letterSpacing: 2, textTransform: 'uppercase', marginTop: 8 }}>{s.label}</div>
+              <div style={{ color: GOLD, fontSize: isMobile ? 28 : 38, fontWeight: 300, lineHeight: 1 }}>{s.count}</div>
+              <div style={{ color: GREY, fontSize: 9, letterSpacing: 1.5, textTransform: 'uppercase', marginTop: 6 }}>{s.label}</div>
             </div>
           ))}
         </div>

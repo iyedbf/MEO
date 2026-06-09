@@ -1,19 +1,21 @@
 import { GOLD, DARK_BORDER, OFF_WHITE, CHARCOAL } from '../theme';
+import { useResponsive } from '../hooks/useResponsive';
 
 interface PageHeaderProps {
-  eyebrow: string;       // small text above title e.g. "Portfolio"
-  titleLight: string;    // normal-weight part of title
-  titleBold: string;     // gold bold part of title
-  watermark: string;     // large background ghost text
-  boldFirst?: boolean;   // if true, bold part comes first
+  eyebrow: string;
+  titleLight: string;
+  titleBold: string;
+  watermark: string;
+  boldFirst?: boolean;
 }
 
 export default function PageHeader({ eyebrow, titleLight, titleBold, watermark, boldFirst = false }: PageHeaderProps) {
+  const { isMobile } = useResponsive();
   return (
     <section style={{
       background: CHARCOAL,
       borderBottom: `1px solid ${DARK_BORDER}`,
-      padding: '90px 32px 80px',
+      padding: isMobile ? '56px 16px 48px' : '90px 32px 80px',
       position: 'relative',
       overflow: 'hidden',
     }}>
