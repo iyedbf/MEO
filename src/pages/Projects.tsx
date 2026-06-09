@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { GOLD, BLACK, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD, GOLD_MUTED } from '../theme';
+import { GOLD, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL, DARK_CARD } from '../theme';
 import { siteImages, siteVideos } from '../images';
 import PageHeader from '../components/PageHeader';
 import { useLang } from '../context/LanguageContext';
@@ -8,161 +7,234 @@ import { useResponsive } from '../hooks/useResponsive';
 function VideoCard({ video, height }: { video: { src: string; label: string; sub: string }; height: number }) {
   return (
     <div style={{ position: 'relative', background: '#000', overflow: 'hidden', height }}>
-      <video
-        src={video.src}
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-      />
-      {/* Gradient overlay at bottom */}
-      <div style={{
-        position: 'absolute', bottom: 0, left: 0, right: 0,
-        background: 'linear-gradient(transparent 40%, rgba(0,0,0,0.78) 100%)',
-        padding: '28px 20px 16px',
-        pointerEvents: 'none',
-      }}>
-        <div style={{
-          display: 'flex', alignItems: 'center', gap: 10,
-        }}>
+      <video src={video.src} autoPlay loop muted playsInline preload="auto"
+        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, background: 'linear-gradient(transparent 40%, rgba(0,0,0,0.78) 100%)', padding: '28px 20px 16px', pointerEvents: 'none' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{ width: 24, height: 1, background: GOLD }} />
-          <div style={{ color: GOLD, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', fontWeight: 600 }}>
-            {video.label}
-          </div>
+          <div style={{ color: GOLD, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', fontWeight: 600 }}>{video.label}</div>
         </div>
-        <div style={{ color: OFF_WHITE, fontSize: 12, letterSpacing: 0.5, marginTop: 4, opacity: 0.85 }}>
-          {video.sub}
-        </div>
+        <div style={{ color: OFF_WHITE, fontSize: 12, letterSpacing: 0.5, marginTop: 4, opacity: 0.85 }}>{video.sub}</div>
       </div>
-      {/* Gold top-left corner accent */}
       <div style={{ position: 'absolute', top: 0, left: 0, width: 32, height: 2, background: GOLD, pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', top: 0, left: 0, width: 2, height: 32, background: GOLD, pointerEvents: 'none' }} />
     </div>
   );
 }
 
-type Category = 'All' | 'House' | 'Villa' | 'Residence' | 'Mansion' | 'Penthouse' | 'Hotel' | 'Restaurant';
-
-const allProjects: { type: string; year: string; category: Exclude<Category, 'All'>; size: string; image: string }[] = [
-  { type: 'Greenwich Connecticut', year: '2025', category: 'House', size: 'Large', image: siteImages.heroVilla },
-  { type: 'Sinpaş Gökorman', year: '2023', category: 'Villa', size: 'Extra Large', image: siteImages.villa },
-  { type: 'Tuzla — Binali Bey', year: '2024', category: 'Residence', size: 'Medium', image: siteImages.residence },
-  { type: 'Sinpaş Palas', year: '2024', category: 'Residence', size: 'Large', image: siteImages.luxuryInterior },
-  { type: 'Greenwich Estate', year: '2025', category: 'Mansion', size: 'Estate', image: siteImages.mansion },
-  { type: 'Merit Kensington', year: '2025', category: 'Mansion', size: 'Estate', image: siteImages.bespokeDesign },
-  { type: 'Merit Kensington Suite', year: '2025', category: 'Mansion', size: 'Estate', image: siteImages.modernHouse },
-  { type: 'Sinpaş Palas Penthouse', year: '2025', category: 'Penthouse', size: 'Large', image: siteImages.penthouse },
-  { type: 'Merit Hotel Lobby', year: '2025', category: 'Hotel', size: 'Commercial', image: siteImages.hotel },
-  { type: 'Merit Hotel Restaurant', year: '2025', category: 'Restaurant', size: 'Commercial', image: siteImages.restaurant },
-  { type: 'Radisson Blue', year: '2024', category: 'Hotel', size: 'Commercial', image: siteImages.radisson },
-  { type: 'WOW Hotel Istanbul', year: '2024', category: 'Hotel', size: 'Commercial', image: siteImages.commercial },
+const showcaseProjects = [
+  {
+    title: 'Greenwich Connecticut',
+    sub: 'House – Connecticut, USA',
+    category: 'Residential',
+    year: '2025',
+    description: 'A refined single-family residence where classic architecture meets contemporary interior craft. Custom millwork, bespoke joinery, and curated material selections define every room with precision and warmth.',
+    quote: '"Perfection lies in every detail."',
+    images: [siteImages.heroVilla, siteImages.modernHouse],
+  },
+  {
+    title: 'Sinpaş Gökorman',
+    sub: 'Villa – Istanbul, Turkey',
+    category: 'Villa',
+    year: '2023',
+    description: 'An expansive villa project delivering bespoke furniture and interior solutions across multiple levels. Natural stone, warm woods, and gold accents create an atmosphere of understated luxury.',
+    quote: '"Every space tells its own story."',
+    images: [siteImages.villa, siteImages.residence],
+  },
+  {
+    title: 'Merit Kensington',
+    sub: 'Mansion – London, UK',
+    category: 'Mansion',
+    year: '2025',
+    description: 'A prestigious London mansion project featuring fully custom-built furniture and bespoke interior development. The design language draws from British heritage while embracing global luxury standards.',
+    quote: '"Elegance shaped with precision."',
+    images: [siteImages.mansion, siteImages.bespokeDesign],
+  },
+  {
+    title: 'Sinpaş Palas',
+    sub: 'Penthouse – Istanbul, Turkey',
+    category: 'Penthouse',
+    year: '2024',
+    description: 'A panoramic penthouse project in the heart of Istanbul. Floor-to-ceiling glazing, marble surfaces, and a restrained gold palette deliver a living environment of exceptional refinement.',
+    quote: '"Where the city becomes part of the design."',
+    images: [siteImages.penthouse, siteImages.luxuryInterior],
+  },
+  {
+    title: 'Surfside Arte',
+    sub: 'Luxury Residence – Fort Lauderdale, USA',
+    category: 'Residence',
+    year: '2024',
+    description: 'A coastal luxury residence showcasing MEO\'s signature approach to bespoke interior finishes. Custom staircase details, gold accents, and crafted wall panels elevate every surface.',
+    quote: '"Coastal luxury, reimagined."',
+    images: [siteImages.surfsideImg2, siteImages.surfsideImg3],
+  },
+  {
+    title: 'Merit Hotel',
+    sub: 'Hotel Lobby & Suites – Cyprus',
+    category: 'Hospitality',
+    year: '2025',
+    description: 'A comprehensive hotel fit-out spanning lobby, suites, and dining areas. Custom furniture and bespoke design solutions meet the international standards of the Merit brand.',
+    quote: '"Excellence felt at every touchpoint."',
+    images: [siteImages.hotel, siteImages.radisson],
+  },
+  {
+    title: 'Merit Restaurant',
+    sub: 'Restaurant – Cyprus',
+    category: 'F&B',
+    year: '2025',
+    description: 'A full dining concept design and fit-out for the Merit Group. Warm lighting, custom seating, and a curated material palette transform the dining experience into a luxury occasion.',
+    quote: '"Ambiance is the first ingredient."',
+    images: [siteImages.restaurant, siteImages.commercial],
+  },
 ];
 
-const filters: Category[] = ['All', 'House', 'Villa', 'Residence', 'Mansion', 'Penthouse', 'Hotel', 'Restaurant'];
-
 const statItems = [
-  { count: '2', label: 'Houses / Villas' },
-  { count: '2', label: 'Residences' },
-  { count: '3', label: 'Mansions' },
-  { count: '1', label: 'Penthouse' },
-  { count: '4', label: 'Hotels / Restaurants' },
+  { count: '7+', label: 'Showcase Projects' },
+  { count: '3', label: 'Countries' },
+  { count: '5', label: 'Project Types' },
+  { count: '15+', label: 'Years Experience' },
+  { count: '98%', label: 'Client Satisfaction' },
 ];
 
 export default function Projects() {
   const { t } = useLang();
   const { isMobile } = useResponsive();
-  const [active, setActive] = useState<Category>('All');
-  const filtered = active === 'All' ? allProjects : allProjects.filter(p => p.category === active);
-  const sectionPad = isMobile ? '36px 16px' : '60px 32px';
 
   return (
     <div style={{ background: '#0A0A0A' }}>
 
-      <PageHeader eyebrow={t('Portfolio','Portföy')} titleLight={t('Our','Projelerimiz')} titleBold={t('Projects','')} watermark="PROJECTS" />
+      <PageHeader
+        eyebrow={t('Portfolio', 'Portföy')}
+        titleLight={t('Our', 'Projelerimiz')}
+        titleBold={t('Projects', '')}
+        watermark="PROJECTS"
+      />
 
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: sectionPad }}>
+      {/* Intro */}
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '40px 16px 32px' : '64px 32px 48px' }}>
+        <p style={{ color: GREY, fontSize: isMobile ? 14 : 16, lineHeight: 1.9, maxWidth: 760 }}>
+          {t(
+            'Each project undertaken by MEO Development LLC is shaped by the specific needs of the space and the lifestyle of its occupants. From design and production to material selection and final installation, every stage is executed with uncompromising craftsmanship.',
+            'MEO Development LLC\'nin üstlendiği her proje, mekanın ihtiyaçları ve sakinlerin yaşam biçimi doğrultusunda şekillendirilir. Tasarımdan üretime, malzeme seçiminden son uygulamaya kadar her aşama kusursuz bir ustalıkla hayata geçirilir.'
+          )}
+        </p>
+      </div>
 
-        {/* Filters */}
-        <div style={{ display: 'flex', gap: 6, marginBottom: 32, flexWrap: 'wrap' }}>
-          {filters.map(f => (
-            <button key={f} onClick={() => setActive(f)} style={{
-              background: active === f ? GOLD : 'none', color: active === f ? BLACK : GREY,
-              border: `1px solid ${active === f ? GOLD : DARK_BORDER}`,
-              padding: isMobile ? '8px 14px' : '10px 22px', cursor: 'pointer',
-              fontSize: 10, fontWeight: active === f ? 700 : 400, letterSpacing: 1.5, textTransform: 'uppercase', transition: 'all 0.2s',
-            }}>
-              {f}
-            </button>
-          ))}
-        </div>
-
-        {/* Grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)', gap: isMobile ? 10 : 16 }}>
-          {filtered.map((p, i) => (
-            <div key={i} style={{ background: DARK_CARD, border: `1px solid ${DARK_BORDER}`, overflow: 'hidden' }}>
-              <div style={{ height: isMobile ? 160 : 240, background: CHARCOAL, position: 'relative' }}>
-                <img src={p.image} alt={`${p.type} project`} style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.72) saturate(0.9)' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,10,10,0.08) 0%, rgba(10,10,10,0.74) 100%)' }} />
-                <div style={{ position: 'absolute', top: 10, right: 10, background: GOLD, color: BLACK, fontSize: 9, fontWeight: 700, padding: '3px 7px', letterSpacing: 1.5 }}>{p.year}</div>
-                {!isMobile && <>
-                  <div style={{ position: 'absolute', bottom: 12, left: 12, color: GREY, fontSize: 9, letterSpacing: 2, textTransform: 'uppercase' }}>{p.size}</div>
-                  <div style={{ position: 'absolute', bottom: 12, right: 12, color: GOLD_MUTED, fontSize: 10, letterSpacing: 2, textTransform: 'uppercase' }}>{p.category.slice(0, 4)}</div>
-                </>}
-              </div>
-              <div style={{ padding: isMobile ? '12px 12px' : '18px 20px' }}>
-                <div style={{ color: GOLD, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 4 }}>{p.category}</div>
-                <div style={{ color: OFF_WHITE, fontSize: isMobile ? 12 : 15, fontWeight: 600 }}>{p.type}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Video Showcase */}
-        <div style={{ marginTop: isMobile ? 48 : 80 }}>
-          <div style={{ marginBottom: 28 }}>
-            <div style={{ color: GOLD, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 12, fontWeight: 600 }}>Project Reels</div>
-            <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 26 : 38, fontWeight: 300, marginBottom: 10 }}>Behind the Work</h2>
-            <div style={{ width: 60, height: 2, background: GOLD }} />
-          </div>
-
-          {isMobile ? (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-              <VideoCard video={siteVideos[0]} height={260} />
-              <VideoCard video={siteVideos[1]} height={200} />
-              <VideoCard video={siteVideos[2]} height={200} />
-              <VideoCard video={siteVideos[3]} height={200} />
-              <VideoCard video={siteVideos[4]} height={200} />
-            </div>
-          ) : (
-            <>
-              <div style={{ display: 'grid', gridTemplateColumns: '3fr 2fr', gap: 4, marginBottom: 4 }}>
-                <VideoCard video={siteVideos[0]} height={480} />
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                  <VideoCard video={siteVideos[1]} height={238} />
-                  <VideoCard video={siteVideos[2]} height={238} />
+      {/* Editorial project sections */}
+      {showcaseProjects.map((project, i) => {
+        const imageLeft = i % 2 === 0;
+        return (
+          <div key={i} style={{ borderTop: `1px solid ${DARK_BORDER}` }}>
+            {isMobile ? (
+              /* Mobile: stacked */
+              <div>
+                <div style={{ height: 280, overflow: 'hidden', position: 'relative' }}>
+                  <img src={project.images[0]} alt={project.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8) saturate(0.9)' }} />
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 40%, rgba(10,10,10,0.85) 100%)' }} />
+                  <div style={{ position: 'absolute', bottom: 20, left: 16 }}>
+                    <div style={{ color: GOLD, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 6, fontWeight: 600 }}>{project.category} · {project.year}</div>
+                    <div style={{ color: OFF_WHITE, fontSize: 22, fontWeight: 700, lineHeight: 1.2 }}>{project.title}</div>
+                    <div style={{ color: GREY, fontSize: 11, marginTop: 4 }}>{project.sub}</div>
+                  </div>
+                </div>
+                <div style={{ padding: '24px 16px 32px', background: DARK_CARD }}>
+                  <p style={{ color: GREY, fontSize: 14, lineHeight: 1.9, marginBottom: 20 }}>{project.description}</p>
+                  <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: 16 }}>
+                    <p style={{ color: GOLD, fontSize: 13, fontStyle: 'italic', lineHeight: 1.6, margin: 0 }}>{project.quote}</p>
+                  </div>
                 </div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4 }}>
-                <VideoCard video={siteVideos[3]} height={300} />
-                <VideoCard video={siteVideos[4]} height={300} />
+            ) : (
+              /* Desktop: alternating side-by-side */
+              <div style={{ display: 'grid', gridTemplateColumns: imageLeft ? '3fr 2fr' : '2fr 3fr', minHeight: 480 }}>
+
+                {imageLeft && (
+                  <div style={{ position: 'relative', overflow: 'hidden' }}>
+                    <img src={project.images[0]} alt={project.title}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.82) saturate(0.9)', display: 'block' }} />
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, transparent 60%, rgba(10,10,10,0.4) 100%)' }} />
+                    {/* second image overlay bottom-right */}
+                    {project.images[1] && (
+                      <div style={{ position: 'absolute', bottom: 24, right: 24, width: 160, height: 120, overflow: 'hidden', border: `2px solid ${GOLD}33` }}>
+                        <img src={project.images[1]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8)' }} />
+                      </div>
+                    )}
+                    {/* Project number */}
+                    <div style={{ position: 'absolute', top: 28, left: 28, color: `${GOLD}30`, fontSize: 72, fontWeight: 700, fontFamily: 'Georgia, serif', lineHeight: 1 }}>
+                      {String(i + 1).padStart(2, '0')}
+                    </div>
+                  </div>
+                )}
+
+                {/* Text panel */}
+                <div style={{ background: DARK_CARD, padding: '64px 56px', display: 'flex', flexDirection: 'column', justifyContent: 'center', borderLeft: imageLeft ? `1px solid ${DARK_BORDER}` : 'none', borderRight: !imageLeft ? `1px solid ${DARK_BORDER}` : 'none' }}>
+                  <div style={{ color: GOLD, fontSize: 10, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 16, fontWeight: 600 }}>
+                    {project.category} <span style={{ color: `${GOLD}55`, marginLeft: 8 }}>· {project.year}</span>
+                  </div>
+                  <h2 style={{ color: OFF_WHITE, fontSize: 32, fontWeight: 700, lineHeight: 1.2, margin: '0 0 8px' }}>{project.title}</h2>
+                  <div style={{ color: GREY, fontSize: 13, letterSpacing: 1, marginBottom: 28 }}>{project.sub}</div>
+                  <div style={{ width: 40, height: 2, background: GOLD, marginBottom: 28 }} />
+                  <p style={{ color: GREY, fontSize: 14, lineHeight: 1.9, marginBottom: 32 }}>{project.description}</p>
+                  <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: 20 }}>
+                    <p style={{ color: GOLD, fontSize: 14, fontStyle: 'italic', lineHeight: 1.6, margin: 0 }}>{project.quote}</p>
+                  </div>
+                </div>
+
+                {!imageLeft && (
+                  <div style={{ position: 'relative', overflow: 'hidden' }}>
+                    <img src={project.images[0]} alt={project.title}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.82) saturate(0.9)', display: 'block' }} />
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(270deg, transparent 60%, rgba(10,10,10,0.4) 100%)' }} />
+                    {project.images[1] && (
+                      <div style={{ position: 'absolute', bottom: 24, left: 24, width: 160, height: 120, overflow: 'hidden', border: `2px solid ${GOLD}33` }}>
+                        <img src={project.images[1]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8)' }} />
+                      </div>
+                    )}
+                    <div style={{ position: 'absolute', top: 28, right: 28, color: `${GOLD}30`, fontSize: 72, fontWeight: 700, fontFamily: 'Georgia, serif', lineHeight: 1 }}>
+                      {String(i + 1).padStart(2, '0')}
+                    </div>
+                  </div>
+                )}
+
               </div>
-            </>
-          )}
+            )}
+          </div>
+        );
+      })}
+
+      {/* Video Showcase */}
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '48px 16px' : '80px 32px' }}>
+        <div style={{ marginBottom: 28 }}>
+          <div style={{ color: GOLD, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 12, fontWeight: 600 }}>Project Reels</div>
+          <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 26 : 38, fontWeight: 300, marginBottom: 10 }}>Behind the Work</h2>
+          <div style={{ width: 60, height: 2, background: GOLD }} />
         </div>
 
-        {/* Stats row */}
-        <div style={{
-          marginTop: isMobile ? 40 : 80, background: CHARCOAL, border: `1px solid ${DARK_BORDER}`,
-          display: 'grid', gridTemplateColumns: isMobile ? 'repeat(3, 1fr)' : 'repeat(5, 1fr)',
-        }}>
+        {isMobile ? (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+            {siteVideos.map((v, i) => <VideoCard key={i} video={v} height={220} />)}
+          </div>
+        ) : (
+          <>
+            <div style={{ display: 'grid', gridTemplateColumns: '3fr 2fr', gap: 4, marginBottom: 4 }}>
+              <VideoCard video={siteVideos[0]} height={480} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                <VideoCard video={siteVideos[1]} height={238} />
+                <VideoCard video={siteVideos[2]} height={238} />
+              </div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4 }}>
+              <VideoCard video={siteVideos[3]} height={300} />
+              <VideoCard video={siteVideos[4]} height={300} />
+            </div>
+          </>
+        )}
+
+        {/* Stats */}
+        <div style={{ marginTop: isMobile ? 40 : 80, background: CHARCOAL, border: `1px solid ${DARK_BORDER}`, display: 'grid', gridTemplateColumns: isMobile ? 'repeat(3, 1fr)' : 'repeat(5, 1fr)' }}>
           {statItems.map((s, i) => (
-            <div key={i} style={{
-              padding: isMobile ? '20px 12px' : '28px 20px', textAlign: 'center',
-              borderRight: `1px solid ${DARK_BORDER}`,
-              borderBottom: isMobile && i < 3 ? `1px solid ${DARK_BORDER}` : 'none',
-            }}>
+            <div key={i} style={{ padding: isMobile ? '20px 12px' : '28px 20px', textAlign: 'center', borderRight: i < statItems.length - 1 ? `1px solid ${DARK_BORDER}` : 'none' }}>
               <div style={{ color: GOLD, fontSize: isMobile ? 28 : 38, fontWeight: 300, lineHeight: 1 }}>{s.count}</div>
               <div style={{ color: GREY, fontSize: 9, letterSpacing: 1.5, textTransform: 'uppercase', marginTop: 6 }}>{s.label}</div>
             </div>
