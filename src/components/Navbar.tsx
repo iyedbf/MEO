@@ -122,10 +122,30 @@ export default function Navbar() {
               {lang === 'tr' ? link.tr : link.en}
             </Link>
           ))}
+
+          {/* Language switcher inside mobile menu */}
+          <div style={{ display: 'flex', gap: 10, marginTop: 20, marginBottom: 4 }}>
+            {([{ code: 'en', flag: '🇺🇸', label: 'English' }, { code: 'tr', flag: '🇹🇷', label: 'Türkçe' }] as const).map(({ code, flag, label }) => (
+              <button
+                key={code}
+                onClick={() => { setLang(code); setMenuOpen(false); }}
+                style={{
+                  flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                  background: lang === code ? `${GOLD}22` : 'transparent',
+                  border: `1px solid ${lang === code ? GOLD : DARK_BORDER}`,
+                  padding: '12px', cursor: 'pointer', outline: 'none',
+                }}
+              >
+                <span style={{ fontSize: 20 }}>{flag}</span>
+                <span style={{ color: lang === code ? GOLD : GREY, fontSize: 11, fontWeight: 700, letterSpacing: 1.5 }}>{label}</span>
+              </button>
+            ))}
+          </div>
+
           <Link to="/contact" onClick={() => setMenuOpen(false)} style={{
             display: 'block', textAlign: 'center', background: GOLD, color: BLACK,
             padding: '14px', fontSize: 11, fontWeight: 700, letterSpacing: 2,
-            textTransform: 'uppercase', textDecoration: 'none', marginTop: 16,
+            textTransform: 'uppercase', textDecoration: 'none', marginTop: 12,
           }}>
             {t('Get in Touch', 'İletişime Geç')}
           </Link>
