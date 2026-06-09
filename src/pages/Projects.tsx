@@ -121,85 +121,74 @@ export default function Projects() {
       </div>
 
       {/* Editorial project sections */}
-      {showcaseProjects.map((project, i) => {
-        const imageLeft = i % 2 === 0;
-        return (
-          <div key={i} style={{ borderTop: `1px solid ${DARK_BORDER}` }}>
-            {isMobile ? (
-              /* Mobile: stacked */
-              <div>
-                <div style={{ height: 220, overflow: 'hidden', position: 'relative' }}>
-                  <img src={project.images[0]} alt={project.title}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8) saturate(0.9)' }} />
-                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 40%, rgba(10,10,10,0.85) 100%)' }} />
-                  <div style={{ position: 'absolute', bottom: 20, left: 16 }}>
-                    <div style={{ color: GOLD, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 6, fontWeight: 600 }}>{project.category} · {project.year}</div>
-                    <div style={{ color: OFF_WHITE, fontSize: 22, fontWeight: 700, lineHeight: 1.2 }}>{project.title}</div>
-                    <div style={{ color: GREY, fontSize: 11, marginTop: 4 }}>{project.sub}</div>
-                  </div>
-                </div>
-                <div style={{ padding: '18px 16px 24px', background: DARK_CARD }}>
-                  <p style={{ color: GREY, fontSize: 14, lineHeight: 1.9, marginBottom: 20 }}>{project.description}</p>
-                  <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: 16 }}>
-                    <p style={{ color: GOLD, fontSize: 13, fontStyle: 'italic', lineHeight: 1.6, margin: 0 }}>{project.quote}</p>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              /* Desktop: alternating side-by-side */
-              <div style={{ display: 'grid', gridTemplateColumns: imageLeft ? '3fr 2fr' : '2fr 3fr', minHeight: 320 }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '0 16px' : '0 32px' }}>
+        {showcaseProjects.map((project, i) => {
+          const imageLeft = i % 2 === 0;
+          return (
+            <div key={i} style={{
+              display: 'grid',
+              gridTemplateColumns: isMobile ? '1fr' : (imageLeft ? '1fr 1fr' : '1fr 1fr'),
+              gap: isMobile ? 0 : 48,
+              alignItems: 'center',
+              padding: isMobile ? '32px 0' : '52px 0',
+              borderBottom: `1px solid ${DARK_BORDER}`,
+            }}>
 
-                {imageLeft && (
-                  <div style={{ position: 'relative', overflow: 'hidden' }}>
-                    <img src={project.images[0]} alt={project.title}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.82) saturate(0.9)', display: 'block' }} />
-                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, transparent 60%, rgba(10,10,10,0.4) 100%)' }} />
-                    {project.images[1] && (
-                      <div style={{ position: 'absolute', bottom: 16, right: 16, width: 110, height: 80, overflow: 'hidden', border: `2px solid ${GOLD}44` }}>
-                        <img src={project.images[1]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8)' }} />
-                      </div>
-                    )}
-                    <div style={{ position: 'absolute', top: 18, left: 18, color: `${GOLD}28`, fontSize: 52, fontWeight: 700, fontFamily: 'Georgia, serif', lineHeight: 1 }}>
-                      {String(i + 1).padStart(2, '0')}
-                    </div>
+              {/* Image side */}
+              {(!isMobile && !imageLeft) && <div />}
+
+              {/* Image box — contained, not full bleed */}
+              <div style={{ order: isMobile ? 0 : (imageLeft ? 0 : 1) }}>
+                <div style={{
+                  position: 'relative', overflow: 'hidden',
+                  height: isMobile ? 220 : 300,
+                  border: `1px solid ${DARK_BORDER}`,
+                }}>
+                  <img
+                    src={project.images[0]}
+                    alt={project.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.88) saturate(0.9)', display: 'block', transition: 'transform 0.5s ease' }}
+                    onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
+                    onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+                  />
+                  {/* Year badge */}
+                  <div style={{ position: 'absolute', top: 14, right: 14, background: GOLD, color: '#0A0A0A', fontSize: 10, fontWeight: 700, padding: '3px 10px', letterSpacing: 1 }}>
+                    {project.year}
+                  </div>
+                  {/* Category top-left */}
+                  <div style={{ position: 'absolute', top: 14, left: 14, color: OFF_WHITE, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', background: 'rgba(0,0,0,0.55)', padding: '3px 8px' }}>
+                    {project.category}
+                  </div>
+                </div>
+
+                {/* Second image thumbnail below on desktop */}
+                {!isMobile && project.images[1] && (
+                  <div style={{ height: 80, overflow: 'hidden', marginTop: 4, border: `1px solid ${DARK_BORDER}`, opacity: 0.7 }}>
+                    <img src={project.images[1]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8)' }} />
                   </div>
                 )}
-
-                {/* Text panel */}
-                <div style={{ background: DARK_CARD, padding: '36px 40px', display: 'flex', flexDirection: 'column', justifyContent: 'center', borderLeft: imageLeft ? `1px solid ${DARK_BORDER}` : 'none', borderRight: !imageLeft ? `1px solid ${DARK_BORDER}` : 'none' }}>
-                  <div style={{ color: GOLD, fontSize: 9, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 10, fontWeight: 600 }}>
-                    {project.category} <span style={{ color: `${GOLD}55`, marginLeft: 8 }}>· {project.year}</span>
-                  </div>
-                  <h2 style={{ color: OFF_WHITE, fontSize: 24, fontWeight: 700, lineHeight: 1.2, margin: '0 0 6px' }}>{project.title}</h2>
-                  <div style={{ color: GREY, fontSize: 12, letterSpacing: 0.5, marginBottom: 16 }}>{project.sub}</div>
-                  <div style={{ width: 32, height: 2, background: GOLD, marginBottom: 16 }} />
-                  <p style={{ color: GREY, fontSize: 13, lineHeight: 1.8, marginBottom: 18 }}>{project.description}</p>
-                  <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: 16 }}>
-                    <p style={{ color: GOLD, fontSize: 13, fontStyle: 'italic', lineHeight: 1.5, margin: 0 }}>{project.quote}</p>
-                  </div>
-                </div>
-
-                {!imageLeft && (
-                  <div style={{ position: 'relative', overflow: 'hidden' }}>
-                    <img src={project.images[0]} alt={project.title}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.82) saturate(0.9)', display: 'block' }} />
-                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(270deg, transparent 60%, rgba(10,10,10,0.4) 100%)' }} />
-                    {project.images[1] && (
-                      <div style={{ position: 'absolute', bottom: 16, left: 16, width: 110, height: 80, overflow: 'hidden', border: `2px solid ${GOLD}44` }}>
-                        <img src={project.images[1]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8)' }} />
-                      </div>
-                    )}
-                    <div style={{ position: 'absolute', top: 18, right: 18, color: `${GOLD}28`, fontSize: 52, fontWeight: 700, fontFamily: 'Georgia, serif', lineHeight: 1 }}>
-                      {String(i + 1).padStart(2, '0')}
-                    </div>
-                  </div>
-                )}
-
               </div>
-            )}
-          </div>
-        );
-      })}
+
+              {/* Text side */}
+              <div style={{ order: isMobile ? 1 : (imageLeft ? 1 : 0), paddingTop: isMobile ? 20 : 0 }}>
+                <div style={{ color: GOLD, fontSize: 9, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 10, fontWeight: 600 }}>
+                  {project.category} <span style={{ color: `${GOLD}66` }}>· {project.year}</span>
+                </div>
+                <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 22 : 28, fontWeight: 700, lineHeight: 1.2, margin: '0 0 6px' }}>
+                  {project.title}
+                </h2>
+                <div style={{ color: GREY, fontSize: 12, letterSpacing: 0.5, marginBottom: 20 }}>{project.sub}</div>
+                <div style={{ width: 32, height: 2, background: GOLD, marginBottom: 18 }} />
+                <p style={{ color: GREY, fontSize: 13, lineHeight: 1.9, marginBottom: 20 }}>{project.description}</p>
+                <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: 16 }}>
+                  <p style={{ color: GOLD, fontSize: 13, fontStyle: 'italic', lineHeight: 1.6, margin: 0 }}>{project.quote}</p>
+                </div>
+              </div>
+
+            </div>
+          );
+        })}
+      </div>
 
       {/* Video Showcase */}
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '48px 16px' : '80px 32px' }}>
