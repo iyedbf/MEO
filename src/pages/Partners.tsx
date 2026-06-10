@@ -4,6 +4,89 @@ import PageHeader from '../components/PageHeader';
 import { useLang } from '../context/LanguageContext';
 import { useResponsive } from '../hooks/useResponsive';
 
+/* ─── Styled logo components ─────────────────────────── */
+
+function LogoMassMob({ size = 1 }: { size?: number }) {
+  return (
+    <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+      <div style={{
+        fontSize: 28 * size, fontWeight: 900, letterSpacing: -1 * size,
+        color: OFF_WHITE, lineHeight: 1, fontFamily: 'Georgia, serif',
+      }}>
+        Mass<span style={{ color: GOLD }}>Mob</span>
+      </div>
+      <div style={{ width: '100%', height: 1.5, background: `linear-gradient(90deg, ${GOLD}, transparent)`, marginTop: 4 }} />
+      <div style={{ color: GREY, fontSize: 8 * size, letterSpacing: 3 * size, textTransform: 'uppercase', marginTop: 5, fontWeight: 500 }}>
+        Bespoke Furniture · Interior Design
+      </div>
+    </div>
+  );
+}
+
+function LogoElve({ size = 1 }: { size?: number }) {
+  const c = '#C8B89A';
+  return (
+    <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+      {/* Double-ring "ee" symbol */}
+      <div style={{ display: 'flex', gap: -6 * size, marginBottom: 8 * size }}>
+        {[0, 1].map(k => (
+          <div key={k} style={{
+            width: 22 * size, height: 22 * size, borderRadius: '50%',
+            border: `2.5px solid ${c}`,
+            marginLeft: k === 1 ? -10 * size : 0,
+            position: 'relative',
+          }}>
+            <div style={{
+              position: 'absolute', top: '50%', left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: 10 * size, height: 10 * size, borderRadius: '50%',
+              background: 'transparent', border: `1.5px solid ${c}44`,
+            }} />
+          </div>
+        ))}
+      </div>
+      <div style={{
+        fontSize: 22 * size, fontWeight: 300, letterSpacing: 3 * size,
+        color: c, lineHeight: 1, textTransform: 'lowercase',
+      }}>
+        elve<span style={{ fontWeight: 700 }}>·</span>luxury
+      </div>
+      <div style={{ color: `${c}88`, fontSize: 7.5 * size, letterSpacing: 2.5 * size, textTransform: 'uppercase', marginTop: 5, fontWeight: 500 }}>
+        Premium Lifestyle Brand
+      </div>
+    </div>
+  );
+}
+
+function LogoMobizu({ size = 1 }: { size?: number }) {
+  const c = '#B8A060';
+  return (
+    <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+      {/* Stylised "M" mark */}
+      <div style={{
+        width: 32 * size, height: 32 * size,
+        border: `2px solid ${c}`,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        marginBottom: 10 * size,
+      }}>
+        <span style={{ color: c, fontSize: 16 * size, fontWeight: 900, lineHeight: 1 }}>M</span>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 2 }}>
+        <span style={{ fontSize: 22 * size, fontWeight: 900, letterSpacing: 1 * size, color: c, lineHeight: 1 }}>
+          MOB<span style={{ fontStyle: 'italic' }}>i</span>ZU
+        </span>
+      </div>
+      <div style={{ color: `${c}88`, fontSize: 7.5 * size, letterSpacing: 2.5 * size, textTransform: 'uppercase', marginTop: 5, fontWeight: 500 }}>
+        Custom Furniture · Projects
+      </div>
+    </div>
+  );
+}
+
+const LOGOS = [LogoMassMob, LogoElve, LogoMobizu];
+
+/* ─── Data ─────────────────────────────────────────────── */
+
 const featuredPartners = [
   {
     name: 'MassMob',
@@ -13,9 +96,8 @@ const featuredPartners = [
     url: 'https://massmob.com',
     category: 'Luxury Furniture & Interior Design',
     since: '2023',
-    logo: 'MassMob',
-    accentColor: GOLD,
-    projects: ['Greenwich Residence', 'French Classical Manor', 'Gentleman\'s Study'],
+    accent: GOLD,
+    projects: ['Greenwich Residence', 'French Classical Manor', "Gentleman's Study"],
   },
   {
     name: 'elve luxury',
@@ -25,8 +107,7 @@ const featuredPartners = [
     url: 'https://elvemobilya.com/',
     category: 'Luxury Lifestyle Brand',
     since: '2024',
-    logo: 'elve luxury',
-    accentColor: '#C8B89A',
+    accent: '#C8B89A',
     projects: ['Private Residences', 'Bespoke Interiors'],
   },
   {
@@ -37,43 +118,18 @@ const featuredPartners = [
     url: 'https://www.mobizu.com.tr/',
     category: 'Custom Furniture & Project Management',
     since: '2024',
-    logo: 'MOBiZU',
-    accentColor: '#B8A060',
+    accent: '#B8A060',
     projects: ['Luxury Residences', 'Hotel Fit-Outs', 'Commercial Spaces'],
   },
 ];
 
 const partnerTypes = [
-  {
-    icon: '🏗',
-    title: 'Real Estate Developers',
-    desc: 'Strategic partnerships with leading real estate development firms for joint ventures and co-development opportunities.',
-  },
-  {
-    icon: '📐',
-    title: 'Architecture Firms',
-    desc: 'Collaboration with world-class architectural practices to deliver integrated design and development solutions.',
-  },
-  {
-    icon: '🛋',
-    title: 'Interior Design Studios',
-    desc: 'Partnerships with prestigious design studios to offer comprehensive interior solutions to our clients.',
-  },
-  {
-    icon: '💼',
-    title: 'Investment Groups',
-    desc: 'Working with private equity and real estate investment firms to identify and execute high-yield opportunities.',
-  },
-  {
-    icon: '✨',
-    title: 'Luxury Brands',
-    desc: 'Exclusive supply partnerships with leading luxury furniture and materials manufacturers globally.',
-  },
-  {
-    icon: '🔨',
-    title: 'Contractors & Builders',
-    desc: 'A vetted network of specialist contractors ensuring the highest quality of workmanship on every project.',
-  },
+  { title: 'Real Estate Developers', desc: 'Strategic partnerships with leading real estate development firms for joint ventures and co-development opportunities.' },
+  { title: 'Architecture Firms', desc: 'Collaboration with world-class architectural practices to deliver integrated design and development solutions.' },
+  { title: 'Interior Design Studios', desc: 'Partnerships with prestigious design studios to offer comprehensive interior solutions to our clients.' },
+  { title: 'Investment Groups', desc: 'Working with private equity and real estate investment firms to identify and execute high-yield opportunities.' },
+  { title: 'Luxury Brands', desc: 'Exclusive supply partnerships with leading luxury furniture and materials manufacturers globally.' },
+  { title: 'Contractors & Builders', desc: 'A vetted network of specialist contractors ensuring the highest quality of workmanship on every project.' },
 ];
 
 const benefits = [
@@ -83,10 +139,11 @@ const benefits = [
   'Joint marketing and global visibility',
 ];
 
+/* ─── Component ─────────────────────────────────────────── */
+
 export default function Partners() {
   const { t } = useLang();
   const { isMobile } = useResponsive();
-  const sectionPad = isMobile ? '48px 16px' : '80px 32px';
 
   return (
     <div style={{ background: '#0A0A0A' }}>
@@ -97,10 +154,10 @@ export default function Partners() {
         titleBold={t('Partners', 'Ortaklar')}
       />
 
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: sectionPad }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '48px 16px' : '80px 32px' }}>
 
-        {/* Intro */}
-        <div style={{ marginBottom: isMobile ? 40 : 64 }}>
+        {/* ── INTRO ── */}
+        <div style={{ marginBottom: isMobile ? 48 : 72 }}>
           <div style={{ color: GOLD, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 14, fontWeight: 600 }}>
             {t('Collaboration', 'İş Birliği')}
           </div>
@@ -108,147 +165,174 @@ export default function Partners() {
             {t('Built on Trust', 'Güven Üzerine İnşa Edildi')}
           </h2>
           <div style={{ width: 60, height: 2, background: GOLD, marginBottom: 20 }} />
-          <p style={{ color: GREY, fontSize: isMobile ? 14 : 15, lineHeight: 1.85, maxWidth: 680 }}>
+          <p style={{ color: GREY, fontSize: isMobile ? 14 : 15, lineHeight: 1.9, maxWidth: 680 }}>
             {t(
-              'Our partners form the foundation of our growth and long-term success. Through collaborations built on trust, transparency, and shared value creation, we deliver more comprehensive and high-quality solutions to our clients. Each partner strengthens our services with their expertise and contribution.',
+              'Our partners form the foundation of our growth and long-term success. Through collaborations built on trust, transparency, and shared value creation, we deliver more comprehensive and high-quality solutions to our clients.',
               'Ortaklarımız, büyümemizin ve uzun vadeli başarımızın temelini oluşturur. Güven, şeffaflık ve ortak değer yaratma üzerine kurulu iş birlikleri sayesinde müşterilerimize daha kapsamlı ve yüksek kaliteli çözümler sunuyoruz.'
             )}
           </p>
         </div>
 
-        {/* ── FEATURED PARTNERS ── */}
-        <div style={{ marginBottom: isMobile ? 48 : 80 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: isMobile ? 28 : 40 }}>
-            <div style={{ color: GOLD, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', fontWeight: 600 }}>
-              {t('Our Partners', 'Ortaklarımız')}
-            </div>
-            <div style={{ flex: 1, height: 1, background: DARK_BORDER }} />
-          </div>
+        {/* ── LOGO STRIP ── */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+          gap: 1, background: DARK_BORDER,
+          marginBottom: isMobile ? 48 : 72,
+        }}>
+          {featuredPartners.map((p, i) => {
+            const LogoComp = LOGOS[i];
+            return (
+              <a
+                key={i}
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  background: DARK_CARD,
+                  padding: isMobile ? '32px 24px' : '48px 40px',
+                  display: 'flex', flexDirection: 'column',
+                  alignItems: 'flex-start', justifyContent: 'space-between',
+                  textDecoration: 'none', minHeight: isMobile ? 'auto' : 180,
+                  transition: 'background 0.3s',
+                  borderLeft: `3px solid ${p.accent}`,
+                }}
+                onMouseEnter={e => (e.currentTarget.style.background = CHARCOAL)}
+                onMouseLeave={e => (e.currentTarget.style.background = DARK_CARD)}
+              >
+                <LogoComp size={isMobile ? 0.85 : 1} />
+                <div style={{ marginTop: 20, display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <div style={{ width: 16, height: 1, background: p.accent }} />
+                  <span style={{ color: GREY, fontSize: 9, letterSpacing: 2.5, textTransform: 'uppercase' }}>
+                    {t('Official Partner', 'Resmi Ortak')}
+                  </span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
 
+        {/* ── FEATURED PARTNER CARDS ── */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: isMobile ? 28 : 40 }}>
+          <div style={{ color: GOLD, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', fontWeight: 600 }}>
+            {t('Our Partners', 'Ortaklarımız')}
+          </div>
+          <div style={{ flex: 1, height: 1, background: DARK_BORDER }} />
+        </div>
+
+        <div style={{ marginBottom: isMobile ? 48 : 80 }}>
           {featuredPartners.map((partner, i) => {
-            const accent = partner.accentColor;
+            const LogoComp = LOGOS[i];
+            const isEven = i % 2 === 0;
             return (
               <div key={i} style={{
+                display: 'grid',
+                gridTemplateColumns: isMobile ? '1fr' : (isEven ? '5fr 7fr' : '7fr 5fr'),
+                marginBottom: isMobile ? 2 : 3,
                 border: `1px solid ${DARK_BORDER}`,
-                marginBottom: isMobile ? 20 : 24,
                 background: DARK_CARD,
+                overflow: 'hidden',
               }}>
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: isMobile ? '1fr' : '1fr 2fr',
-                }}>
-                  {/* Logo panel */}
-                  <div style={{
-                    background: CHARCOAL,
-                    padding: isMobile ? '32px 24px' : '48px 40px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-start',
-                    justifyContent: 'space-between',
-                    borderRight: isMobile ? 'none' : `1px solid ${DARK_BORDER}`,
-                    borderBottom: isMobile ? `1px solid ${DARK_BORDER}` : 'none',
-                    minHeight: isMobile ? 'auto' : 240,
-                  }}>
-                    <div>
-                      {/* Partner number badge */}
-                      <div style={{ color: `${accent}55`, fontSize: 11, letterSpacing: 3, fontWeight: 700, marginBottom: 16, textTransform: 'uppercase' }}>
-                        Partner {String(i + 1).padStart(2, '0')}
-                      </div>
-                      {/* Logo name */}
-                      <div style={{
-                        color: OFF_WHITE,
-                        fontSize: isMobile ? 26 : 32,
-                        fontWeight: 800,
-                        letterSpacing: -0.5,
-                        lineHeight: 1.1,
-                        marginBottom: 12,
-                      }}>
-                        {partner.logo}
-                        {partner.name === 'MOBiZU Project' && (
-                          <span style={{ color: accent, fontSize: isMobile ? 14 : 16, fontWeight: 400, letterSpacing: 1, marginLeft: 6 }}>Project</span>
-                        )}
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
-                        <div style={{ width: 24, height: 1.5, background: accent }} />
-                        <span style={{ color: accent, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', fontWeight: 600 }}>
-                          {partner.category}
-                        </span>
-                      </div>
-                      <div style={{ color: GREY, fontSize: 11, letterSpacing: 0.5 }}>
-                        📍 {partner.location}
-                      </div>
-                    </div>
 
-                    <div style={{ marginTop: isMobile ? 24 : 0 }}>
-                      <div style={{ color: GREY, fontSize: 10, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 8 }}>
-                        {t('Partner since', 'Ortak olduğumuz yıl')} {partner.since}
-                      </div>
-                      {partner.url !== '#' ? (
-                        <a
-                          href={partner.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{
-                            display: 'inline-flex', alignItems: 'center', gap: 6,
-                            background: accent, color: BLACK,
-                            padding: '8px 18px', fontSize: 10, fontWeight: 700,
-                            letterSpacing: 2, textTransform: 'uppercase', textDecoration: 'none',
-                          }}
-                        >
-                          {t('Visit Website', 'Web Sitesi')} →
-                        </a>
-                      ) : (
-                        <div style={{
-                          display: 'inline-flex', alignItems: 'center', gap: 6,
-                          border: `1px solid ${accent}55`, color: accent,
-                          padding: '8px 18px', fontSize: 10, fontWeight: 700,
-                          letterSpacing: 2, textTransform: 'uppercase',
-                        }}>
-                          {t('Official Partner', 'Resmi Ortak')}
-                        </div>
-                      )}
-                    </div>
+                {/* Logo / identity panel */}
+                <div style={{
+                  order: isMobile ? 0 : (isEven ? 0 : 1),
+                  background: `linear-gradient(135deg, ${CHARCOAL} 0%, #111 100%)`,
+                  padding: isMobile ? '32px 24px' : '52px 44px',
+                  display: 'flex', flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  borderRight: (!isMobile && isEven) ? `1px solid ${DARK_BORDER}` : 'none',
+                  borderLeft: (!isMobile && !isEven) ? `1px solid ${DARK_BORDER}` : 'none',
+                  borderBottom: isMobile ? `1px solid ${DARK_BORDER}` : 'none',
+                  position: 'relative', overflow: 'hidden',
+                  minHeight: isMobile ? 'auto' : 280,
+                }}>
+                  {/* Large faint number behind */}
+                  <div style={{
+                    position: 'absolute', bottom: -10, right: 16,
+                    fontSize: 120, fontWeight: 900, color: `${partner.accent}08`,
+                    lineHeight: 1, userSelect: 'none', pointerEvents: 'none',
+                    fontFamily: 'Georgia, serif',
+                  }}>
+                    {String(i + 1).padStart(2, '0')}
                   </div>
 
-                  {/* Description panel */}
-                  <div style={{ padding: isMobile ? '28px 24px' : '48px 48px' }}>
-                    <h3 style={{ color: OFF_WHITE, fontSize: isMobile ? 20 : 26, fontWeight: 600, margin: '0 0 6px', lineHeight: 1.2 }}>
-                      {partner.name}
-                    </h3>
-                    <div style={{ color: accent, fontSize: 12, letterSpacing: 0.5, marginBottom: 20 }}>
-                      {partner.tagline}
+                  <div>
+                    <div style={{ color: `${partner.accent}66`, fontSize: 9, letterSpacing: 4, fontWeight: 700, marginBottom: 24, textTransform: 'uppercase' }}>
+                      Partner {String(i + 1).padStart(2, '0')}
                     </div>
-                    <div style={{ width: 40, height: 2, background: accent, marginBottom: 20 }} />
-                    <p style={{ color: GREY, fontSize: isMobile ? 13 : 14, lineHeight: 1.9, marginBottom: 28 }}>
-                      {partner.description}
-                    </p>
+                    <LogoComp size={isMobile ? 0.9 : 1.1} />
+                  </div>
 
-                    <div>
-                      <div style={{ color: GREY, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 12 }}>
-                        {t('Projects in collaboration', 'Ortak Projeler')}
-                      </div>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                        {partner.projects.map((proj, j) => (
-                          <span key={j} style={{
-                            border: `1px solid ${accent}44`,
-                            color: accent,
-                            fontSize: 10,
-                            letterSpacing: 1,
-                            padding: '5px 14px',
-                          }}>
-                            {proj}
-                          </span>
-                        ))}
-                      </div>
+                  <div style={{ marginTop: 32 }}>
+                    <div style={{ color: GREY, fontSize: 10, letterSpacing: 2, textTransform: 'uppercase', marginBottom: 4 }}>
+                      📍 {partner.location}
+                    </div>
+                    <div style={{ color: GREY, fontSize: 10, letterSpacing: 1.5, textTransform: 'uppercase', marginBottom: 16 }}>
+                      {t('Partner since', 'Ortak olduğumuz yıl')} {partner.since}
+                    </div>
+                    <a
+                      href={partner.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        display: 'inline-flex', alignItems: 'center', gap: 8,
+                        background: partner.accent, color: BLACK,
+                        padding: '9px 20px', fontSize: 10, fontWeight: 700,
+                        letterSpacing: 2, textTransform: 'uppercase', textDecoration: 'none',
+                      }}
+                    >
+                      {t('Visit Website', 'Web Sitesi')} →
+                    </a>
+                  </div>
+                </div>
+
+                {/* Description panel */}
+                <div style={{
+                  order: isMobile ? 1 : (isEven ? 1 : 0),
+                  padding: isMobile ? '28px 24px' : '52px 48px',
+                  display: 'flex', flexDirection: 'column', justifyContent: 'center',
+                }}>
+                  <div style={{ color: partner.accent, fontSize: 9, letterSpacing: 4, textTransform: 'uppercase', fontWeight: 600, marginBottom: 10 }}>
+                    {partner.category}
+                  </div>
+                  <h3 style={{ color: OFF_WHITE, fontSize: isMobile ? 22 : 28, fontWeight: 700, margin: '0 0 6px', lineHeight: 1.2 }}>
+                    {partner.name}
+                  </h3>
+                  <div style={{ color: GREY, fontSize: 12, letterSpacing: 0.3, marginBottom: 20, fontStyle: 'italic' }}>
+                    {partner.tagline}
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 22 }}>
+                    <div style={{ width: 36, height: 2, background: partner.accent }} />
+                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: `${partner.accent}55`, border: `1px solid ${partner.accent}` }} />
+                  </div>
+                  <p style={{ color: GREY, fontSize: isMobile ? 13 : 14, lineHeight: 1.9, marginBottom: 28 }}>
+                    {partner.description}
+                  </p>
+                  <div>
+                    <div style={{ color: GREY, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', marginBottom: 12 }}>
+                      {t('Projects in collaboration', 'Ortak Projeler')}
+                    </div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                      {partner.projects.map((proj, j) => (
+                        <span key={j} style={{
+                          border: `1px solid ${partner.accent}44`,
+                          color: partner.accent, fontSize: 10,
+                          letterSpacing: 1, padding: '5px 14px',
+                        }}>
+                          {proj}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
+
               </div>
             );
           })}
         </div>
 
-        {/* ── PARTNER TYPES ── */}
+        {/* ── PARTNER TYPES GRID ── */}
         <div style={{ marginBottom: isMobile ? 40 : 64 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: isMobile ? 24 : 36 }}>
             <div style={{ color: GOLD, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', fontWeight: 600 }}>
@@ -256,11 +340,16 @@ export default function Partners() {
             </div>
             <div style={{ flex: 1, height: 1, background: DARK_BORDER }} />
           </div>
-
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 1, background: DARK_BORDER }}>
             {partnerTypes.map((pt, i) => (
-              <div key={i} style={{ background: DARK_CARD, padding: isMobile ? '24px 20px' : '36px 32px' }}>
-                <div style={{ fontSize: 22, marginBottom: 14 }}>{pt.icon}</div>
+              <div key={i} style={{ background: DARK_CARD, padding: isMobile ? '24px 20px' : '36px 32px', borderLeft: `2px solid ${GOLD}22` }}>
+                <div style={{
+                  width: 32, height: 32, border: `1px solid ${GOLD}44`,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  marginBottom: 16, color: GOLD, fontSize: 11, fontWeight: 700, letterSpacing: 1,
+                }}>
+                  {String(i + 1).padStart(2, '0')}
+                </div>
                 <h3 style={{ color: OFF_WHITE, fontSize: 15, fontWeight: 600, marginBottom: 10, letterSpacing: 0.3 }}>
                   {pt.title}
                 </h3>
@@ -270,7 +359,7 @@ export default function Partners() {
           </div>
         </div>
 
-        {/* ── BECOME A PARTNER CTA ── */}
+        {/* ── CTA ── */}
         <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', border: `1px solid ${DARK_BORDER}` }}>
           <div style={{ background: GOLD, padding: isMobile ? '36px 24px' : '52px 48px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             <div style={{ color: BLACK, fontSize: 11, letterSpacing: 4, textTransform: 'uppercase', fontWeight: 600, marginBottom: 14 }}>
@@ -294,12 +383,11 @@ export default function Partners() {
               {t('Get in Touch', 'İletişime Geç')}
             </Link>
           </div>
-
           <div style={{ background: CHARCOAL, padding: isMobile ? '32px 24px' : '52px 48px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 18 }}>
             {benefits.map((b, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, color: OFF_WHITE, fontSize: 14 }}>
                 <div style={{ width: 6, height: 6, background: GOLD, flexShrink: 0 }} />
-                {t(b, b)}
+                {b}
               </div>
             ))}
           </div>
