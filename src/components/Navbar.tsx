@@ -9,7 +9,7 @@ const navLinks = [
   { path: '/about',     en: 'About',       tr: 'Hakkımızda' },
   { path: '/services',  en: 'Services',    tr: 'Hizmetler' },
   { path: '/design',    en: 'Design & Dev',tr: 'Tasarım' },
-  { path: '/projects',  en: 'Projects',    tr: 'Projeler' },
+  { path: '/projects',  en: 'In Progress',  tr: 'Projeler' },
   { path: '/partners',  en: 'Partners',    tr: 'Ortaklar' },
   { path: '/contact',   en: 'Contact',     tr: 'İletişim' },
 ];
