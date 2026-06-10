@@ -5,7 +5,7 @@ interface PageHeaderProps {
   eyebrow: string;
   titleLight: string;
   titleBold: string;
-  watermark: string;
+  watermark?: string;
   boldFirst?: boolean;
 }
 

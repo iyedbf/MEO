@@ -24,77 +24,177 @@ function VideoCard({ video, height }: { video: { src: string; label: string; sub
 
 const showcaseProjects = [
   {
-    title: 'Greenwich Connecticut',
-    sub: 'House – Connecticut, USA',
+    id: '01',
+    title: 'Surfside Residence',
+    sub: 'Private Villa — Miami, Florida, USA',
+    category: 'Residential',
+    year: '2024',
+    description: 'A spectacular beachfront villa where architecture and nature converge. The floating steel staircase with warm LED underlighting becomes the sculptural centrepiece of the home, while the ocean-facing kitchen — anchored by a luminous onyx island — frames the Atlantic as a living artwork.',
+    quote: '"Perfection lies in every detail."',
+    hero: '/images/new-kitchen-ocean.png',
+    gallery: [
+      '/images/new-stairs-aerial.png',
+      '/images/new-stairs-led.png',
+      '/images/new-stairs-aerial2.png',
+    ],
+  },
+  {
+    id: '02',
+    title: 'Classical French Manor',
+    sub: 'Grand Residence — New Jersey, USA',
+    category: 'Mansion',
+    year: '2025',
+    description: 'An extraordinary classical manor drawing inspiration from 18th-century French architecture. Royal blue velvet sofas, hand-carved boiserie panelling, ornate crystal chandeliers and intricate wainscoting create an atmosphere of timeless aristocratic grandeur across every room and corridor.',
+    quote: '"Every detail tells its own story."',
+    hero: '/images/new-living-blue-wide.png',
+    gallery: [
+      '/images/new-dining-crystal.png',
+      '/images/new-dining-ornate.png',
+      '/images/new-kitchen-classic.png',
+      '/images/new-hallway-crystal.png',
+      '/images/new-kitchen-island.png',
+      '/images/new-dining-front.png',
+    ],
+  },
+  {
+    id: '03',
+    title: 'Gentleman\'s Club & Library',
+    sub: 'Private Residence — Connecticut, USA',
+    category: 'Residential',
+    year: '2024',
+    description: 'A sophisticated private club experience within a residence. Dark mahogany millwork, Chesterfield leather seating and coffered ceilings establish the mood, while custom-built bookcases with theatrical pink LED backlighting create a striking counterpoint to the deep, masculine palette.',
+    quote: '"Elegance shaped with precision."',
+    hero: '/images/new-cigar-room.png',
+    gallery: [
+      '/images/new-library-pink.png',
+      '/images/new-study-office.png',
+      '/images/new-study-entry.png',
+      '/images/new-study-angle.png',
+    ],
+  },
+  {
+    id: '04',
+    title: 'Modern Open-Plan Estate',
+    sub: 'Residential Complex — Connecticut, USA',
     category: 'Residential',
     year: '2025',
-    description: 'A refined single-family residence where classic architecture meets contemporary interior craft. Custom millwork, bespoke joinery, and curated material selections define every room with precision and warmth.',
-    quote: '"Perfection lies in every detail."',
-    images: ['/images/proj-bedroom-1.png', '/images/proj-formal-living.png'],
+    description: 'A multi-level contemporary residence designed for both comfort and functionality. The lower level features a vast open-plan living space with marble waterfall island, while bespoke walk-in dressing rooms and a large-format sectional lounge define the upper floors with effortless elegance.',
+    quote: '"Form and function in perfect balance."',
+    hero: '/images/new-modern-basement.png',
+    gallery: [
+      '/images/new-sofa-sectional.png',
+      '/images/new-closet-gray.png',
+      '/images/new-closet-dark.png',
+      '/images/new-hallway-damask.png',
+    ],
   },
   {
-    title: 'Merit Kensington',
-    sub: 'Mansion – London, UK',
-    category: 'Mansion',
-    year: '2025',
-    description: 'A prestigious London mansion project featuring fully custom-built furniture and bespoke interior development. The design language draws from British heritage while embracing global luxury standards.',
-    quote: '"Elegance shaped with precision."',
-    images: ['/images/proj-living-city.png', '/images/proj-bedroom-1.png'],
-  },
-  {
-    title: 'Sinpaş Palas',
-    sub: 'Penthouse – Istanbul, Turkey',
-    category: 'Penthouse',
+    id: '05',
+    title: 'Luxury Master Suite',
+    sub: 'Premium Interior — Private Residence',
+    category: 'Interior Design',
     year: '2024',
-    description: 'A panoramic penthouse project in the heart of Istanbul. Floor-to-ceiling glazing, marble surfaces, and a restrained gold palette deliver a living environment of exceptional refinement.',
-    quote: '"Where the city becomes part of the design."',
-    images: ['/images/proj-formal-living.png', '/images/proj-hotel-bedroom.png'],
-  },
-  {
-    title: 'Sinpaş Gökorman',
-    sub: 'Villa – Istanbul, Turkey',
-    category: 'Villa',
-    year: '2023',
-    description: 'An expansive villa project delivering bespoke furniture and interior solutions across multiple levels. Natural stone, warm woods, and gold accents create an atmosphere of understated luxury.',
-    quote: '"Every space tells its own story."',
-    images: ['/images/proj-marble-living.png', '/images/proj-villa-garden.png'],
-  },
-  {
-    title: 'Private Residence',
-    sub: 'Villa – Bodrum, Turkey',
-    category: 'Villa',
-    year: '2024',
-    description: 'A coastal villa where the Mediterranean landscape becomes part of the interior. Curved seating, natural textures and open glazing create a seamless connection between the living spaces and the garden.',
-    quote: '"Elegance and nature in perfect balance."',
-    images: ['/images/proj-villa-garden.png', '/images/proj-marble-living.png'],
-  },
-  {
-    title: 'Grand Residence',
-    sub: 'Mansion – Riyadh, Saudi Arabia',
-    category: 'Mansion',
-    year: '2025',
-    description: 'A grand palatial residence with an emphasis on gold accents, mirrored surfaces, and classical proportions. Every detail in this project reflects the highest standards of bespoke craftsmanship.',
+    description: 'An extraordinary master bathroom suite entirely clad in dramatic black marble with gold veining. A frameless glass wet room, floating double-vanity in contrasting walnut and backlit ceiling coffers deliver a hotel-grade spa experience within a private home.',
     quote: '"Luxury is an art form."',
-    images: ['/images/proj-gold-salon.png', '/images/proj-formal-living.png'],
+    hero: '/images/new-bath-vanity.png',
+    gallery: [
+      '/images/new-bath-shower.png',
+      '/images/new-bath-marble2.png',
+    ],
   },
   {
-    title: 'Radisson Blu Hotel',
-    sub: 'Hotel – Jeddah & Istanbul',
-    category: 'Hospitality',
-    year: '2024',
-    description: 'A landmark hotel fit-out across two international locations. Guest rooms, suites, and public spaces were furnished and fitted with bespoke solutions meeting Radisson\'s global hospitality standards.',
-    quote: '"Excellence felt at every touchpoint."',
-    images: ['/images/proj-radisson-ext.png', '/images/proj-hotel-bedroom.png'],
+    id: '06',
+    title: 'Teal Dining & Reading Room',
+    sub: 'Interior Renovation — Private Home',
+    category: 'Renovation',
+    year: '2023',
+    description: 'A bold and unexpected interior that transforms a formal dining and reading room using a rich teal palette. Custom floor-to-ceiling joinery with integrated shelving and a central mirror panel creates depth and drama, complemented by linen drapery that softens the vivid colour.',
+    quote: '"Colour is the soul of a room."',
+    hero: '/images/new-dining-teal.png',
+    gallery: [
+      '/images/new-dining-front.png',
+      '/images/new-staircase-trad.png',
+    ],
   },
 ];
 
 const statItems = [
-  { count: '7+', label: 'Showcase Projects' },
+  { count: '50+', label: 'Projects Delivered' },
   { count: '3', label: 'Countries' },
-  { count: '5', label: 'Project Types' },
+  { count: '6', label: 'Project Types' },
   { count: '15+', label: 'Years Experience' },
   { count: '98%', label: 'Client Satisfaction' },
 ];
+
+function ProjectGallery({ images, isMobile }: { images: string[]; isMobile: boolean }) {
+  if (images.length === 0) return null;
+  if (images.length === 1) {
+    return (
+      <div style={{ overflow: 'hidden', height: isMobile ? 140 : 180, border: `1px solid ${DARK_BORDER}` }}>
+        <img src={images[0]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.85)', display: 'block', transition: 'transform 0.5s' }}
+          onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
+          onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
+      </div>
+    );
+  }
+  if (images.length === 2) {
+    return (
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4 }}>
+        {images.map((src, i) => (
+          <div key={i} style={{ overflow: 'hidden', height: isMobile ? 110 : 150, border: `1px solid ${DARK_BORDER}` }}>
+            <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.85)', display: 'block', transition: 'transform 0.5s' }}
+              onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
+              onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
+          </div>
+        ))}
+      </div>
+    );
+  }
+  if (images.length === 3) {
+    return (
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 4 }}>
+        {images.map((src, i) => (
+          <div key={i} style={{ overflow: 'hidden', height: isMobile ? 100 : 140, border: `1px solid ${DARK_BORDER}` }}>
+            <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.85)', display: 'block', transition: 'transform 0.5s' }}
+              onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
+              onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
+          </div>
+        ))}
+      </div>
+    );
+  }
+  // 4+ images: first one big, rest in a row
+  const [first, ...rest] = images;
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+      <div style={{ overflow: 'hidden', height: isMobile ? 160 : 220, border: `1px solid ${DARK_BORDER}` }}>
+        <img src={first} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.85)', display: 'block', transition: 'transform 0.5s' }}
+          onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
+          onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(rest.length, 3)}, 1fr)`, gap: 4 }}>
+        {rest.slice(0, 3).map((src, i) => (
+          <div key={i} style={{ overflow: 'hidden', height: isMobile ? 90 : 120, border: `1px solid ${DARK_BORDER}` }}>
+            <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8)', display: 'block', transition: 'transform 0.5s' }}
+              onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
+              onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
+          </div>
+        ))}
+      </div>
+      {rest.length > 3 && (
+        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(rest.length - 3, 3)}, 1fr)`, gap: 4 }}>
+          {rest.slice(3, 6).map((src, i) => (
+            <div key={i} style={{ overflow: 'hidden', height: isMobile ? 90 : 120, border: `1px solid ${DARK_BORDER}` }}>
+              <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8)', display: 'block', transition: 'transform 0.5s' }}
+                onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
+                onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Projects() {
   const { t } = useLang();
@@ -107,7 +207,6 @@ export default function Projects() {
         eyebrow={t('Portfolio', 'Portföy')}
         titleLight={t('Our', 'Projelerimiz')}
         titleBold={t('Projects', '')}
-        watermark="PROJECTS"
       />
 
       {/* Intro */}
@@ -120,70 +219,105 @@ export default function Projects() {
         </p>
       </div>
 
-      {/* Editorial project sections */}
+      {/* Project Sections */}
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '0 16px' : '0 32px' }}>
         {showcaseProjects.map((project, i) => {
           const imageLeft = i % 2 === 0;
           return (
             <div key={i} style={{
-              display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : (imageLeft ? '1fr 1fr' : '1fr 1fr'),
-              gap: isMobile ? 0 : 48,
-              alignItems: 'center',
-              padding: isMobile ? '32px 0' : '52px 0',
+              paddingTop: isMobile ? 32 : 56,
+              paddingBottom: isMobile ? 32 : 56,
               borderBottom: `1px solid ${DARK_BORDER}`,
             }}>
 
-              {/* Image side */}
-              {(!isMobile && !imageLeft) && <div />}
-
-              {/* Image box — contained, not full bleed */}
-              <div style={{ order: isMobile ? 0 : (imageLeft ? 0 : 1) }}>
-                <div style={{
-                  position: 'relative', overflow: 'hidden',
-                  height: isMobile ? 220 : 300,
-                  border: `1px solid ${DARK_BORDER}`,
-                }}>
-                  <img
-                    src={project.images[0]}
-                    alt={project.title}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.88) saturate(0.9)', display: 'block', transition: 'transform 0.5s ease' }}
-                    onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
-                    onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
-                  />
-                  {/* Year badge */}
-                  <div style={{ position: 'absolute', top: 14, right: 14, background: GOLD, color: '#0A0A0A', fontSize: 10, fontWeight: 700, padding: '3px 10px', letterSpacing: 1 }}>
-                    {project.year}
-                  </div>
-                  {/* Category top-left */}
-                  <div style={{ position: 'absolute', top: 14, left: 14, color: OFF_WHITE, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', background: 'rgba(0,0,0,0.55)', padding: '3px 8px' }}>
-                    {project.category}
-                  </div>
-                </div>
-
-                {/* Second image thumbnail below on desktop */}
-                {!isMobile && project.images[1] && (
-                  <div style={{ height: 80, overflow: 'hidden', marginTop: 4, border: `1px solid ${DARK_BORDER}`, opacity: 0.7 }}>
-                    <img src={project.images[1]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8)' }} />
-                  </div>
-                )}
+              {/* Project number + category header */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: isMobile ? 20 : 28 }}>
+                <span style={{ color: `${GOLD}33`, fontSize: isMobile ? 36 : 52, fontWeight: 700, lineHeight: 1, fontFamily: 'Georgia, serif' }}>{project.id}</span>
+                <div style={{ flex: 1, height: 1, background: DARK_BORDER }} />
+                <span style={{ color: GOLD, fontSize: 9, letterSpacing: 4, textTransform: 'uppercase', fontWeight: 600 }}>{project.category}</span>
+                <span style={{ color: `${GOLD}55`, fontSize: 9, letterSpacing: 2 }}>· {project.year}</span>
               </div>
 
-              {/* Text side */}
-              <div style={{ order: isMobile ? 1 : (imageLeft ? 1 : 0), paddingTop: isMobile ? 20 : 0 }}>
-                <div style={{ color: GOLD, fontSize: 9, letterSpacing: 4, textTransform: 'uppercase', marginBottom: 10, fontWeight: 600 }}>
-                  {project.category} <span style={{ color: `${GOLD}66` }}>· {project.year}</span>
+              {/* Main content grid: hero image + info */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: isMobile ? '1fr' : (imageLeft ? '3fr 2fr' : '2fr 3fr'),
+                gap: isMobile ? 20 : 40,
+                alignItems: 'start',
+                marginBottom: isMobile ? 12 : 20,
+              }}>
+
+                {/* Hero image */}
+                <div style={{ order: isMobile ? 0 : (imageLeft ? 0 : 1) }}>
+                  <div style={{
+                    position: 'relative', overflow: 'hidden',
+                    height: isMobile ? 240 : 380,
+                    border: `1px solid ${DARK_BORDER}`,
+                  }}>
+                    <img
+                      src={project.hero}
+                      alt={project.title}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
+                      onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
+                      onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+                    />
+                    {/* Category badge top-left */}
+                    <div style={{ position: 'absolute', top: 14, left: 14, color: OFF_WHITE, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', background: 'rgba(0,0,0,0.6)', padding: '4px 10px' }}>
+                      {project.category}
+                    </div>
+                    {/* Year badge top-right */}
+                    <div style={{ position: 'absolute', top: 14, right: 14, background: GOLD, color: '#0A0A0A', fontSize: 10, fontWeight: 700, padding: '4px 12px', letterSpacing: 1 }}>
+                      {project.year}
+                    </div>
+                    {/* Gold corner accent */}
+                    <div style={{ position: 'absolute', bottom: 0, left: 0, width: 48, height: 2, background: GOLD }} />
+                    <div style={{ position: 'absolute', bottom: 0, left: 0, width: 2, height: 48, background: GOLD }} />
+                  </div>
                 </div>
-                <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 22 : 28, fontWeight: 700, lineHeight: 1.2, margin: '0 0 6px' }}>
-                  {project.title}
-                </h2>
-                <div style={{ color: GREY, fontSize: 12, letterSpacing: 0.5, marginBottom: 20 }}>{project.sub}</div>
-                <div style={{ width: 32, height: 2, background: GOLD, marginBottom: 18 }} />
-                <p style={{ color: GREY, fontSize: 13, lineHeight: 1.9, marginBottom: 20 }}>{project.description}</p>
-                <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: 16 }}>
-                  <p style={{ color: GOLD, fontSize: 13, fontStyle: 'italic', lineHeight: 1.6, margin: 0 }}>{project.quote}</p>
+
+                {/* Text info */}
+                <div style={{ order: isMobile ? 1 : (imageLeft ? 1 : 0), paddingTop: isMobile ? 0 : 8 }}>
+                  <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 22 : 30, fontWeight: 700, lineHeight: 1.15, margin: '0 0 6px' }}>
+                    {project.title}
+                  </h2>
+                  <div style={{ color: GREY, fontSize: 11, letterSpacing: 0.5, marginBottom: 20, opacity: 0.7 }}>{project.sub}</div>
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                    <div style={{ width: 40, height: 2, background: GOLD }} />
+                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: `${GOLD}55`, border: `1px solid ${GOLD}` }} />
+                  </div>
+
+                  <p style={{ color: GREY, fontSize: isMobile ? 13 : 14, lineHeight: 1.9, marginBottom: 24 }}>
+                    {project.description}
+                  </p>
+
+                  <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: 16, marginBottom: 24 }}>
+                    <p style={{ color: GOLD, fontSize: 13, fontStyle: 'italic', lineHeight: 1.7, margin: 0 }}>
+                      {project.quote}
+                    </p>
+                  </div>
+
+                  {/* Tags */}
+                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                    <span style={{ border: `1px solid ${DARK_BORDER}`, color: GREY, fontSize: 9, letterSpacing: 2, padding: '4px 12px', textTransform: 'uppercase' }}>
+                      {project.category}
+                    </span>
+                    <span style={{ border: `1px solid ${DARK_BORDER}`, color: GREY, fontSize: 9, letterSpacing: 2, padding: '4px 12px', textTransform: 'uppercase' }}>
+                      {project.year}
+                    </span>
+                    <span style={{ border: `1px solid ${GOLD}44`, color: GOLD, fontSize: 9, letterSpacing: 2, padding: '4px 12px', textTransform: 'uppercase' }}>
+                      MEO Development
+                    </span>
+                  </div>
                 </div>
               </div>
+
+              {/* Photo gallery row */}
+              {project.gallery.length > 0 && (
+                <div style={{ marginTop: isMobile ? 4 : 8 }}>
+                  <ProjectGallery images={project.gallery} isMobile={isMobile} />
+                </div>
+              )}
 
             </div>
           );
