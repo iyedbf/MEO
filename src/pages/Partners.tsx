@@ -23,40 +23,6 @@ function LogoMassMob({ size = 1 }: { size?: number }) {
   );
 }
 
-function LogoElve({ size = 1 }: { size?: number }) {
-  const c = '#C8B89A';
-  return (
-    <div style={{ display: 'inline-flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-      {/* Double-ring "ee" symbol */}
-      <div style={{ display: 'flex', gap: -6 * size, marginBottom: 8 * size }}>
-        {[0, 1].map(k => (
-          <div key={k} style={{
-            width: 22 * size, height: 22 * size, borderRadius: '50%',
-            border: `2.5px solid ${c}`,
-            marginLeft: k === 1 ? -10 * size : 0,
-            position: 'relative',
-          }}>
-            <div style={{
-              position: 'absolute', top: '50%', left: '50%',
-              transform: 'translate(-50%, -50%)',
-              width: 10 * size, height: 10 * size, borderRadius: '50%',
-              background: 'transparent', border: `1.5px solid ${c}44`,
-            }} />
-          </div>
-        ))}
-      </div>
-      <div style={{
-        fontSize: 22 * size, fontWeight: 300, letterSpacing: 3 * size,
-        color: c, lineHeight: 1, textTransform: 'lowercase',
-      }}>
-        elve<span style={{ fontWeight: 700 }}>·</span>luxury
-      </div>
-      <div style={{ color: `${c}88`, fontSize: 7.5 * size, letterSpacing: 2.5 * size, textTransform: 'uppercase', marginTop: 5, fontWeight: 500 }}>
-        Premium Lifestyle Brand
-      </div>
-    </div>
-  );
-}
 
 function LogoMobizu({ size = 1 }: { size?: number }) {
   const c = '#B8A060';
@@ -83,7 +49,7 @@ function LogoMobizu({ size = 1 }: { size?: number }) {
   );
 }
 
-const LOGOS = [LogoMassMob, LogoElve, LogoMobizu];
+const LOGOS = [LogoMassMob, LogoMobizu];
 
 /* ─── Data ─────────────────────────────────────────────── */
 
@@ -98,17 +64,6 @@ const featuredPartners = [
     since: '2023',
     accent: GOLD,
     projects: ['Greenwich Residence', 'French Classical Manor', "Gentleman's Study"],
-  },
-  {
-    name: 'elve luxury',
-    tagline: 'Premium Luxury Goods & Lifestyle Brand',
-    location: 'Turkey',
-    description: 'elve luxury is a distinguished premium brand specialising in high-end lifestyle products and luxury goods. Known for their refined aesthetic and uncompromising quality standards, elve luxury brings an elevated sensibility to every collaboration. Their partnership with MEO Development reinforces our commitment to surrounding clients with only the finest brands and curated luxury experiences.',
-    url: 'https://elvemobilya.com/',
-    category: 'Luxury Lifestyle Brand',
-    since: '2024',
-    accent: '#C8B89A',
-    projects: ['Private Residences', 'Bespoke Interiors'],
   },
   {
     name: 'MOBiZU Project',

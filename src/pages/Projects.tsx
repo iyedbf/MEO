@@ -22,12 +22,50 @@ function VideoCard({ video, height }: { video: { src: string; label: string; sub
   );
 }
 
-const showcaseProjects = [
+const ongoingProjects = [
+  {
+    id: '01',
+    title: 'Greenwich Mansion',
+    sub: 'Grand Residence — New Jersey, USA',
+    category: 'Mansion',
+    year: '2025',
+    description: 'An extraordinary classical manor drawing inspiration from 18th-century French architecture. Royal blue velvet sofas, hand-carved boiserie panelling, twin ornate crystal chandeliers and intricate wainscoting create an atmosphere of timeless aristocratic grandeur across every room and corridor.',
+    quote: '"Every detail tells its own story."',
+    hero: '/images/gw2-living-blue-bright.png',
+    gallery: [
+      '/images/gw2-dining-chandelier.png',
+      '/images/gw2-living-aerial2.png',
+      '/images/gw2-kitchen-island.png',
+      '/images/gw2-hallway-crystal.png',
+      '/images/gw2-kitchen-classic.png',
+      '/images/gw2-staircase.png',
+    ],
+  },
+  {
+    id: '02',
+    title: 'Modern Open-Plan Estate',
+    sub: 'Residential Complex — Connecticut, USA',
+    category: 'Residential',
+    year: '2025',
+    description: 'A multi-level contemporary residence designed for both comfort and functionality. The lower level features a vast open-plan living space with marble waterfall island, while bespoke walk-in dressing rooms and a large-format sectional lounge define the upper floors with effortless elegance.',
+    quote: '"Form and function in perfect balance."',
+    hero: '/images/gw2-basement.png',
+    gallery: [
+      '/images/gw2-sofa-sectional.png',
+      '/images/gw2-closet-gray.png',
+      '/images/gw2-closet-sage.png',
+      '/images/gw2-closet-dark.png',
+      '/images/gw2-kitchen-black-chan.png',
+    ],
+  },
+];
+
+const completedProjects = [
   {
     id: '01',
     title: 'Surfside Residence',
-    sub: 'Private Villa — Miami, Florida, USA',
-    category: 'Residential',
+    sub: 'Penthouse — Miami, Florida, USA',
+    category: 'Penthouse',
     year: '2024',
     description: 'A spectacular beachfront villa where architecture and nature converge. The floating steel staircase with warm LED underlighting becomes the sculptural centrepiece of the home, while the ocean-facing kitchen — anchored by a luminous onyx island — frames the Atlantic as a living artwork.',
     quote: '"Perfection lies in every detail."',
@@ -40,70 +78,35 @@ const showcaseProjects = [
   },
   {
     id: '02',
-    title: 'Classical French Manor',
-    sub: 'Grand Residence — New Jersey, USA',
-    category: 'Mansion',
-    year: '2025',
-    description: 'An extraordinary classical manor drawing inspiration from 18th-century French architecture. Royal blue velvet sofas, hand-carved boiserie panelling, ornate crystal chandeliers and intricate wainscoting create an atmosphere of timeless aristocratic grandeur across every room and corridor.',
-    quote: '"Every detail tells its own story."',
-    hero: '/images/new-living-blue-wide.png',
-    gallery: [
-      '/images/new-dining-crystal.png',
-      '/images/new-dining-ornate.png',
-      '/images/new-kitchen-classic.png',
-      '/images/new-hallway-crystal.png',
-      '/images/new-kitchen-island.png',
-      '/images/new-dining-front.png',
-    ],
-  },
-  {
-    id: '03',
     title: 'Gentleman\'s Club & Library',
     sub: 'Private Residence — Connecticut, USA',
     category: 'Residential',
     year: '2024',
     description: 'A sophisticated private club experience within a residence. Dark mahogany millwork, Chesterfield leather seating and coffered ceilings establish the mood, while custom-built bookcases with theatrical pink LED backlighting create a striking counterpoint to the deep, masculine palette.',
     quote: '"Elegance shaped with precision."',
-    hero: '/images/new-cigar-room.png',
+    hero: '/images/gw2-study-cigar.png',
     gallery: [
-      '/images/new-library-pink.png',
-      '/images/new-study-office.png',
-      '/images/new-study-entry.png',
-      '/images/new-study-angle.png',
+      '/images/gw2-study-library.png',
+      '/images/gw2-study-shelves.png',
+      '/images/gw2-study-entry.png',
+      '/images/gw2-study-office.png',
     ],
   },
   {
-    id: '04',
-    title: 'Modern Open-Plan Estate',
-    sub: 'Residential Complex — Connecticut, USA',
-    category: 'Residential',
-    year: '2025',
-    description: 'A multi-level contemporary residence designed for both comfort and functionality. The lower level features a vast open-plan living space with marble waterfall island, while bespoke walk-in dressing rooms and a large-format sectional lounge define the upper floors with effortless elegance.',
-    quote: '"Form and function in perfect balance."',
-    hero: '/images/new-modern-basement.png',
-    gallery: [
-      '/images/new-sofa-sectional.png',
-      '/images/new-closet-gray.png',
-      '/images/new-closet-dark.png',
-      '/images/new-hallway-damask.png',
-    ],
-  },
-  {
-    id: '05',
+    id: '03',
     title: 'Luxury Master Suite',
     sub: 'Premium Interior — Private Residence',
     category: 'Interior Design',
     year: '2024',
     description: 'An extraordinary master bathroom suite entirely clad in dramatic black marble with gold veining. A frameless glass wet room, floating double-vanity in contrasting walnut and backlit ceiling coffers deliver a hotel-grade spa experience within a private home.',
     quote: '"Luxury is an art form."',
-    hero: '/images/new-bath-vanity.png',
+    hero: '/images/gw2-bath-vanity.png',
     gallery: [
-      '/images/new-bath-shower.png',
-      '/images/new-bath-marble2.png',
+      '/images/gw2-bath-shower.png',
     ],
   },
   {
-    id: '06',
+    id: '04',
     title: 'Teal Dining & Reading Room',
     sub: 'Interior Renovation — Private Home',
     category: 'Renovation',
@@ -219,9 +222,23 @@ export default function Projects() {
         </p>
       </div>
 
-      {/* Project Sections */}
+      {/* ── ONGOING PROJECTS ── */}
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '0 16px' : '0 32px' }}>
-        {showcaseProjects.map((project, i) => {
+
+        {/* Section title — Ongoing */}
+        <div style={{ paddingTop: isMobile ? 12 : 24, paddingBottom: isMobile ? 24 : 40, display: 'flex', alignItems: 'center', gap: 20 }}>
+          <div>
+            <div style={{ color: GOLD, fontSize: 10, letterSpacing: 4, textTransform: 'uppercase', fontWeight: 600, marginBottom: 6 }}>
+              {t('Currently Active', 'Devam Eden')}
+            </div>
+            <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 26 : 36, fontWeight: 700, margin: 0, lineHeight: 1.1 }}>
+              {t('Ongoing Projects', 'Devam Eden Projeler')}
+            </h2>
+          </div>
+          <div style={{ flex: 1, height: 1, background: `linear-gradient(to right, ${GOLD}66, transparent)` }} />
+        </div>
+
+        {ongoingProjects.map((project, i) => {
           const imageLeft = i % 2 === 0;
           return (
             <div key={i} style={{
@@ -229,96 +246,127 @@ export default function Projects() {
               paddingBottom: isMobile ? 32 : 56,
               borderBottom: `1px solid ${DARK_BORDER}`,
             }}>
-
-              {/* Project number + category header */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: isMobile ? 20 : 28 }}>
                 <span style={{ color: `${GOLD}33`, fontSize: isMobile ? 36 : 52, fontWeight: 700, lineHeight: 1, fontFamily: 'Georgia, serif' }}>{project.id}</span>
                 <div style={{ flex: 1, height: 1, background: DARK_BORDER }} />
                 <span style={{ color: GOLD, fontSize: 9, letterSpacing: 4, textTransform: 'uppercase', fontWeight: 600 }}>{project.category}</span>
                 <span style={{ color: `${GOLD}55`, fontSize: 9, letterSpacing: 2 }}>· {project.year}</span>
               </div>
-
-              {/* Main content grid: hero image + info */}
               <div style={{
                 display: 'grid',
                 gridTemplateColumns: isMobile ? '1fr' : (imageLeft ? '3fr 2fr' : '2fr 3fr'),
-                gap: isMobile ? 20 : 40,
-                alignItems: 'start',
-                marginBottom: isMobile ? 12 : 20,
+                gap: isMobile ? 20 : 40, alignItems: 'start', marginBottom: isMobile ? 12 : 20,
               }}>
-
-                {/* Hero image */}
                 <div style={{ order: isMobile ? 0 : (imageLeft ? 0 : 1) }}>
-                  <div style={{
-                    position: 'relative', overflow: 'hidden',
-                    height: isMobile ? 240 : 380,
-                    border: `1px solid ${DARK_BORDER}`,
-                  }}>
-                    <img
-                      src={project.hero}
-                      alt={project.title}
+                  <div style={{ position: 'relative', overflow: 'hidden', height: isMobile ? 240 : 380, border: `1px solid ${DARK_BORDER}` }}>
+                    <img src={project.hero} alt={project.title}
                       style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
                       onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
-                      onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
-                    />
-                    {/* Category badge top-left */}
-                    <div style={{ position: 'absolute', top: 14, left: 14, color: OFF_WHITE, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', background: 'rgba(0,0,0,0.6)', padding: '4px 10px' }}>
-                      {project.category}
-                    </div>
-                    {/* Year badge top-right */}
-                    <div style={{ position: 'absolute', top: 14, right: 14, background: GOLD, color: '#0A0A0A', fontSize: 10, fontWeight: 700, padding: '4px 12px', letterSpacing: 1 }}>
-                      {project.year}
-                    </div>
-                    {/* Gold corner accent */}
+                      onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
+                    <div style={{ position: 'absolute', top: 14, left: 14, color: OFF_WHITE, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', background: 'rgba(0,0,0,0.6)', padding: '4px 10px' }}>{project.category}</div>
+                    <div style={{ position: 'absolute', top: 14, right: 14, background: GOLD, color: '#0A0A0A', fontSize: 10, fontWeight: 700, padding: '4px 12px', letterSpacing: 1 }}>{project.year}</div>
                     <div style={{ position: 'absolute', bottom: 0, left: 0, width: 48, height: 2, background: GOLD }} />
                     <div style={{ position: 'absolute', bottom: 0, left: 0, width: 2, height: 48, background: GOLD }} />
                   </div>
                 </div>
-
-                {/* Text info */}
                 <div style={{ order: isMobile ? 1 : (imageLeft ? 1 : 0), paddingTop: isMobile ? 0 : 8 }}>
-                  <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 22 : 30, fontWeight: 700, lineHeight: 1.15, margin: '0 0 6px' }}>
-                    {project.title}
-                  </h2>
+                  <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 22 : 30, fontWeight: 700, lineHeight: 1.15, margin: '0 0 6px' }}>{project.title}</h2>
                   <div style={{ color: GREY, fontSize: 11, letterSpacing: 0.5, marginBottom: 20, opacity: 0.7 }}>{project.sub}</div>
-
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
                     <div style={{ width: 40, height: 2, background: GOLD }} />
                     <div style={{ width: 6, height: 6, borderRadius: '50%', background: `${GOLD}55`, border: `1px solid ${GOLD}` }} />
                   </div>
-
-                  <p style={{ color: GREY, fontSize: isMobile ? 13 : 14, lineHeight: 1.9, marginBottom: 24 }}>
-                    {project.description}
-                  </p>
-
+                  <p style={{ color: GREY, fontSize: isMobile ? 13 : 14, lineHeight: 1.9, marginBottom: 24 }}>{project.description}</p>
                   <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: 16, marginBottom: 24 }}>
-                    <p style={{ color: GOLD, fontSize: 13, fontStyle: 'italic', lineHeight: 1.7, margin: 0 }}>
-                      {project.quote}
-                    </p>
+                    <p style={{ color: GOLD, fontSize: 13, fontStyle: 'italic', lineHeight: 1.7, margin: 0 }}>{project.quote}</p>
                   </div>
-
-                  {/* Tags */}
                   <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                    <span style={{ border: `1px solid ${DARK_BORDER}`, color: GREY, fontSize: 9, letterSpacing: 2, padding: '4px 12px', textTransform: 'uppercase' }}>
-                      {project.category}
-                    </span>
-                    <span style={{ border: `1px solid ${DARK_BORDER}`, color: GREY, fontSize: 9, letterSpacing: 2, padding: '4px 12px', textTransform: 'uppercase' }}>
-                      {project.year}
-                    </span>
-                    <span style={{ border: `1px solid ${GOLD}44`, color: GOLD, fontSize: 9, letterSpacing: 2, padding: '4px 12px', textTransform: 'uppercase' }}>
-                      MEO Development
-                    </span>
+                    <span style={{ border: `1px solid ${DARK_BORDER}`, color: GREY, fontSize: 9, letterSpacing: 2, padding: '4px 12px', textTransform: 'uppercase' }}>{project.category}</span>
+                    <span style={{ border: `1px solid ${DARK_BORDER}`, color: GREY, fontSize: 9, letterSpacing: 2, padding: '4px 12px', textTransform: 'uppercase' }}>{project.year}</span>
+                    <span style={{ border: `1px solid ${GOLD}44`, color: GOLD, fontSize: 9, letterSpacing: 2, padding: '4px 12px', textTransform: 'uppercase' }}>MEO Development</span>
                   </div>
                 </div>
               </div>
-
-              {/* Photo gallery row */}
               {project.gallery.length > 0 && (
                 <div style={{ marginTop: isMobile ? 4 : 8 }}>
                   <ProjectGallery images={project.gallery} isMobile={isMobile} />
                 </div>
               )}
+            </div>
+          );
+        })}
+      </div>
 
+      {/* ── COMPLETED PROJECTS ── */}
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '0 16px' : '0 32px' }}>
+
+        {/* Section title — Completed */}
+        <div style={{ paddingTop: isMobile ? 40 : 72, paddingBottom: isMobile ? 24 : 40, display: 'flex', alignItems: 'center', gap: 20 }}>
+          <div>
+            <div style={{ color: GREY, fontSize: 10, letterSpacing: 4, textTransform: 'uppercase', fontWeight: 600, marginBottom: 6, opacity: 0.7 }}>
+              {t('Delivered', 'Tamamlandı')}
+            </div>
+            <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 26 : 36, fontWeight: 700, margin: 0, lineHeight: 1.1 }}>
+              {t('Completed Projects', 'Tamamlanan Projeler')}
+            </h2>
+          </div>
+          <div style={{ flex: 1, height: 1, background: `linear-gradient(to right, ${DARK_BORDER}, transparent)` }} />
+        </div>
+
+        {completedProjects.map((project, i) => {
+          const imageLeft = i % 2 === 0;
+          return (
+            <div key={i} style={{
+              paddingTop: isMobile ? 32 : 56,
+              paddingBottom: isMobile ? 32 : 56,
+              borderBottom: `1px solid ${DARK_BORDER}`,
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: isMobile ? 20 : 28 }}>
+                <span style={{ color: `${GOLD}33`, fontSize: isMobile ? 36 : 52, fontWeight: 700, lineHeight: 1, fontFamily: 'Georgia, serif' }}>{project.id}</span>
+                <div style={{ flex: 1, height: 1, background: DARK_BORDER }} />
+                <span style={{ color: GOLD, fontSize: 9, letterSpacing: 4, textTransform: 'uppercase', fontWeight: 600 }}>{project.category}</span>
+                <span style={{ color: `${GOLD}55`, fontSize: 9, letterSpacing: 2 }}>· {project.year}</span>
+              </div>
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: isMobile ? '1fr' : (imageLeft ? '3fr 2fr' : '2fr 3fr'),
+                gap: isMobile ? 20 : 40, alignItems: 'start', marginBottom: isMobile ? 12 : 20,
+              }}>
+                <div style={{ order: isMobile ? 0 : (imageLeft ? 0 : 1) }}>
+                  <div style={{ position: 'relative', overflow: 'hidden', height: isMobile ? 240 : 380, border: `1px solid ${DARK_BORDER}` }}>
+                    <img src={project.hero} alt={project.title}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
+                      onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
+                      onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
+                    <div style={{ position: 'absolute', top: 14, left: 14, color: OFF_WHITE, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', background: 'rgba(0,0,0,0.6)', padding: '4px 10px' }}>{project.category}</div>
+                    <div style={{ position: 'absolute', top: 14, right: 14, background: GOLD, color: '#0A0A0A', fontSize: 10, fontWeight: 700, padding: '4px 12px', letterSpacing: 1 }}>{project.year}</div>
+                    <div style={{ position: 'absolute', bottom: 0, left: 0, width: 48, height: 2, background: GOLD }} />
+                    <div style={{ position: 'absolute', bottom: 0, left: 0, width: 2, height: 48, background: GOLD }} />
+                  </div>
+                </div>
+                <div style={{ order: isMobile ? 1 : (imageLeft ? 1 : 0), paddingTop: isMobile ? 0 : 8 }}>
+                  <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 22 : 30, fontWeight: 700, lineHeight: 1.15, margin: '0 0 6px' }}>{project.title}</h2>
+                  <div style={{ color: GREY, fontSize: 11, letterSpacing: 0.5, marginBottom: 20, opacity: 0.7 }}>{project.sub}</div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                    <div style={{ width: 40, height: 2, background: GOLD }} />
+                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: `${GOLD}55`, border: `1px solid ${GOLD}` }} />
+                  </div>
+                  <p style={{ color: GREY, fontSize: isMobile ? 13 : 14, lineHeight: 1.9, marginBottom: 24 }}>{project.description}</p>
+                  <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: 16, marginBottom: 24 }}>
+                    <p style={{ color: GOLD, fontSize: 13, fontStyle: 'italic', lineHeight: 1.7, margin: 0 }}>{project.quote}</p>
+                  </div>
+                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                    <span style={{ border: `1px solid ${DARK_BORDER}`, color: GREY, fontSize: 9, letterSpacing: 2, padding: '4px 12px', textTransform: 'uppercase' }}>{project.category}</span>
+                    <span style={{ border: `1px solid ${DARK_BORDER}`, color: GREY, fontSize: 9, letterSpacing: 2, padding: '4px 12px', textTransform: 'uppercase' }}>{project.year}</span>
+                    <span style={{ border: `1px solid ${GOLD}44`, color: GOLD, fontSize: 9, letterSpacing: 2, padding: '4px 12px', textTransform: 'uppercase' }}>MEO Development</span>
+                  </div>
+                </div>
+              </div>
+              {project.gallery.length > 0 && (
+                <div style={{ marginTop: isMobile ? 4 : 8 }}>
+                  <ProjectGallery images={project.gallery} isMobile={isMobile} />
+                </div>
+              )}
             </div>
           );
         })}
