@@ -1,4 +1,4 @@
-import { GOLD, DARK_BORDER, OFF_WHITE, CHARCOAL } from '../theme';
+import { GOLD, DARK_BORDER, OFF_WHITE, GREY } from '../theme';
 import { useResponsive } from '../hooks/useResponsive';
 
 interface PageHeaderProps {
@@ -11,89 +11,125 @@ interface PageHeaderProps {
 
 export default function PageHeader({ eyebrow, titleLight, titleBold, boldFirst = false }: PageHeaderProps) {
   const { isMobile } = useResponsive();
+
+  const watermarkLetter = (titleBold || titleLight).charAt(0).toUpperCase();
+
   return (
     <section style={{
-      background: CHARCOAL,
+      background: '#0A0A0A',
       borderBottom: `1px solid ${DARK_BORDER}`,
-      padding: isMobile ? '56px 16px 48px' : '90px 32px 80px',
+      padding: isMobile ? '32px 16px 28px' : '44px 32px 36px',
       position: 'relative',
       overflow: 'hidden',
     }}>
 
-      {/* Top decorative line full width */}
-      <div style={{ position: 'absolute', top: 28, left: 32, right: 32, height: 1, background: `${DARK_BORDER}` }} />
-
-      {/* Gold accent left bar */}
-      <div style={{ position: 'absolute', top: 0, left: 0, width: 3, height: '100%', background: `linear-gradient(180deg, transparent, ${GOLD}, transparent)` }} />
-
-      {/* Right vertical line */}
-      <div style={{ position: 'absolute', top: 28, right: 32, width: 1, bottom: 28, background: `${DARK_BORDER}` }} />
-
-      {/* Top-left corner bracket */}
-      <div style={{ position: 'absolute', top: 20, left: 20 }}>
-        <div style={{ width: 20, height: 2, background: GOLD }} />
-        <div style={{ width: 2, height: 20, background: GOLD, marginTop: -2 }} />
-      </div>
-
-      {/* Bottom-right corner bracket */}
-      <div style={{ position: 'absolute', bottom: 20, right: 20 }}>
-        <div style={{ width: 20, height: 2, background: GOLD, marginLeft: 'auto' }} />
-        <div style={{ width: 2, height: 20, background: GOLD, marginLeft: 'auto', marginTop: -2 }} />
-      </div>
-
-      {/* Small decorative dots row */}
+      {/* Gold left accent bar — thick */}
       <div style={{
-        position: 'absolute', top: 28, left: '50%', transform: 'translateX(-50%)',
-        display: 'flex', gap: 6, alignItems: 'center',
+        position: 'absolute', top: 0, left: 0,
+        width: 5, height: '100%',
+        background: GOLD,
+      }} />
+
+      {/* Huge faint watermark letter */}
+      <div style={{
+        position: 'absolute',
+        right: isMobile ? -10 : 40,
+        top: '50%',
+        transform: 'translateY(-50%)',
+        fontSize: isMobile ? 120 : 180,
+        fontWeight: 900,
+        color: `${GOLD}07`,
+        lineHeight: 1,
+        userSelect: 'none',
+        pointerEvents: 'none',
+        fontFamily: 'Georgia, serif',
+        letterSpacing: -8,
       }}>
-        {[...Array(5)].map((_, i) => (
-          <div key={i} style={{
-            width: i === 2 ? 6 : 3,
-            height: i === 2 ? 6 : 3,
-            borderRadius: '50%',
-            background: i === 2 ? GOLD : `${GOLD}55`,
-          }} />
-        ))}
+        {watermarkLetter}
       </div>
 
-      {/* Bottom decorative line */}
-      <div style={{ position: 'absolute', bottom: 28, left: 32, right: 32, height: 1, background: DARK_BORDER }} />
+      {/* Diagonal gold stripe (decorative) */}
+      <div style={{
+        position: 'absolute',
+        top: 0, right: isMobile ? 60 : 180,
+        width: 1, height: '100%',
+        background: `linear-gradient(180deg, transparent, ${GOLD}22, transparent)`,
+        transform: 'skewX(-20deg)',
+      }} />
+      <div style={{
+        position: 'absolute',
+        top: 0, right: isMobile ? 80 : 210,
+        width: 1, height: '100%',
+        background: `linear-gradient(180deg, transparent, ${GOLD}10, transparent)`,
+        transform: 'skewX(-20deg)',
+      }} />
 
-      {/* Content */}
-      <div style={{ maxWidth: 1280, margin: '0 auto', position: 'relative' }}>
+      {/* Content — horizontal layout on desktop */}
+      <div style={{
+        maxWidth: 1280, margin: '0 auto', position: 'relative',
+        display: 'flex',
+        flexDirection: isMobile ? 'column' : 'row',
+        alignItems: isMobile ? 'flex-start' : 'center',
+        gap: isMobile ? 10 : 32,
+        paddingLeft: 20,
+      }}>
 
-        {/* Eyebrow */}
+        {/* Eyebrow badge */}
         <div style={{
-          display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20,
+          display: 'inline-flex', alignItems: 'center', gap: 8,
+          background: `${GOLD}14`,
+          border: `1px solid ${GOLD}33`,
+          padding: '5px 14px',
+          flexShrink: 0,
         }}>
-          <div style={{ width: 32, height: 1, background: GOLD }} />
-          <div style={{ color: GOLD, fontSize: 10, letterSpacing: 5, textTransform: 'uppercase', fontWeight: 600 }}>
+          <div style={{ width: 4, height: 4, background: GOLD, borderRadius: '50%' }} />
+          <span style={{ color: GOLD, fontSize: 9, letterSpacing: 4, textTransform: 'uppercase', fontWeight: 700 }}>
             {eyebrow}
-          </div>
+          </span>
         </div>
 
-        {/* Main title */}
-        <h1 style={{ color: OFF_WHITE, fontSize: 'clamp(36px, 5vw, 58px)', fontWeight: 200, margin: 0, lineHeight: 1.1 }}>
+        {/* Separator line (desktop only) */}
+        {!isMobile && (
+          <div style={{ width: 1, height: 36, background: DARK_BORDER, flexShrink: 0 }} />
+        )}
+
+        {/* Title */}
+        <h1 style={{
+          margin: 0,
+          fontSize: isMobile ? 'clamp(26px, 7vw, 36px)' : 'clamp(28px, 3.5vw, 46px)',
+          fontWeight: 200,
+          lineHeight: 1.15,
+          color: OFF_WHITE,
+          letterSpacing: -0.5,
+        }}>
           {boldFirst ? (
             <>
-              <span style={{ color: GOLD, fontWeight: 700 }}>{titleBold}</span>
-              {' '}{titleLight}
+              <span style={{ color: GOLD, fontWeight: 800 }}>{titleBold}</span>
+              {titleLight ? <span style={{ color: GREY }}> {titleLight}</span> : null}
             </>
           ) : (
             <>
-              {titleLight}{' '}
-              <span style={{ color: GOLD, fontWeight: 700 }}>{titleBold}</span>
+              {titleLight ? <span>{titleLight} </span> : null}
+              <span style={{ color: GOLD, fontWeight: 800 }}>{titleBold}</span>
             </>
           )}
         </h1>
 
-        {/* Underline accent */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 24 }}>
-          <div style={{ width: 56, height: 2, background: GOLD }} />
-          <div style={{ width: 8, height: 8, border: `1.5px solid ${GOLD}`, borderRadius: '50%' }} />
-          <div style={{ width: 24, height: 1, background: `${GOLD}55` }} />
-        </div>
+        {/* Desktop right accent */}
+        {!isMobile && (
+          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+            <div style={{ width: 24, height: 1, background: `${GOLD}44` }} />
+            <div style={{ width: 5, height: 5, background: GOLD, transform: 'rotate(45deg)' }} />
+            <div style={{ width: 40, height: 1, background: `${GOLD}22` }} />
+          </div>
+        )}
       </div>
+
+      {/* Bottom gold line */}
+      <div style={{
+        position: 'absolute', bottom: 0, left: 5, right: 0,
+        height: 1, background: `linear-gradient(90deg, ${GOLD}66, transparent 60%)`,
+      }} />
     </section>
   );
 }
