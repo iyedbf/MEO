@@ -9,9 +9,13 @@ const navLinks = [
   { path: '/about',     en: 'About',       tr: 'Hakkımızda' },
   { path: '/services',  en: 'Services',    tr: 'Hizmetler' },
   { path: '/design',    en: 'Design & Dev',tr: 'Tasarım' },
-  { path: '/projects',  en: 'In Progress Projects',  tr: 'İleride Yapılacak Projeler' },
   { path: '/partners',  en: 'Partners',    tr: 'Ortaklar' },
   { path: '/contact',   en: 'Contact',     tr: 'İletişim' },
+];
+
+const projectsDropdown = [
+  { path: '/projects#ongoing',   en: 'In Progress',   tr: 'Devam Eden' },
+  { path: '/projects#completed', en: 'Completed',     tr: 'Tamamlanan' },
 ];
 
 const FlagButtons = ({ lang, setLang }: { lang: string; setLang: (l: 'en' | 'tr') => void }) => (
@@ -37,8 +41,11 @@ const FlagButtons = ({ lang, setLang }: { lang: string; setLang: (l: 'en' | 'tr'
 export default function Navbar() {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [projectsOpen, setProjectsOpen] = useState(false);
+  const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
   const { lang, setLang, t } = useLang();
   const { isMobile } = useResponsive();
+  const isProjectsActive = location.pathname === '/projects';
 
   return (
     <nav style={{ background: BLACK, borderBottom: `1px solid ${DARK_BORDER}`, position: 'sticky', top: 0, zIndex: 1000 }}>
@@ -62,8 +69,70 @@ export default function Navbar() {
 
         {/* Desktop Nav */}
         {!isMobile && (
-          <div style={{ display: 'flex', gap: 2 }}>
-            {navLinks.map(link => {
+          <div style={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+            {/* Links before Projects */}
+            {navLinks.slice(0, 4).map(link => {
+              const active = location.pathname === link.path;
+              return (
+                <Link key={link.path} to={link.path} style={{
+                  color: active ? GOLD : GREY, fontSize: 11, letterSpacing: 1.5,
+                  textTransform: 'uppercase', padding: '8px 12px',
+                  borderBottom: active ? `2px solid ${GOLD}` : '2px solid transparent',
+                  fontWeight: active ? 600 : 400, transition: 'color 0.2s', textDecoration: 'none',
+                }}>
+                  {lang === 'tr' ? link.tr : link.en}
+                </Link>
+              );
+            })}
+
+            {/* Projects dropdown */}
+            <div
+              style={{ position: 'relative' }}
+              onMouseEnter={() => setProjectsOpen(true)}
+              onMouseLeave={() => setProjectsOpen(false)}
+            >
+              <button style={{
+                background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4,
+                color: isProjectsActive ? GOLD : GREY, fontSize: 11, letterSpacing: 1.5,
+                textTransform: 'uppercase', padding: '8px 12px',
+                borderBottom: isProjectsActive ? `2px solid ${GOLD}` : '2px solid transparent',
+                fontWeight: isProjectsActive ? 600 : 400,
+              }}>
+                {t('Projects', 'Projeler')}
+                <span style={{ fontSize: 8, marginTop: 1, color: projectsOpen ? GOLD : GREY }}>▼</span>
+              </button>
+
+              {/* Dropdown menu */}
+              {projectsOpen && (
+                <div style={{
+                  position: 'absolute', top: '100%', left: 0,
+                  background: '#111', border: `1px solid ${DARK_BORDER}`,
+                  minWidth: 180, zIndex: 2000,
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.6)',
+                }}>
+                  {projectsDropdown.map(item => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setProjectsOpen(false)}
+                      style={{
+                        display: 'block', color: GREY, fontSize: 11, letterSpacing: 1.5,
+                        textTransform: 'uppercase', padding: '14px 18px',
+                        borderBottom: `1px solid ${DARK_BORDER}`, textDecoration: 'none',
+                        transition: 'color 0.2s, background 0.2s',
+                      }}
+                      onMouseEnter={e => { e.currentTarget.style.color = GOLD; e.currentTarget.style.background = `${GOLD}11`; }}
+                      onMouseLeave={e => { e.currentTarget.style.color = GREY; e.currentTarget.style.background = 'transparent'; }}
+                    >
+                      {lang === 'tr' ? item.tr : item.en}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Links after Projects */}
+            {navLinks.slice(4).map(link => {
               const active = location.pathname === link.path;
               return (
                 <Link key={link.path} to={link.path} style={{
@@ -113,7 +182,51 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && isMobile && (
         <div style={{ background: CHARCOAL, borderTop: `1px solid ${DARK_BORDER}`, padding: '16px' }}>
-          {navLinks.map(link => (
+          {navLinks.slice(0, 4).map(link => (
+            <Link key={link.path} to={link.path} onClick={() => setMenuOpen(false)} style={{
+              display: 'block', color: location.pathname === link.path ? GOLD : GREY,
+              fontSize: 14, letterSpacing: 1.5, textTransform: 'uppercase',
+              padding: '14px 0', borderBottom: `1px solid ${DARK_BORDER}`, textDecoration: 'none',
+            }}>
+              {lang === 'tr' ? link.tr : link.en}
+            </Link>
+          ))}
+
+          {/* Projects accordion in mobile */}
+          <div>
+            <button
+              onClick={() => setMobileProjectsOpen(!mobileProjectsOpen)}
+              style={{
+                width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                background: 'none', border: 'none', borderBottom: `1px solid ${DARK_BORDER}`,
+                color: isProjectsActive ? GOLD : GREY, fontSize: 14, letterSpacing: 1.5,
+                textTransform: 'uppercase', padding: '14px 0', cursor: 'pointer',
+              }}
+            >
+              {t('Projects', 'Projeler')}
+              <span style={{ fontSize: 10, color: mobileProjectsOpen ? GOLD : GREY }}>{mobileProjectsOpen ? '▲' : '▼'}</span>
+            </button>
+            {mobileProjectsOpen && (
+              <div style={{ background: '#111', borderBottom: `1px solid ${DARK_BORDER}` }}>
+                {projectsDropdown.map(item => (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => { setMenuOpen(false); setMobileProjectsOpen(false); }}
+                    style={{
+                      display: 'block', color: GREY, fontSize: 12, letterSpacing: 1.5,
+                      textTransform: 'uppercase', padding: '12px 20px',
+                      borderBottom: `1px solid ${DARK_BORDER}`, textDecoration: 'none',
+                    }}
+                  >
+                    — {lang === 'tr' ? item.tr : item.en}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {navLinks.slice(4).map(link => (
             <Link key={link.path} to={link.path} onClick={() => setMenuOpen(false)} style={{
               display: 'block', color: location.pathname === link.path ? GOLD : GREY,
               fontSize: 14, letterSpacing: 1.5, textTransform: 'uppercase',

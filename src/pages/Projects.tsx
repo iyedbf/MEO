@@ -304,7 +304,7 @@ export default function Projects() {
       </div>
 
       {/* ── ONGOING PROJECTS ── */}
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '0 16px' : '0 32px' }}>
+      <div id="ongoing" style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '0 16px' : '0 32px' }}>
 
         {/* Section title — Ongoing */}
         <div style={{ paddingTop: isMobile ? 12 : 24, paddingBottom: isMobile ? 24 : 40, display: 'flex', alignItems: 'center', gap: 20 }}>
@@ -313,7 +313,7 @@ export default function Projects() {
               {t('Currently Active', 'Devam Eden')}
             </div>
             <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 26 : 36, fontWeight: 700, margin: 0, lineHeight: 1.1 }}>
-              {t('Ongoing Projects', 'Devam Eden Projeler')}
+              {t('Projects completed', 'Devam Eden Projeler')}
             </h2>
           </div>
           <div style={{ flex: 1, height: 1, background: `linear-gradient(to right, ${GOLD}66, transparent)` }} />
@@ -379,7 +379,7 @@ export default function Projects() {
       </div>
 
       {/* ── COMPLETED PROJECTS ── */}
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '0 16px' : '0 32px' }}>
+      <div id="completed" style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '0 16px' : '0 32px' }}>
 
         {/* Section title — Completed */}
         <div style={{ paddingTop: isMobile ? 40 : 72, paddingBottom: isMobile ? 24 : 40, display: 'flex', alignItems: 'center', gap: 20 }}>

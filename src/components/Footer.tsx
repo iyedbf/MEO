@@ -10,7 +10,8 @@ const footerLinks = {
   ],
   Company: [
     { label: 'About Us', path: '/about' },
-    { label: 'In Progress Projects', path: '/projects' },
+    { label: 'In Progress', path: '/projects#ongoing' },
+    { label: 'Completed', path: '/projects#completed' },
     { label: 'Partners', path: '/partners' },
     { label: 'Contact', path: '/contact' },
   ],
