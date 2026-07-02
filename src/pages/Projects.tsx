@@ -61,144 +61,96 @@ const ongoingProjects = [
 ];
 
 const completedProjects = [
+  // 2025
   {
-    id: '01',
-    title: 'Surfside Arte Penthouse',
-    sub: 'Luxury Penthouse — Miami, Florida, USA',
-    category: 'Penthouse',
-    year: '2025',
-    description: 'A landmark penthouse in the iconic Surfside Arte tower overlooking the Atlantic. Every space was conceived to frame the ocean view — from the sculptural floating staircase with LED underlighting to the onyx kitchen island that brings the sea inside.',
-    quote: '"Architecture is frozen music."',
-    hero: '/images/new-kitchen-ocean.png',
-    gallery: [
-      '/images/new-stairs-aerial.png',
-      '/images/new-stairs-led.png',
-      '/images/new-stairs-aerial2.png',
-    ],
+    id: '01', year: '2025', category: 'Residence',
+    title: 'Mansion Greenwich',
+    sub: 'Greenwich, Connecticut — USA',
+    description: 'An extraordinary classical manor drawing inspiration from 18th-century French architecture. Royal blue velvet sofas, twin crystal chandeliers and intricate boiserie panelling create timeless aristocratic grandeur.',
+    hero: '/images/cp-mansion-1.jpg',
+    gallery: ['/images/cp-mansion-2.jpg', '/images/cp-mansion-3.jpg', '/images/cp-mansion-4.jpg'],
   },
   {
-    id: '02',
-    title: 'Greenwich Mansion',
-    sub: 'Grand Residence — New York, USA',
-    category: 'Mansion',
-    year: '2025',
-    description: 'An extraordinary classical manor drawing inspiration from 18th-century French architecture. Royal blue velvet sofas, hand-carved boiserie panelling, twin ornate crystal chandeliers and intricate wainscoting create an atmosphere of timeless aristocratic grandeur.',
-    quote: '"Every detail tells its own story."',
-    hero: '/images/gw2-living-blue-bright.png',
-    gallery: [
-      '/images/gw2-dining-chandelier.png',
-      '/images/gw2-living-aerial2.png',
-      '/images/gw2-kitchen-island.png',
-      '/images/gw2-hallway-crystal.png',
-    ],
-  },
-  {
-    id: '03',
+    id: '02', year: '2025', category: 'Restaurant',
     title: 'Terra Brazil Restaurant',
-    sub: 'Hospitality Interior — United Kingdom',
-    category: 'Restaurant',
-    year: '2025',
-    description: 'A vibrant Brazilian dining concept in the heart of the UK. Warm rattan pendant lighting, tufted velvet banquettes and lush tropical greenery create an immersive atmosphere that transports guests to São Paulo while maintaining a distinctly British refinement.',
-    quote: '"Ambiance is half the flavour."',
-    hero: '/images/terra-bar.jpg',
-    gallery: [
-      '/images/terra-dining1.jpg',
-      '/images/terra-dining2.jpg',
-      '/images/terra-dining3.jpg',
-      '/images/terra-interior.jpg',
-    ],
+    sub: 'United Kingdom',
+    description: 'A vibrant Brazilian dining concept — warm rattan pendant lighting, tufted velvet banquettes and tropical greenery deliver a São Paulo atmosphere with British refinement.',
+    hero: '/images/cp-terra-1.jpg',
+    gallery: ['/images/cp-terra-2.jpg', '/images/cp-terra-3.jpg', '/images/cp-terra-4.jpg'],
   },
+  // 2024
   {
-    id: '04',
-    title: 'Merit Hotel Kensington',
-    sub: 'Boutique Hotel — London, United Kingdom',
-    category: 'Hospitality',
-    year: '2024',
-    description: 'A refined boutique hotel interior in the prestigious Kensington district of London. Living green walls with gold accents, polished marble flooring and bespoke millwork combine to deliver a five-star guest experience grounded in British elegance.',
-    quote: '"First impressions are everything."',
-    hero: '/images/merit-lobby.jpg',
-    gallery: [
-      '/images/merit-room1.jpg',
-      '/images/merit-room2.jpg',
-      '/images/merit-room3.jpg',
-      '/images/merit-corridor.jpg',
-    ],
-  },
-  {
-    id: '05',
+    id: '03', year: '2024', category: 'Hospital',
     title: 'Estelit Hospital',
-    sub: 'Healthcare Interior — Istanbul, Türkiye',
-    category: 'Healthcare',
-    year: '2024',
-    description: 'A premium medical facility designed to redefine the patient experience. Clean lines, soft tones and carefully curated materials create a calming environment that reduces anxiety while maintaining the highest standards of clinical functionality and hygiene.',
-    quote: '"Healing begins with the environment."',
-    hero: '/images/estelit-room1.jpg',
-    gallery: [
-      '/images/estelit-room2.jpg',
-      '/images/estelit-room3.jpg',
-      '/images/estelit-room4.jpg',
-    ],
+    sub: 'Istanbul, Türkiye',
+    description: 'A premium healthcare interior redefining the patient experience. Soft tones, clean lines and carefully curated materials create a calming yet clinical space at the highest standards.',
+    hero: '/images/cp-estelit-1.jpg',
+    gallery: ['/images/cp-estelit-2.jpg', '/images/cp-estelit-3.jpg', '/images/cp-estelit-4.jpg'],
   },
   {
-    id: '06',
+    id: '04', year: '2024', category: 'Restaurant',
+    title: 'Metropol Restaurant',
+    sub: 'Istanbul, Türkiye',
+    description: 'A bold commercial restaurant fit-out in the heart of Istanbul, combining bespoke metalwork, polished stone countertops and precision-crafted reception elements for a lasting impression.',
+    hero: '/images/cp-metropol-1.jpg',
+    gallery: ['/images/cp-metropol-2.jpg', '/images/cp-metropol-3.jpg', '/images/cp-metropol-4.jpg'],
+  },
+  {
+    id: '05', year: '2024', category: 'Hotel',
     title: 'Radisson Blu Istanbul',
-    sub: 'Hotel Suite Fit-Out — Istanbul, Türkiye',
-    category: 'Hospitality',
-    year: '2024',
-    description: 'A complete suite refurbishment for the Radisson Blu brand in Istanbul. Contemporary furnishings in warm neutrals, bespoke artwork and precision lighting design create a welcoming and sophisticated atmosphere that exceeds international five-star standards.',
-    quote: '"Comfort is a design decision."',
-    hero: '/images/radblue-living.jpg',
-    gallery: [
-      '/images/radblue-room1.jpg',
-      '/images/radblue-room2.jpg',
-      '/images/radblue-room3.jpg',
-    ],
+    sub: 'Istanbul, Türkiye',
+    description: 'A complete suite refurbishment for the Radisson Blu brand. Contemporary furnishings in warm neutrals, bespoke artwork and precision lighting exceed five-star international standards.',
+    hero: '/images/cp-radblue-1.jpg',
+    gallery: ['/images/cp-radblue-2.jpg', '/images/cp-radblue-3.jpg', '/images/cp-radblue-4.jpg'],
   },
   {
-    id: '07',
+    id: '06', year: '2024', category: 'Hotel',
     title: 'WOW Hotel Istanbul',
-    sub: 'Hotel Interior — Istanbul, Türkiye',
-    category: 'Hospitality',
-    year: '2024',
-    description: 'A full interior fit-out for the WOW Hotel brand in Istanbul. Luxurious guest rooms featuring custom headboards, premium textiles and thoughtfully designed bathroom suites deliver a contemporary luxury experience at the crossroads of Europe and Asia.',
-    quote: '"Every guest deserves a memorable stay."',
-    hero: '/images/wow-bed.jpg',
-    gallery: [
-      '/images/wow-room1.jpg',
-      '/images/wow-room2.jpg',
-      '/images/wow-room3.jpg',
-      '/images/wow-bathroom.jpg',
-    ],
+    sub: 'Istanbul, Türkiye',
+    description: 'A full interior fit-out for the WOW Hotel brand. Luxurious guest rooms with custom headboards and premium textiles deliver a contemporary luxury experience at the crossroads of Europe and Asia.',
+    hero: '/images/cp-wow-1.png',
+    gallery: ['/images/cp-wow-2.png', '/images/cp-wow-3.png', '/images/cp-wow-4.png', '/images/cp-wow-5.png'],
   },
   {
-    id: '08',
-    title: 'Nixon Hotel',
-    sub: 'Boutique Hotel — United Kingdom',
-    category: 'Hospitality',
-    year: '2023',
-    description: 'An intimate boutique hotel project that blends classic British style with contemporary comfort. Bespoke lounge furniture, carefully sourced fabrics and a warm, layered lighting scheme create a destination that guests return to time and again.',
-    quote: '"Style never goes out of fashion."',
-    hero: '/images/nixon-suite.jpg',
-    gallery: [
-      '/images/nixon-room1.jpg',
-      '/images/nixon-room2.jpg',
-      '/images/nixon-room3.jpg',
-    ],
+    id: '07', year: '2024', category: 'Hotel',
+    title: 'Merit Hotel Kensington',
+    sub: 'Kensington, London — United Kingdom',
+    description: 'A refined boutique hotel in prestigious Kensington. Living green walls with gold accents, polished marble flooring and bespoke millwork deliver a five-star guest experience rooted in British elegance.',
+    hero: '/images/cp-merit-1.jpg',
+    gallery: ['/images/cp-merit-2.jpg', '/images/cp-merit-3.jpg', '/images/cp-merit-4.jpg', '/images/cp-merit-5.jpg', '/images/cp-merit-6.jpg'],
   },
   {
-    id: '09',
+    id: '08', year: '2024', category: 'Hotel',
+    title: 'Old Mill Hotel',
+    sub: 'United Kingdom',
+    description: 'A charming boutique hotel renovation blending heritage character with modern comfort. Bespoke headboards with warm LED lighting, rich timber joinery and classic wainscoting restore the property to its former glory.',
+    hero: '/images/cp-oldmill-1.jpg',
+    gallery: ['/images/cp-oldmill-2.jpg', '/images/cp-oldmill-3.jpg', '/images/cp-oldmill-4.jpg', '/images/cp-oldmill-5.jpg', '/images/cp-oldmill-6.jpg'],
+  },
+  // 2023
+  {
+    id: '09', year: '2023', category: 'Hotel',
     title: 'Radisson Hotel Jeddah',
-    sub: 'Hotel Suite Fit-Out — Jeddah, Saudi Arabia',
-    category: 'Hospitality',
-    year: '2023',
-    description: 'A suite interior project for the Radisson brand in Jeddah, blending contemporary hospitality design with subtle regional influences. Clean modern furnishings, geometric art and a refined neutral palette create a sophisticated sanctuary for international travellers.',
-    quote: '"Excellence transcends borders."',
-    hero: '/images/jeddah-suite.jpg',
-    gallery: [
-      '/images/jeddah-room1.jpg',
-      '/images/jeddah-room2.jpg',
-      '/images/jeddah-lobby.jpg',
-    ],
+    sub: 'Jeddah, Saudi Arabia',
+    description: 'A suite fit-out for the Radisson brand in Jeddah, blending contemporary hospitality design with regional influences. Clean furnishings and a refined neutral palette create a sanctuary for international travellers.',
+    hero: '/images/cp-jeddah-1.jpg',
+    gallery: ['/images/cp-jeddah-2.jpg', '/images/cp-jeddah-3.jpg', '/images/cp-jeddah-4.jpg', '/images/cp-jeddah-5.jpg'],
+  },
+  {
+    id: '10', year: '2023', category: 'Hotel',
+    title: 'Nixon Hotel',
+    sub: 'United Kingdom',
+    description: 'An intimate boutique hotel blending classic British style with contemporary comfort. Bespoke lounge furniture, curated fabrics and layered warm lighting create a destination guests return to time and again.',
+    hero: '/images/cp-nixon-1.jpg',
+    gallery: ['/images/cp-nixon-2.jpg', '/images/cp-nixon-3.jpg', '/images/cp-nixon-4.jpg', '/images/cp-nixon-5.jpg'],
+  },
+  {
+    id: '11', year: '2023', category: 'Restaurant',
+    title: 'Domenico Restaurant',
+    sub: 'Edinburgh, United Kingdom',
+    description: 'A sophisticated Edinburgh restaurant interior featuring custom marble bar tops, antique-brass shelving and mirrored accents — an intimate Italian dining experience with enduring elegance.',
+    hero: '/images/cp-domenico-1.jpg',
+    gallery: ['/images/cp-domenico-2.jpg', '/images/cp-domenico-3.jpg', '/images/cp-domenico-4.jpg', '/images/cp-domenico-5.jpg'],
   },
 ];
 
@@ -379,78 +331,125 @@ export default function Projects() {
       </div>
 
       {/* ── COMPLETED PROJECTS ── */}
-      <div id="completed" style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '0 16px' : '0 32px' }}>
+      <div id="completed" style={{ background: '#080808', marginTop: isMobile ? 40 : 80 }}>
 
-        {/* Section title — Completed */}
-        <div style={{ paddingTop: isMobile ? 40 : 72, paddingBottom: isMobile ? 24 : 40, display: 'flex', alignItems: 'center', gap: 20 }}>
+        {/* Section header — full width dark band */}
+        <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '40px 16px 32px' : '72px 32px 48px', display: 'flex', alignItems: 'center', gap: 20 }}>
           <div>
-            <div style={{ color: GREY, fontSize: 10, letterSpacing: 4, textTransform: 'uppercase', fontWeight: 600, marginBottom: 6, opacity: 0.7 }}>
-              {t('Delivered', 'Tamamlandı')}
+            <div style={{ color: GOLD, fontSize: 10, letterSpacing: 5, textTransform: 'uppercase', fontWeight: 600, marginBottom: 8 }}>
+              {t('Delivered · 2023 – 2025', 'Tamamlandı · 2023 – 2025')}
             </div>
-            <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 26 : 36, fontWeight: 700, margin: 0, lineHeight: 1.1 }}>
+            <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 28 : 42, fontWeight: 700, margin: 0, lineHeight: 1.05 }}>
               {t('Completed Projects', 'Tamamlanan Projeler')}
             </h2>
           </div>
-          <div style={{ flex: 1, height: 1, background: `linear-gradient(to right, ${DARK_BORDER}, transparent)` }} />
+          <div style={{ flex: 1, height: 1, background: `linear-gradient(to right, ${GOLD}55, transparent)` }} />
+          <div style={{ color: GREY, fontSize: 10, letterSpacing: 2, opacity: 0.5, whiteSpace: 'nowrap' }}>
+            {completedProjects.length} {t('projects', 'proje')}
+          </div>
         </div>
 
-        {completedProjects.map((project, i) => {
-          const imageLeft = i % 2 === 0;
-          return (
-            <div key={i} style={{
-              paddingTop: isMobile ? 32 : 56,
-              paddingBottom: isMobile ? 32 : 56,
-              borderBottom: `1px solid ${DARK_BORDER}`,
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: isMobile ? 20 : 28 }}>
-                <span style={{ color: `${GOLD}33`, fontSize: isMobile ? 36 : 52, fontWeight: 700, lineHeight: 1, fontFamily: 'Georgia, serif' }}>{project.id}</span>
+        {/* Projects list */}
+        {completedProjects.map((project, i) => (
+          <div key={i} style={{
+            borderTop: `1px solid ${DARK_BORDER}`,
+            padding: isMobile ? '32px 16px' : '56px 0',
+          }}>
+            <div style={{ maxWidth: 1280, margin: '0 auto', padding: isMobile ? '0' : '0 32px' }}>
+
+              {/* Top meta row */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: isMobile ? 20 : 32 }}>
+                <span style={{ color: `${GOLD}25`, fontSize: isMobile ? 48 : 72, fontWeight: 800, lineHeight: 1, fontFamily: 'Georgia, serif', letterSpacing: -2 }}>{project.id}</span>
                 <div style={{ flex: 1, height: 1, background: DARK_BORDER }} />
-                <span style={{ color: GOLD, fontSize: 9, letterSpacing: 4, textTransform: 'uppercase', fontWeight: 600 }}>{project.category}</span>
-                <span style={{ color: `${GOLD}55`, fontSize: 9, letterSpacing: 2 }}>· {project.year}</span>
+                <span style={{ background: GOLD, color: '#000', fontSize: 9, fontWeight: 700, letterSpacing: 3, textTransform: 'uppercase', padding: '4px 12px' }}>{project.year}</span>
+                <span style={{ border: `1px solid ${DARK_BORDER}`, color: GREY, fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', padding: '4px 12px' }}>{project.category}</span>
               </div>
+
+              {/* Main layout: hero + info side by side */}
               <div style={{
                 display: 'grid',
-                gridTemplateColumns: isMobile ? '1fr' : (imageLeft ? '3fr 2fr' : '2fr 3fr'),
-                gap: isMobile ? 20 : 40, alignItems: 'start', marginBottom: isMobile ? 12 : 20,
+                gridTemplateColumns: isMobile ? '1fr' : '1fr 340px',
+                gap: isMobile ? 20 : 40,
+                alignItems: 'start',
+                marginBottom: isMobile ? 16 : 28,
               }}>
-                <div style={{ order: isMobile ? 0 : (imageLeft ? 0 : 1) }}>
-                  <div style={{ position: 'relative', overflow: 'hidden', height: isMobile ? 240 : 380, border: `1px solid ${DARK_BORDER}` }}>
-                    <img src={project.hero} alt={project.title}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
-                      onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
-                      onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
-                    <div style={{ position: 'absolute', top: 14, left: 14, color: OFF_WHITE, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', background: 'rgba(0,0,0,0.6)', padding: '4px 10px' }}>{project.category}</div>
-                    <div style={{ position: 'absolute', top: 14, right: 14, background: GOLD, color: '#0A0A0A', fontSize: 10, fontWeight: 700, padding: '4px 12px', letterSpacing: 1 }}>{project.year}</div>
-                    <div style={{ position: 'absolute', bottom: 0, left: 0, width: 48, height: 2, background: GOLD }} />
-                    <div style={{ position: 'absolute', bottom: 0, left: 0, width: 2, height: 48, background: GOLD }} />
-                  </div>
+
+                {/* Hero image — large */}
+                <div style={{ position: 'relative', overflow: 'hidden', height: isMobile ? 260 : 460 }}>
+                  <img src={project.hero} alt={project.title}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.8s ease' }}
+                    onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.03)')}
+                    onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
+                  {/* Gold corner bottom-left */}
+                  <div style={{ position: 'absolute', bottom: 0, left: 0, width: 56, height: 3, background: GOLD }} />
+                  <div style={{ position: 'absolute', bottom: 0, left: 0, width: 3, height: 56, background: GOLD }} />
+                  {/* Dark gradient overlay bottom */}
+                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 80, background: 'linear-gradient(transparent, rgba(0,0,0,0.5))' }} />
                 </div>
-                <div style={{ order: isMobile ? 1 : (imageLeft ? 1 : 0), paddingTop: isMobile ? 0 : 8 }}>
-                  <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 22 : 30, fontWeight: 700, lineHeight: 1.15, margin: '0 0 6px' }}>{project.title}</h2>
-                  <div style={{ color: GREY, fontSize: 11, letterSpacing: 0.5, marginBottom: 20, opacity: 0.7 }}>{project.sub}</div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
-                    <div style={{ width: 40, height: 2, background: GOLD }} />
-                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: `${GOLD}55`, border: `1px solid ${GOLD}` }} />
+
+                {/* Info panel */}
+                <div style={{ paddingTop: isMobile ? 0 : 8 }}>
+                  <h3 style={{ color: OFF_WHITE, fontSize: isMobile ? 22 : 26, fontWeight: 700, lineHeight: 1.2, margin: '0 0 8px' }}>
+                    {project.title}
+                  </h3>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
+                    <div style={{ width: 3, height: 14, background: GOLD }} />
+                    <span style={{ color: GREY, fontSize: 11, letterSpacing: 0.5 }}>{project.sub}</span>
                   </div>
-                  <p style={{ color: GREY, fontSize: isMobile ? 13 : 14, lineHeight: 1.9, marginBottom: 24 }}>{project.description}</p>
-                  <div style={{ borderLeft: `2px solid ${GOLD}`, paddingLeft: 16, marginBottom: 24 }}>
-                    <p style={{ color: GOLD, fontSize: 13, fontStyle: 'italic', lineHeight: 1.7, margin: 0 }}>{project.quote}</p>
+
+                  <div style={{ width: 32, height: 1, background: `${GOLD}66`, marginBottom: 18 }} />
+
+                  <p style={{ color: GREY, fontSize: isMobile ? 13 : 13.5, lineHeight: 1.9, marginBottom: 28, opacity: 0.85 }}>
+                    {project.description}
+                  </p>
+
+                  {/* Tags */}
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 24 }}>
+                    <span style={{ border: `1px solid ${GOLD}44`, color: GOLD, fontSize: 9, letterSpacing: 2, padding: '5px 14px', textTransform: 'uppercase' }}>{project.category}</span>
+                    <span style={{ border: `1px solid ${DARK_BORDER}`, color: GREY, fontSize: 9, letterSpacing: 2, padding: '5px 14px', textTransform: 'uppercase' }}>MEO Development LLC</span>
                   </div>
-                  <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                    <span style={{ border: `1px solid ${DARK_BORDER}`, color: GREY, fontSize: 9, letterSpacing: 2, padding: '4px 12px', textTransform: 'uppercase' }}>{project.category}</span>
-                    <span style={{ border: `1px solid ${DARK_BORDER}`, color: GREY, fontSize: 9, letterSpacing: 2, padding: '4px 12px', textTransform: 'uppercase' }}>{project.year}</span>
-                    <span style={{ border: `1px solid ${GOLD}44`, color: GOLD, fontSize: 9, letterSpacing: 2, padding: '4px 12px', textTransform: 'uppercase' }}>MEO Development</span>
-                  </div>
+
+                  {/* Photo count badge */}
+                  {project.gallery.length > 0 && (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, opacity: 0.5 }}>
+                      <div style={{ width: 16, height: 1, background: GREY }} />
+                      <span style={{ color: GREY, fontSize: 9, letterSpacing: 2, textTransform: 'uppercase' }}>
+                        {project.gallery.length + 1} {t('photos · scroll →', 'fotoğraf · kaydır →')}
+                      </span>
+                    </div>
+                  )}
                 </div>
               </div>
+
+              {/* Horizontal scrollable gallery */}
               {project.gallery.length > 0 && (
-                <div style={{ marginTop: isMobile ? 4 : 8 }}>
-                  <ProjectGallery images={project.gallery} isMobile={isMobile} />
+                <div style={{
+                  display: 'flex', gap: isMobile ? 8 : 12,
+                  overflowX: 'auto', paddingBottom: 8,
+                  scrollbarWidth: 'thin',
+                  scrollbarColor: `${GOLD}44 transparent`,
+                }}>
+                  {project.gallery.map((src, j) => (
+                    <div key={j} style={{
+                      flexShrink: 0,
+                      width: isMobile ? 200 : 280,
+                      height: isMobile ? 140 : 196,
+                      overflow: 'hidden',
+                      border: `1px solid ${DARK_BORDER}`,
+                      position: 'relative',
+                    }}>
+                      <img src={src} alt={`${project.title} ${j + 2}`}
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.5s ease' }}
+                        onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.06)')}
+                        onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
+                    </div>
+                  ))}
                 </div>
               )}
+
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
 
       {/* Video Showcase */}
