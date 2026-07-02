@@ -108,43 +108,10 @@ function VideoCard({ video, height }: { video: { src: string; label: string; sub
   );
 }
 
-const ongoingProjects = [
-  {
-    id: '01',
-    title: 'Greenwich Mansion',
-    sub: 'Grand Residence — New Jersey, USA',
-    category: 'Mansion',
-    year: '2025',
-    description: 'An extraordinary classical manor drawing inspiration from 18th-century French architecture. Royal blue velvet sofas, hand-carved boiserie panelling, twin ornate crystal chandeliers and intricate wainscoting create an atmosphere of timeless aristocratic grandeur across every room and corridor.',
-    quote: '"Every detail tells its own story."',
-    hero: '/images/gw2-living-blue-bright.png',
-    gallery: [
-      '/images/gw2-dining-chandelier.png',
-      '/images/gw2-living-aerial2.png',
-      '/images/gw2-kitchen-island.png',
-      '/images/gw2-hallway-crystal.png',
-      '/images/gw2-kitchen-classic.png',
-      '/images/gw2-staircase.png',
-    ],
-  },
-  {
-    id: '02',
-    title: 'Modern Open-Plan Estate',
-    sub: 'Residential Complex — Connecticut, USA',
-    category: 'Residential',
-    year: '2025',
-    description: 'A multi-level contemporary residence designed for both comfort and functionality. The lower level features a vast open-plan living space with marble waterfall island, while bespoke walk-in dressing rooms and a large-format sectional lounge define the upper floors with effortless elegance.',
-    quote: '"Form and function in perfect balance."',
-    hero: '/images/gw2-basement.png',
-    gallery: [
-      '/images/gw2-sofa-sectional.png',
-      '/images/gw2-closet-gray.png',
-      '/images/gw2-closet-sage.png',
-      '/images/gw2-closet-dark.png',
-      '/images/gw2-kitchen-black-chan.png',
-    ],
-  },
-];
+const ongoingProjects: {
+  id: string; title: string; sub: string; category: string; year: string;
+  description: string; quote: string; hero: string; gallery: string[];
+}[] = [];
 
 const completedProjects = [
   // 2025
