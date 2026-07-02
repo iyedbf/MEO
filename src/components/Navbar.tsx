@@ -14,8 +14,8 @@ const navLinks = [
 ];
 
 const projectsDropdown = [
-  { path: '/projects#ongoing',   en: 'In Progress',   tr: 'Devam Eden' },
-  { path: '/projects#completed', en: 'Completed',     tr: 'Tamamlanan' },
+  { path: '/projects/ongoing',   en: 'In Progress',   tr: 'Devam Eden' },
+  { path: '/projects/completed', en: 'Completed',     tr: 'Tamamlanan' },
 ];
 
 const FlagButtons = ({ lang, setLang }: { lang: string; setLang: (l: 'en' | 'tr') => void }) => (

@@ -9,6 +9,8 @@ import About from './pages/About';
 import Services from './pages/Services';
 import Design from './pages/Design';
 import Projects from './pages/Projects';
+import ProjectsOngoing from './pages/ProjectsOngoing';
+import ProjectsCompleted from './pages/ProjectsCompleted';
 import Partners from './pages/Partners';
 import Contact from './pages/Contact';
 
@@ -27,6 +29,8 @@ export default function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/design" element={<Design />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/ongoing" element={<ProjectsOngoing />} />
+            <Route path="/projects/completed" element={<ProjectsCompleted />} />
             <Route path="/partners" element={<Partners />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
