@@ -239,75 +239,6 @@ const statItems = [
   { count: '98%', label: 'Client Satisfaction' },
 ];
 
-function ProjectGallery({ images, isMobile }: { images: string[]; isMobile: boolean }) {
-  if (images.length === 0) return null;
-  if (images.length === 1) {
-    return (
-      <div style={{ overflow: 'hidden', height: isMobile ? 140 : 180, border: `1px solid ${DARK_BORDER}` }}>
-        <img src={images[0]} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.85)', display: 'block', transition: 'transform 0.5s' }}
-          onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
-          onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
-      </div>
-    );
-  }
-  if (images.length === 2) {
-    return (
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4 }}>
-        {images.map((src, i) => (
-          <div key={i} style={{ overflow: 'hidden', height: isMobile ? 110 : 150, border: `1px solid ${DARK_BORDER}` }}>
-            <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.85)', display: 'block', transition: 'transform 0.5s' }}
-              onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
-              onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
-          </div>
-        ))}
-      </div>
-    );
-  }
-  if (images.length === 3) {
-    return (
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 4 }}>
-        {images.map((src, i) => (
-          <div key={i} style={{ overflow: 'hidden', height: isMobile ? 100 : 140, border: `1px solid ${DARK_BORDER}` }}>
-            <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.85)', display: 'block', transition: 'transform 0.5s' }}
-              onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
-              onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
-          </div>
-        ))}
-      </div>
-    );
-  }
-  // 4+ images: first one big, rest in a row
-  const [first, ...rest] = images;
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-      <div style={{ overflow: 'hidden', height: isMobile ? 160 : 220, border: `1px solid ${DARK_BORDER}` }}>
-        <img src={first} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.85)', display: 'block', transition: 'transform 0.5s' }}
-          onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
-          onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
-      </div>
-      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(rest.length, 3)}, 1fr)`, gap: 4 }}>
-        {rest.slice(0, 3).map((src, i) => (
-          <div key={i} style={{ overflow: 'hidden', height: isMobile ? 90 : 120, border: `1px solid ${DARK_BORDER}` }}>
-            <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8)', display: 'block', transition: 'transform 0.5s' }}
-              onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
-              onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
-          </div>
-        ))}
-      </div>
-      {rest.length > 3 && (
-        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(rest.length - 3, 3)}, 1fr)`, gap: 4 }}>
-          {rest.slice(3, 6).map((src, i) => (
-            <div key={i} style={{ overflow: 'hidden', height: isMobile ? 90 : 120, border: `1px solid ${DARK_BORDER}` }}>
-              <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.8)', display: 'block', transition: 'transform 0.5s' }}
-                onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
-                onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
 
 export default function Projects() {
   const { t } = useLang();
@@ -368,16 +299,10 @@ export default function Projects() {
                 gap: isMobile ? 20 : 40, alignItems: 'start', marginBottom: isMobile ? 12 : 20,
               }}>
                 <div style={{ order: isMobile ? 0 : (imageLeft ? 0 : 1) }}>
-                  <div style={{ position: 'relative', overflow: 'hidden', height: isMobile ? 240 : 380, border: `1px solid ${DARK_BORDER}` }}>
-                    <img src={project.hero} alt={project.title}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
-                      onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
-                      onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
-                    <div style={{ position: 'absolute', top: 14, left: 14, color: OFF_WHITE, fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', background: 'rgba(0,0,0,0.6)', padding: '4px 10px' }}>{project.category}</div>
-                    <div style={{ position: 'absolute', top: 14, right: 14, background: GOLD, color: '#0A0A0A', fontSize: 10, fontWeight: 700, padding: '4px 12px', letterSpacing: 1 }}>{project.year}</div>
-                    <div style={{ position: 'absolute', bottom: 0, left: 0, width: 48, height: 2, background: GOLD }} />
-                    <div style={{ position: 'absolute', bottom: 0, left: 0, width: 2, height: 48, background: GOLD }} />
-                  </div>
+                  <ProjectCarousel
+                    images={[project.hero, ...project.gallery]}
+                    isMobile={isMobile}
+                  />
                 </div>
                 <div style={{ order: isMobile ? 1 : (imageLeft ? 1 : 0), paddingTop: isMobile ? 0 : 8 }}>
                   <h2 style={{ color: OFF_WHITE, fontSize: isMobile ? 22 : 30, fontWeight: 700, lineHeight: 1.15, margin: '0 0 6px' }}>{project.title}</h2>
@@ -397,11 +322,6 @@ export default function Projects() {
                   </div>
                 </div>
               </div>
-              {project.gallery.length > 0 && (
-                <div style={{ marginTop: isMobile ? 4 : 8 }}>
-                  <ProjectGallery images={project.gallery} isMobile={isMobile} />
-                </div>
-              )}
             </div>
           );
         })}
