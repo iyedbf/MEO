@@ -1,8 +1,94 @@
+import { useState } from 'react';
 import { GOLD, DARK_BORDER, OFF_WHITE, GREY, CHARCOAL } from '../theme';
 import { siteVideos } from '../images';
 import PageHeader from '../components/PageHeader';
 import { useLang } from '../context/LanguageContext';
 import { useResponsive } from '../hooks/useResponsive';
+
+function ProjectCarousel({ images, isMobile }: { images: string[]; isMobile: boolean }) {
+  const [index, setIndex] = useState(0);
+  const total = images.length;
+  if (total === 0) return null;
+
+  const prev = () => setIndex(i => (i - 1 + total) % total);
+  const next = () => setIndex(i => (i + 1) % total);
+
+  const arrowStyle = (side: 'left' | 'right'): React.CSSProperties => ({
+    position: 'absolute', top: '50%', transform: 'translateY(-50%)',
+    [side]: 12,
+    background: 'rgba(0,0,0,0.65)',
+    border: `1px solid ${GOLD}55`,
+    color: GOLD, fontSize: 18, fontWeight: 300,
+    width: isMobile ? 34 : 42, height: isMobile ? 34 : 42,
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    cursor: 'pointer', zIndex: 10,
+    transition: 'background 0.2s, border-color 0.2s',
+    userSelect: 'none',
+  });
+
+  return (
+    <div style={{ position: 'relative', height: isMobile ? 260 : 460, overflow: 'hidden' }}>
+      {/* Main photo */}
+      <img
+        key={index}
+        src={images[index]}
+        alt=""
+        style={{
+          width: '100%', height: '100%', objectFit: 'cover', display: 'block',
+          transition: 'opacity 0.35s ease',
+        }}
+      />
+
+      {/* Gold corner accent */}
+      <div style={{ position: 'absolute', bottom: 0, left: 0, width: 56, height: 3, background: GOLD, pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', bottom: 0, left: 0, width: 3, height: 56, background: GOLD, pointerEvents: 'none' }} />
+
+      {/* Bottom dark gradient */}
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 80, background: 'linear-gradient(transparent, rgba(0,0,0,0.55))', pointerEvents: 'none' }} />
+
+      {/* Arrows — only if more than 1 photo */}
+      {total > 1 && (
+        <>
+          <button style={arrowStyle('left')} onClick={prev}
+            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = `${GOLD}22`; (e.currentTarget as HTMLButtonElement).style.borderColor = GOLD; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(0,0,0,0.65)'; (e.currentTarget as HTMLButtonElement).style.borderColor = `${GOLD}55`; }}>
+            ‹
+          </button>
+          <button style={arrowStyle('right')} onClick={next}
+            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = `${GOLD}22`; (e.currentTarget as HTMLButtonElement).style.borderColor = GOLD; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'rgba(0,0,0,0.65)'; (e.currentTarget as HTMLButtonElement).style.borderColor = `${GOLD}55`; }}>
+            ›
+          </button>
+        </>
+      )}
+
+      {/* Photo counter — bottom right */}
+      {total > 1 && (
+        <div style={{
+          position: 'absolute', bottom: 14, right: 14,
+          background: 'rgba(0,0,0,0.7)', border: `1px solid ${GOLD}44`,
+          color: GOLD, fontSize: 10, letterSpacing: 1.5, padding: '4px 10px',
+        }}>
+          {index + 1} / {total}
+        </div>
+      )}
+
+      {/* Dot indicators */}
+      {total > 1 && (
+        <div style={{ position: 'absolute', bottom: 14, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 6 }}>
+          {images.map((_, j) => (
+            <button key={j} onClick={() => setIndex(j)} style={{
+              width: j === index ? 18 : 6, height: 6,
+              background: j === index ? GOLD : `${GOLD}44`,
+              border: 'none', cursor: 'pointer', padding: 0,
+              transition: 'width 0.3s, background 0.3s',
+            }} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 function VideoCard({ video, height }: { video: { src: string; label: string; sub: string }; height: number }) {
   return (
@@ -374,18 +460,11 @@ export default function Projects() {
                 marginBottom: isMobile ? 16 : 28,
               }}>
 
-                {/* Hero image — large */}
-                <div style={{ position: 'relative', overflow: 'hidden', height: isMobile ? 260 : 460 }}>
-                  <img src={project.hero} alt={project.title}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.8s ease' }}
-                    onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.03)')}
-                    onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
-                  {/* Gold corner bottom-left */}
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, width: 56, height: 3, background: GOLD }} />
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, width: 3, height: 56, background: GOLD }} />
-                  {/* Dark gradient overlay bottom */}
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 80, background: 'linear-gradient(transparent, rgba(0,0,0,0.5))' }} />
-                </div>
+                {/* Carousel — hero + gallery navigable avec flèches */}
+                <ProjectCarousel
+                  images={[project.hero, ...project.gallery]}
+                  isMobile={isMobile}
+                />
 
                 {/* Info panel */}
                 <div style={{ paddingTop: isMobile ? 0 : 8 }}>
@@ -414,38 +493,13 @@ export default function Projects() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, opacity: 0.5 }}>
                       <div style={{ width: 16, height: 1, background: GREY }} />
                       <span style={{ color: GREY, fontSize: 9, letterSpacing: 2, textTransform: 'uppercase' }}>
-                        {project.gallery.length + 1} {t('photos · scroll →', 'fotoğraf · kaydır →')}
+                        {project.gallery.length + 1} {t('photos', 'fotoğraf')}
                       </span>
                     </div>
                   )}
                 </div>
               </div>
 
-              {/* Horizontal scrollable gallery */}
-              {project.gallery.length > 0 && (
-                <div style={{
-                  display: 'flex', gap: isMobile ? 8 : 12,
-                  overflowX: 'auto', paddingBottom: 8,
-                  scrollbarWidth: 'thin',
-                  scrollbarColor: `${GOLD}44 transparent`,
-                }}>
-                  {project.gallery.map((src, j) => (
-                    <div key={j} style={{
-                      flexShrink: 0,
-                      width: isMobile ? 200 : 280,
-                      height: isMobile ? 140 : 196,
-                      overflow: 'hidden',
-                      border: `1px solid ${DARK_BORDER}`,
-                      position: 'relative',
-                    }}>
-                      <img src={src} alt={`${project.title} ${j + 2}`}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.5s ease' }}
-                        onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.06)')}
-                        onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')} />
-                    </div>
-                  ))}
-                </div>
-              )}
 
             </div>
           </div>
