@@ -108,10 +108,34 @@ function VideoCard({ video, height }: { video: { src: string; label: string; sub
   );
 }
 
-const ongoingProjects: {
-  id: string; title: string; sub: string; category: string; year: string;
-  description: string; quote: string; hero: string; gallery: string[];
-}[] = [];
+const ongoingProjects = [
+  {
+    id: '01',
+    title: 'Mansion Ottawa',
+    sub: 'Grand Residence — Ottawa, Canada',
+    category: 'Mansion',
+    year: '2025',
+    description: 'A prestigious mansion project currently under development in Ottawa, Canada. Blending timeless classical architecture with bespoke interior craftsmanship, every space is designed to reflect refined luxury and enduring elegance.',
+    quote: '"Crafting spaces that stand the test of time."',
+    hero: '/images/ip-ottawa-1.jpg',
+    gallery: [
+      '/images/ip-ottawa-2.jpg',
+      '/images/ip-ottawa-3.jpg',
+      '/images/ip-ottawa-4.jpg',
+      '/images/ip-ottawa-5.jpg',
+      '/images/ip-ottawa-6.jpg',
+      '/images/ip-ottawa-7.jpg',
+      '/images/ip-ottawa-8.jpg',
+      '/images/ip-ottawa-9.jpg',
+      '/images/ip-ottawa-10.jpg',
+      '/images/ip-ottawa-11.jpg',
+      '/images/ip-ottawa-12.jpg',
+      '/images/ip-ottawa-13.jpg',
+      '/images/ip-ottawa-14.jpg',
+      '/images/ip-ottawa-15.jpg',
+    ],
+  },
+];
 
 const completedProjects = [
   // 2025
