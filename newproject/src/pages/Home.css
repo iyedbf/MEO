@@ -1,0 +1,128 @@
+.home-hero {
+  position: relative;
+  background:
+    linear-gradient(120deg, var(--navy-deep) 0%, var(--navy) 55%, rgba(47, 128, 237, 0.14) 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 110px 0 88px;
+  overflow: hidden;
+}
+
+.home-hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(ellipse 70% 60% at 30% 20%, black 0%, transparent 70%);
+}
+
+.home-hero-content {
+  position: relative;
+  max-width: 760px;
+}
+
+.home-hero-title {
+  color: var(--white);
+  font-size: 58px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.08;
+  margin: 22px 0 24px;
+}
+
+.home-hero-title .gold {
+  color: var(--gold);
+}
+
+.home-hero-lead {
+  color: var(--steel-light);
+  font-size: 17px;
+  line-height: 1.8;
+  max-width: 560px;
+  margin: 0 0 36px;
+}
+
+.home-hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.section-header {
+  margin-bottom: 44px;
+}
+
+.home-capabilities-grid {
+  margin-top: 8px;
+}
+
+.home-cta {
+  background: linear-gradient(120deg, var(--gold) 0%, var(--gold-light) 100%);
+}
+
+.home-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 48px 0;
+}
+
+.home-cta-title {
+  color: var(--navy-deep);
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.home-cta-sub {
+  color: rgba(5, 11, 20, 0.72);
+  font-size: 14.5px;
+  margin-top: 6px;
+}
+
+.home-cta .btn-gold {
+  background: var(--navy-deep);
+  color: var(--gold);
+}
+
+.home-why-grid {
+  margin-top: 8px;
+}
+
+.home-why-card {
+  padding: 32px;
+}
+
+.home-why-card h3 {
+  color: var(--white);
+  font-size: 18px;
+  margin: 0 0 12px;
+}
+
+.home-why-card p {
+  color: var(--steel-light);
+  font-size: 14.5px;
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .home-hero {
+    padding: 80px 0 56px;
+  }
+
+  .home-hero-title {
+    font-size: 34px;
+  }
+
+  .home-hero-lead {
+    font-size: 15px;
+  }
+
+  .home-cta-inner {
+    padding: 32px 0;
+  }
+}

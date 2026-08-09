@@ -1,0 +1,35 @@
+.capabilities-why {
+  background: var(--navy);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 88px 0;
+}
+
+.capabilities-why-card {
+  padding: 30px 28px;
+}
+
+.capabilities-why-card h3 {
+  color: var(--gold);
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+
+.capabilities-why-card p {
+  color: var(--steel-light);
+  font-size: 14px;
+  line-height: 1.75;
+  margin: 0;
+}
+
+.capabilities-cta {
+  text-align: center;
+}
+
+.capabilities-cta .section-title {
+  margin: 0 auto 16px;
+}
+
+.capabilities-cta .divider {
+  margin: 0 auto 22px;
+}
