@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
 import MarqueeBand from './components/MarqueeBand';
+import ScrollProgress from './components/ScrollProgress';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -19,6 +20,7 @@ export default function App() {
     <LanguageProvider>
     <BrowserRouter>
       <CustomCursor />
+      <ScrollProgress />
       <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <Navbar />
         <MarqueeBand />
