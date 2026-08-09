@@ -1,0 +1,82 @@
+.programs-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.programs-row {
+  display: flex;
+  gap: 24px;
+  padding: 28px 32px;
+  align-items: flex-start;
+  transition: border-color 0.2s ease;
+}
+
+.programs-row:hover {
+  border-color: var(--gold);
+}
+
+.programs-row-index {
+  color: var(--gold);
+  font-size: 28px;
+  font-weight: 800;
+  font-family: Georgia, serif;
+  opacity: 0.55;
+  flex-shrink: 0;
+  min-width: 44px;
+}
+
+.programs-row-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.programs-row-top h3 {
+  color: var(--white);
+  font-size: 18px;
+  margin: 0;
+}
+
+.programs-row-badge {
+  color: var(--accent-light);
+  border-color: rgba(47, 128, 237, 0.35);
+  white-space: nowrap;
+}
+
+.programs-row-body p {
+  color: var(--steel-light);
+  font-size: 14px;
+  line-height: 1.75;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .programs-row {
+    flex-direction: column;
+    padding: 24px;
+  }
+}
+
+.programs-note-card {
+  padding: 36px;
+  text-align: center;
+  background: linear-gradient(120deg, var(--navy-card) 0%, var(--navy-light) 100%);
+}
+
+.programs-note-card h3 {
+  color: var(--gold);
+  font-size: 20px;
+  margin: 0 0 14px;
+}
+
+.programs-note-card p {
+  color: var(--steel-light);
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 720px;
+  margin: 0 auto;
+}
